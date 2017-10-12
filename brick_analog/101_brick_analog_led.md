@@ -1,6 +1,6 @@
 # #101 LED Brick
 
-<center>![](/img/LED_101/101_led.jpg)
+![](/img/LED_101/101_led.jpg)
 <!--COLORME-->
 
 ## Overview
@@ -20,7 +20,7 @@ Arduino Motor ShieldのA0コネクタにLED Brickを接続し、一定時間(1�
 １．Keilを起動します。
 Project → New μ プロジェクト → プロジェクトファイルを保存します。
 
-<center>![](/img/LED_101/ProjectMake.png)
+![](/img/LED_101/ProjectMake.png)
 
 ２．デバイスの選択
 ターゲットとなるマイコンを選択します。Nordic Semiconductor→nRF52　Series→
@@ -40,7 +40,7 @@ nRF_Drivers→nrf_delay
 nRF_Drivers→nrf_gpio
 
 ４．コンパイラ制御 および デバッカの設定
-###ビルドの設定
+### ビルドの設定
 Option for Targetボタンを押し、C/C++をクリックPreprocessor SymbolsのDefine:に
 
 nRF52 DKボード(BOARD_PCA10040)の場合
@@ -53,7 +53,7 @@ Optimize Level3(-O3)を選択
 
 Misc　Controls：　--c99を追加します。
 
-###デバッカの設定
+### デバッカの設定
 
 次にDebugタグをクリックします。
 
@@ -91,7 +91,7 @@ Downloadボタン（ショートカットF8）でターゲットに書き込み�
 
 Arduino PinA0は、NRF52のピン番号はP0.03にとなります。C言語なのでintなどは、マイコンによってバイト数が２バイトである場合と４バイトである場合があり、unsigned char(unsigned int)ではなくuint8_tなどを使ったほうが可読性や移植性の観点から望ましい。
 
-##直接レジスタによるLED点滅の場合
+## 直接レジスタによるLED点滅の場合
 ```c
 #include "nrf_delay.h"
 #include "nrf_gpio.h"
@@ -110,7 +110,10 @@ int main(void)
 }
 ```
 
-##boards.hに頼ったLED点滅の場合
+
+## boards.hに頼ったLED点滅の場合
+
+SDKにはあらかじめ、ボードにあわせたピン定義しているファイルが存在します。
 
 ```c
 #include "nrf_delay.h"
