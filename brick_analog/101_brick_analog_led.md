@@ -87,7 +87,6 @@ Buildを実行します。（ショートカットキーF7）
 Downloadボタンでターゲットに書き込みします。
 成功すればLEDが点滅します。
 
-![](/img/ST32CubeMX.png)
 
 Arduino PinA0は、NRF52のピン番号はP0.03にとなります。
 
