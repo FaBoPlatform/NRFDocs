@@ -83,18 +83,20 @@ main.cをクリックして開きます。
 6.実行
 
 Buildを実行します。（ショートカットキーF7）
-エラーが表示されなければ、*****.hexファイルが生成され、
-Downloadボタンでターゲットに書き込みします。
-成功すればLEDが点滅します。
+エラーが表示されなければ、コンパイラはbuildフォルダに******.axfが生成されます。
+ROM形式で書き込むため、******.hexファイルが生成され、
+Downloadボタン（ショートカットF8）でターゲットに書き込みします。
+書き込みが成功すればLEDが点滅します。
 
 
-Arduino PinA0は、NRF52のピン番号はP0.03にとなります。
+Arduino PinA0は、NRF52のピン番号はP0.03にとなります。C言語なのでintなどは、マイコンによってバイト数が２バイトである場合と４バイトである場合があり、unsigned char(unsigned int)ではなくuint8_tなどを使ったほうが可読性や移植性の観点から望ましい。
 
+##直接レジスタによるLED点滅の場合
 ```c
 #include "nrf_delay.h"
 #include "nrf_gpio.h"
 
-const uint8_t led_pin = 3;/*P0.03使用　constで修飾する場合は定数はROMに格納される*/
+const uint8_t led_pin = 3;  /*P0.03使用　/*P0.03使用　constで修飾する場合は定数はROMに格納されRAM領域の節約になる*/
 int main(void)
 {
       nrf_gpio_cfg_output(3); /*P0.03の入出力方向は出力に設定*/
@@ -102,13 +104,33 @@ int main(void)
     {
 					uint32_t gpio_state = NRF_GPIO->OUT;/*GPIOのレジスタを取得*/
           NRF_GPIO->OUTSET = ((1 << led_pin) & ~gpio_state);
-					NRF_GPIO->OUTCLR = ((1 << led_pin) & gpio_state);
+          NRF_GPIO->OUTCLR = ((1 << led_pin) & gpio_state);
           nrf_delay_ms(1000);/*１秒停止*/
     }
 }
-
-
 ```
 
+##boards.hに頼ったLED点滅の場合
+
+```c
+#include "nrf_delay.h"
+#include "nrf_gpio.h"
+#include "boards.h"
+#define PinNumberA0 3
+
+const uint8_t led_pin = PinNumberA0;
+
+int main(void)
+{
+    LEDS_CONFIGURE(1 << PinNumberA0);
+
+    while (true)
+    {  
+            LEDS_INVERT(1 << led_pin);
+            nrf_delay_ms(1000);
+    }
+}
+
+```
 ## 構成パーツParts
 - 5mm LED(各色)
