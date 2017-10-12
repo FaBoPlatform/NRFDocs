@@ -56,17 +56,17 @@ nRF52 DKボード(BOARD_PCA10040)の場合
 BOARD_PCA10040
 を追加します。
 
-![](/img/LED_101/OptionsTarget_C.png)
+![](/img/LED_101/OptionSettigs_Define.jpg)
 
 Langeage / Code Generationの項目
 ARMコンパイラの最適化レベルの設定
 Optimize Level3(-O3)を選択
 
-![](/img/LED_101/_101_ProjectMake.png)
+![](/img/LED_101/OptionSettigs_Optimization.jpg)
 
 Misc　Controls：　--c99を追加します。
 
-![](/img/LED_101/_101_ProjectMake.png)
+![](/img/LED_101/OptionSettigs_MiscContorls.jpg)
 
 ### デバッカの設定
 
