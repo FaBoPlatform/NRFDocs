@@ -108,10 +108,9 @@ Projectファイルと同一のディレクトリにListings,Object,RTEフォル
 main.cをクリックして開きます。
 次のコードを記述してください。
 
+### 直接レジスタ操作によるLED点滅の場合
 
 Arduino PinA0は、NRF52のピン番号はP0.03にとなります。C言語なのでintなどは、マイコンによってバイト数が２バイトである場合と４バイトである場合があり、unsigned char(unsigned int)ではなくuint8_tなどを使ったほうが可読性や移植性の観点から望ましい。
-
-### 直接レジスタ操作によるLED点滅の場合
 
 ```c
 #include "nrf_delay.h"
