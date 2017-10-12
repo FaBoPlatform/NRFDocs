@@ -1,6 +1,6 @@
 # #101 LED Brick
 
-<center>![](../img/LED_101/101_led.jpg)
+<center>![](/img/LED_101/101_led.jpg)
 <!--COLORME-->
 
 ## Overview
@@ -20,7 +20,7 @@ Arduino Motor ShieldのA0コネクタにLED Brickを接続し、一定時間(1�
 １．Keilを起動します。
 Project → New μ プロジェクト → プロジェクトファイルを保存します。
 
-<center>![](../img/LED_101/ProjectMake.png)
+<center>![](/img/LED_101/ProjectMake.png)
 
 ２．デバイスの選択
 ターゲットとなるマイコンを選択します。Nordic Semiconductor→nRF52　Series→
