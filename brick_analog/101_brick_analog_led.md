@@ -50,7 +50,7 @@ nRF_Drivers→nrf_gpio
 ### ビルドの設定
 Option for Targetボタンを押し、C/C++をクリックPreprocessor SymbolsのDefine:に
 
-![](/img/LED_101/_101_ProjectMake.png)
+![](/img/LED_101/OptionsButton.jpg)
 
 nRF52 DKボード(BOARD_PCA10040)の場合
 BOARD_PCA10040
@@ -80,9 +80,9 @@ Misc　Controls：　--c99を追加します。
 
 デバッカを設定します。J-linkの場合は、J-LINK/J-TRACE Cortexを選択。
 
-![](/img/LED_101/_101_ProjectMake.png)
+![](/img/LED_101/J-linkSettings.jpg)
 
-Settingボタンを押します。JTAG(4～5線式)からSW(2線式)に変更いたします。
+Settingボタンを押します。port:をJTAG(4～5線式)からSW(2線式)に変更いたします。
 
 ![](/img/LED_101/build_Settings.jpg)
 
@@ -159,9 +159,12 @@ int main(void)
 6.実行
 
 Buildを実行します。（ショートカットキーF7）
+![](/img/LED_101/BuildButtion.jpg)
 エラーが表示されなければ、コンパイラはbuildフォルダに******.axfが生成されます。
+![](/img/LED_101/BuildSuccess.jpg)
 ROM形式で書き込むため、******.hexファイルが生成され、
 Downloadボタン（ショートカットF8）でターゲットに書き込みします。
+![](/img/LED_101/Programing_Done.jpg)
 書き込みが成功すればLEDが点滅します。
 
 
