@@ -25,13 +25,20 @@ Project → New μ プロジェクト → プロジェクトファイルを保�
 ２．デバイスの選択
 ターゲットとなるマイコンを選択します。Nordic Semiconductor→nRF52　Series→
 nRF528232_xxAAを選択します。
+![](/img/LED_101/Selection_Soc.png)
+
 
 ３．コンポーネントを選択
 アプリケーョンに必要なコンポーネントを選択します。LED点滅に必要なGPIOと遅延関数Delayを使用いたします。
+
+![](/img/LED_101/_101_ProjectMake.png)
+
 それぞれのコンポーネントはversionがあり、日々更新されております。
 デフォルトで自動的に最新パックがインストールされます。
 
 以下のチェックボタンにチェックします。
+
+![](/img/LED_101/Selection_Componet.jpg)
 
 BoardSupport→bspを選択しVariant列をDefinesを選びます。
 CMSIS→CORE
@@ -43,28 +50,46 @@ nRF_Drivers→nrf_gpio
 ### ビルドの設定
 Option for Targetボタンを押し、C/C++をクリックPreprocessor SymbolsのDefine:に
 
+![](/img/LED_101/_101_ProjectMake.png)
+
 nRF52 DKボード(BOARD_PCA10040)の場合
 BOARD_PCA10040
 を追加します。
+
+![](/img/LED_101/OptionsTarget_C.png)
 
 Langeage / Code Generationの項目
 ARMコンパイラの最適化レベルの設定
 Optimize Level3(-O3)を選択
 
+![](/img/LED_101/_101_ProjectMake.png)
+
 Misc　Controls：　--c99を追加します。
+
+![](/img/LED_101/_101_ProjectMake.png)
 
 ### デバッカの設定
 
 次にDebugタグをクリックします。
 
+![](/img/LED_101/OptionsTarget_C.png)
+
 ターゲットのフラッシュメモリ　プログラム開始アドレスが0x0から始まっていることを確認してください。（無線を使用する場合などで、SoftDeviceを前もってDownloadした場合は、その領域の次にアドレス設定をします。他の項で記述）
+
+![](/img/LED_101/OptionsTarget.png)
 
 デバッカを設定します。J-linkの場合は、J-LINK/J-TRACE Cortexを選択。
 
+![](/img/LED_101/_101_ProjectMake.png)
+
 Settingボタンを押します。JTAG(4～5線式)からSW(2線式)に変更いたします。
+
+![](/img/LED_101/build_Settings.jpg)
 
 Flash Downloadタブをクリックし、書き込み方法を設定いたします。
 書き込み後すぐ実行させるため、Rsest and Runを選択します。
+
+![](/img/LED_101/WriteSettings.jpg)
 
 OKボタンを押して設定は終了です。
 
@@ -73,25 +98,19 @@ OKボタンを押して設定は終了です。
 Projectファイルと同一のディレクトリにListings,Object,RTEフォルダが自動的に生成されます。
 画面の左フォルダSourceGroup 1を左クリックしAdd New Item to Group'SourceGroup 1'を選択します。C File(.c)を選択します。
 
+![](/img/LED_101/AddNewGroup.png)
+
 一番最初に呼ばれるファイルなのでファイル名はmain.cと名前で保存してください。
+
+![](/img/LED_101/SouceGroupSelection.png)
 
 main.cをクリックして開きます。
 次のコードを記述してください。
 
 
-
-6.実行
-
-Buildを実行します。（ショートカットキーF7）
-エラーが表示されなければ、コンパイラはbuildフォルダに******.axfが生成されます。
-ROM形式で書き込むため、******.hexファイルが生成され、
-Downloadボタン（ショートカットF8）でターゲットに書き込みします。
-書き込みが成功すればLEDが点滅します。
-
-
 Arduino PinA0は、NRF52のピン番号はP0.03にとなります。C言語なのでintなどは、マイコンによってバイト数が２バイトである場合と４バイトである場合があり、unsigned char(unsigned int)ではなくuint8_tなどを使ったほうが可読性や移植性の観点から望ましい。
 
-## 直接レジスタによるLED点滅の場合
+## 直接レジスタ操作によるLED点滅の場合
 ```c
 #include "nrf_delay.h"
 #include "nrf_gpio.h"
@@ -113,7 +132,7 @@ int main(void)
 
 ## boards.hに頼ったLED点滅の場合
 
-SDKにはあらかじめ、ボードにあわせたピン定義しているファイルが存在します。
+レジスタ操作は開発効率が悪いので、SDKにはあらかじめ、ボードにあわせたピン定義しているファイルboards.hが存在します。
 
 ```c
 #include "nrf_delay.h"
@@ -135,5 +154,17 @@ int main(void)
 }
 
 ```
+
+
+6.実行
+
+Buildを実行します。（ショートカットキーF7）
+エラーが表示されなければ、コンパイラはbuildフォルダに******.axfが生成されます。
+ROM形式で書き込むため、******.hexファイルが生成され、
+Downloadボタン（ショートカットF8）でターゲットに書き込みします。
+書き込みが成功すればLEDが点滅します。
+
+
+
 ## 構成パーツParts
 - 5mm LED(各色)
