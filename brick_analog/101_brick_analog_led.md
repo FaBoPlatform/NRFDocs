@@ -11,8 +11,6 @@ LEDのBrickです。発光色は5色（青・緑・赤・白・黄）ありま�
 ## Connecting
 アナログコネクタ(A0〜A5)、またはデジタルコネクタ(2〜13)のいずれかに接続します。（サンプルはA0に接続します。）
 
-![ST32F4](../img/ST32F4_s001.jpg)
-
 ## Schematic
 ![](/img/led101_schmatic.png)
 
@@ -21,6 +19,8 @@ Arduino Motor ShieldのA0コネクタにLED Brickを接続し、一定時間(1�
 
 １．Keilを起動します。
 Project → New μ プロジェクト → プロジェクトファイルを保存します。
+
+<center>![](../img/LED101/ProjectMake.png)
 
 ２．デバイスの選択
 ターゲットとなるマイコンを選択します。Nordic Semiconductor→nRF52　Series→
@@ -104,7 +104,7 @@ int main(void)
 					uint32_t gpio_state = NRF_GPIO->OUT;/*GPIOのレジスタを取得*/
           NRF_GPIO->OUTSET = ((1 << led_pin) & ~gpio_state);
 					NRF_GPIO->OUTCLR = ((1 << led_pin) & gpio_state);
-          nrf_delay_ms(1000);/*一秒停止*/
+          nrf_delay_ms(1000);/*１秒停止*/
     }
 }
 
