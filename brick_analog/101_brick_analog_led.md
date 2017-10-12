@@ -88,7 +88,7 @@ Settingボタンを押します。port:をJTAG(4～5線式)からSW(2線式)に�
 ![](/img/LED_101/build_Settings.jpg)
 
 Flash Downloadタブをクリックし、書き込み方法を設定いたします。
-書き込み後すぐ実行させるため、Rsest and Runを選択します。
+書き込み後すぐ実行させるため、Reset and Runを選択します。
 
 ![](/img/LED_101/WriteSettings.jpg)
 
