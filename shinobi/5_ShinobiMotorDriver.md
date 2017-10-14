@@ -10,9 +10,11 @@ Shibobi NRF #1 とShinobi Motor #5 をFabo 4Pinケーブルを使用しI2Cコネ
 DCモーターは電源に合わせてご使用ください。状況を見たい場合は、Fabo #304 USBシリアルをShnibi #1 NRFのSerial端子に4Pinケーブルを用いて接続してください。
 
 ## Sample Code
+
 ファームウェア実行後、２つのモーターが前進、バックします。
 ソフトデバイス不要
 必要なソフトウェアコンポーネントを以下チェックおよび選択してください。
+
 Board Support--> bsp
 CMSIS --> CORE
 Device --> Startup
@@ -77,6 +79,7 @@ static void uart_events_handler(app_uart_evt_t * p_event)
     }
 }
 
+//UARTの優先度は低い
 static void uart_config(void)
 {
     uint32_t                     err_code;
@@ -106,6 +109,7 @@ void twi_handler(nrf_drv_twi_evt_t const * p_event, void * p_context)
 
 }
 
+//TWIの優先度が高い
 void twi_init (void)
 {
     ret_code_t err_code;
