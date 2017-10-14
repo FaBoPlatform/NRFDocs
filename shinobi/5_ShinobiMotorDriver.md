@@ -110,17 +110,18 @@ void twi_init (void)
 {
     ret_code_t err_code;
 
-    const nrf_drv_twi_config_t twi_mma_7660_config = {
+    const nrf_drv_twi_config_t twi_DRV8830_config = {
        .scl                = ARDUINO_SCL_PIN,
        .sda                = ARDUINO_SDA_PIN,
        .frequency          = NRF_TWI_FREQ_100K,
        .interrupt_priority = APP_IRQ_PRIORITY_HIGH
     };
-    err_code = nrf_drv_twi_init(&m_twi_DRV8830, &twi_mma_7660_config, twi_handler, NULL);
+    err_code = nrf_drv_twi_init(&m_twi_DRV8830, &twi_DRV8830_config, twi_handler, NULL);
 		APP_ERROR_CHECK(err_code);
 
     nrf_drv_twi_enable(&m_twi_DRV8830);
 }
+
 
 int main(void)
 {
