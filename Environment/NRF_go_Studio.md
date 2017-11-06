@@ -29,7 +29,7 @@ J-link liteをShinobiに接続し、Shinobiの電源（3V）もONにします。
 Erase allボタンを押します。
 
 # ソフトデバイスインストール
-ソフトデバイスが必要な場合は、ProgramSoftDeivceタブをクリックしてBroseボタンを押します。対象となるソフトデバイスをProgramボタンをクリックいてインストールします。
+ソフトデバイスが必要な場合は、ProgramSoftDeivceタブをクリックしてさきほど、Broseボタンを押します。ダウンロードしたSDKの中に\components\softdevice\s132\hexから対象となるソフトデバイス（hexファイル）をProgramボタンをクリックいてインストールします。
 
 #アプリケーションインストール
 Program ApplicationタブをクリックしBrose対象のhexファイルであるアプリケーションファイル選択し、Programボタンをクリックしてインストールします。
