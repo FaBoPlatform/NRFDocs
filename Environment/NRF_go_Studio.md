@@ -26,10 +26,13 @@ J-link liteをShinobiに接続し、Shinobiの電源（3V）もONにします。
 ![NRFGO](../img/NRF_GO/Write.png)
 
 ## 消去
+
 Erase allボタンを押します。
 
-# ソフトデバイスインストール
+## ソフトデバイスインストール
+
 ソフトデバイスが必要な場合は、ProgramSoftDeivceタブをクリックしてさきほど、Broseボタンを押します。ダウンロードしたSDKの中に\components\softdevice\s132\hexから対象となるソフトデバイス（hexファイル）をProgramボタンをクリックいてインストールします。
 
-#アプリケーションインストール
+## アプリケーションインストール
+
 Program ApplicationタブをクリックしBrose対象のhexファイルであるアプリケーションファイル選択し、Programボタンをクリックしてインストールします。
