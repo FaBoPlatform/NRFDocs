@@ -1,22 +1,23 @@
 # nRFgo Stduio
 
 nRFgo Stduioは、Nordicセミコンダクター社nRF51,nRF52の開発用アプリケーションです。
+テストやファームウェアの書き込みに使用できます。対応はWindowsです。
 
-#ファームウェアの書き込み
+## ファームウェアの書き込み
 
-# ダウンロード
+## ダウンロード
 画面で操作でプログラミング（ファームウェアの焼きこみができる）nRFgo Studio-Win64をダウンロードします。
 
 https://www.nordicsemi.com/eng/nordic/Products/nRFgo-Studio/nRFgo-Studio-Win64/14964
 
 解凍し、nRFgoStudio　インストール終了後、自動的にダイヤログが開き、J-linkドライバもインストールします。
 
-＃SDKダウンロード
+## SDKダウンロード
 
 開発に必要なサンプル及びコンポーネント（ソフトデバイスなど）がダウンロードされます。
 https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF5-SDK
 
-# nRFgoStduioでファーウェア書き込み
+## nRFgoStduioでファーウェア書き込み
 
 J-link liteをShinobiに接続し、Shinobiの電源（3V）もONにします。
 プロジェクトフォルダからhexファイルを用意し、nRFgoStudioを起動、左の画面　DeviceManegerのnRF5x Programmingをクリック。
