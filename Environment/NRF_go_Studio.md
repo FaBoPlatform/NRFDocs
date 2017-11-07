@@ -1,7 +1,7 @@
 # nRFgo Stduio
 
 nRFgo Stduioは、Nordicセミコンダクター社nRF51,nRF52の開発用アプリケーションです。
-テストやファームウェアの書き込みに使用できます。対応はWindowsです。
+テストやファームウェアの書き込みに使用できます。対応はWindows(32bit,64bit)です。
 
 ## ファームウェアの書き込み
 
@@ -13,12 +13,16 @@ nRFgo Stduioは、Nordicセミコンダクター社nRF51,nRF52の開発用アプ
 
 https://www.nordicsemi.com/eng/nordic/Products/nRFgo-Studio/nRFgo-Studio-Win64/14964
 
+![NRFGO](../img/NRF_GO/download.png)
+
 解凍し、nRFgoStudio　インストール終了後、自動的にダイヤログが開き、J-linkドライバもインストールします。
 
 ## SDKダウンロード
 
 開発に必要なサンプル及びコンポーネント（ソフトデバイスなど）がダウンロードされます。
 https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF5-SDK
+
+![NRFGO](../img/NRF_GO/sdk_download.png)
 
 ## nRFgoStduioでファーウェア書き込み
 
