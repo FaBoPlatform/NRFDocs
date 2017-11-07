@@ -37,11 +37,11 @@ https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF5-SDK
 
 ## 消去
 
-Erase allボタンを押します。
+Erase allボタンをクリック。接続がうまくいかないときは、Refreshボタンをクリックします。
 
 ## ソフトデバイスインストール
 
-ソフトデバイスが必要な場合は、Browseボタンを押し、ProgramSoftDeivceタブをクリックしてさきほど、ダウンロードしたSDKの中に\components\softdevice\s132\hexから対象となるソフトデバイス（hexファイル）をProgramボタンをクリックいてインストールします。
+ソフトデバイスが必要な場合は、Browseボタンを押し、ProgramSoftDeivceタブをクリックしてさきほど、ダウンロードしたSDKの中に\components\softdevice\s132\hexから対象となるソフトデバイス（hexファイル）をProgramボタンをクリックしてインストールします。
 
 ## アプリケーションインストール
 
