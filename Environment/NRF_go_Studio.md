@@ -19,10 +19,15 @@ https://www.nordicsemi.com/eng/nordic/Products/nRFgo-Studio/nRFgo-Studio-Win64/1
 
 ## SDKダウンロード
 
-開発に必要なサンプル及びコンポーネント（ソフトデバイスなど）がダウンロードされます。
+開発に必要なサンプル及びコンポーネント（ソフトデバイスなど）がダウンロードします。
+
 https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF5-SDK
 
 ![NRFGO](../img/NRF_GO/sdk_download.png)
+
+今回は、12.3をダウンロードします。
+
+![NRFGO](../img/NRF_GO/DownloadSDK123.PNG)
 
 ## nRFgoStduioでファーウェア書き込み
 
