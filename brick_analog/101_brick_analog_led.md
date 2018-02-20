@@ -6,8 +6,6 @@
 ## Overview
 LEDのBrickです。発光色は5色（青・緑・赤・白・黄）あります。Lチカのおともにもどうぞ。
 
-※購入時は色の間違いにご注意ください。
-
 ## Connecting
 接続例：ShinobiのAnalogに接続。
 Shinobi アナログコネクタ
@@ -114,13 +112,19 @@ nRF_Segger_RTT
 
 ![](/img/Fabo_LED_101/ButtoniconManager.PNG)
 
-以下のコンポーネント等のヘッダーファイルを指定します。
+以下のコンポーネント等のヘッダーファイルをAdd Filesボタンをクリックして指定します。
+
+前項のコンポーネントと同じ場所となります。
 
 ![](/img/Fabo_LED_101/ManageProjectItems.PNG)
+
+選択されると以下のようになります。
 
 ![](/img/Fabo_LED_101/Includepass101.PNG)
 
 ## 6．SDK_confing.hの設定
+
+コンパイルするモジュールを指定します。
 
 ![](/img/Fabo_LED_101/Configration_Wizard101.PNG)
 
@@ -190,48 +194,79 @@ Projectファイルと同一のディレクトリにListings,Object,RTEフォル
 ![](/img/LED_101/SouceGroupSelection.png)
 
 main.cをクリックして開きます。
-次のコードを記述してください。
+次のコードをコピーアンドペーストしてください。
 
-### 10.直接レジスタ操作によるLED点滅の場合
-
-Arduino PinA0は、NRF52のピン番号はP0.03にとなります。C言語なのでintなどは、マイコンによってバイト数が２バイトである場合と４バイトである場合があり、unsigned char(unsigned int)ではなくuint8_tなどを使ったほうが可読性や移植性の観点から望ましい。
+### 10. 1秒間隔でFaboBrickを点滅させる。
 
 ```c
-#include "nrf_delay.h"
-#include "nrf_gpio.h"
 
-const uint8_t led_pin = 3;  /*P0.03使用　/*P0.03使用　constで修飾する場合は定数はROMに格納されRAM領域の節約になる*/
+#include <stdbool.h>
+#include <stdint.h>
+#include "nrf_delay.h"
+#include "boards.h"
+
+#define PIN_NUMBER 3
+#define INTERVAL 1000
+
 int main(void)
 {
-      nrf_gpio_cfg_output(3); /*P0.03の入出力方向は出力に設定*/
+		nrf_gpio_cfg_output(PIN_NUMBER);
+
     while (true)
     {
-
-          uint32_t gpio_state = NRF_GPIO->OUT;/*GPIOのレジスタを取得*/
-          NRF_GPIO->OUTSET = ((1 << led_pin) & ~gpio_state);
-          NRF_GPIO->OUTCLR = ((1 << led_pin) & gpio_state);
-          nrf_delay_ms(1000);/*１秒停止*/
-
+			nrf_gpio_pin_toggle(PIN_NUMBER);
+			nrf_delay_ms(INTERVAL);			
     }
 }
+
 ```
 
 
-### 11.boards.hに頼ったLED点滅の場合
+### 11.直接レジスタ操作によるLED点滅の場合
+
+Arduino PinA0は、NRF52のピン番号はP0.03にとなります。C言語なのでintなどは、マイコンによってバイト数が２バイトである場合と４バイトである場合があり、unsigned char(unsigned int)ではなくuint8_tなどを使ったほうが可読性や移植性の観点から望ましい。
+
+
+
+```c
+
+#include "nrf_delay.h"
+#include "nrf_gpio.h"
+
+const uint8_t led_pin = 3; /*P0.03使用　constで修飾する場合は定数はROMに格納されRAM領域の節約になる*/
+
+int main(void)
+{
+      nrf_gpio_cfg_output(led_pin);/*ポートを出力に設定*/
+    while (true)
+    {
+
+          uint32_t gpio_state = NRF_GPIO->OUT;/*ポートレジスタの値を取得*/
+          NRF_GPIO->OUTSET = ((1 << led_pin) & ~gpio_state);
+          NRF_GPIO->OUTCLR = ((1 << led_pin) & gpio_state);
+          nrf_delay_ms(1000);/*１秒無しもしない*/
+
+    }
+}
+
+```
+
+### 11.boards.hを利用したLED点滅の場合
 
 レジスタ操作は開発効率が悪いので、SDKにはあらかじめ、ボードにあわせたピン定義しているファイルboards.hが存在します。
 
 ```c
+
 #include "nrf_delay.h"
 #include "nrf_gpio.h"
 #include "boards.h"
-#define PinNumberA0 3
+#define PINNUMBER 3
 
-const uint8_t led_pin = PinNumberA0;
+const uint8_t led_pin = PINNUMBER;
 
 int main(void)
 {
-    LEDS_CONFIGURE(1 << PinNumberA0);
+    LEDS_CONFIGURE(1 << PINNUMBER);
 
     while (true)
     {  
