@@ -7,8 +7,7 @@
 LEDのBrickです。発光色は5色（青・緑・赤・白・黄）あります。Lチカのおともにもどうぞ。
 
 ## Connecting
-接続例：ShinobiのAnalogに接続。
-Shinobi アナログコネクタ
+接続例：J-Linke LiteをShinobi_NRF、USB電源をShinobiBatterry,Fabo1010をShinobiアナログコネクタに接続します。
 
 ![](/img/Fabo_LED_101/Fabo_101_Connect_LI.jpg)
 
