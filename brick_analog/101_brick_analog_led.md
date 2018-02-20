@@ -12,7 +12,12 @@ LEDのBrickです。発光色は5色（青・緑・赤・白・黄）ありま�
 ![](/img/Fabo_LED_101/Fabo_101_Connect_LI.jpg)
 
 ## Schematic
+
+Fabo 101 LEDの回路図
 ![](/img/led101_schmatic.png)
+
+Shinobi Analogの回路図
+![](/img/Fabo_LED_101/Shinobi_Schamtic.PNG)
 
 ## Sample Code
 Arduino Motor ShieldのA0コネクタにLED Brickを接続し、一定時間(1秒=1000ms)ごとに点灯/消灯（Lチカ）させています。
