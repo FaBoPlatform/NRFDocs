@@ -39,24 +39,37 @@ nRF52　Series→nRF528232_xxAAを選択します。
 
 マイコン起動に必要なコンポーネントを選択します。
 
+![](/img/Fabo_LED_101/StartupSelect.PNG)
+
 CMSIS→CORE
+
 Device→Startup
 
 ## 4．コンポーネント、ライブラリを選択
 
 管理しやすいように名前を以下のようにします。
 
+![](/img/Fabo_LED_101/makeLibraryFolder.PNG)
+
 必要な以下のSDKのコンポーネントおよびライブラリから参照します。
+
+![](/img/Fabo_LED_101/OptionfoTarget101.PNG)
 
 ## 5．インクルードファイルの設定
 
 以下のコンポーネント等のヘッダーファイルを指定します。
 
+![](/img/Fabo_LED_101/Includepass101.PNG)
+
 ## 6．SDK_confing.hの設定
+
+![](/img/Fabo_LED_101/Configration_Wizard101.PNG)
 
 SDK_confing.hを選択しconfigration_Wizardタブをクリック。
 
 以下をチェックします。
+
+Configration_anotation101.PNG
 
 ## 7．コンパイラ制御の設定
 
