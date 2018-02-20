@@ -9,6 +9,7 @@ LEDのBrickです。発光色は5色（青・緑・赤・白・黄）ありま�
 ※購入時は色の間違いにご注意ください。
 
 ## Connecting
+接続例：ShinobiのAnalogに接続。
 Shinobi アナログコネクタ
 
 ## Schematic
@@ -18,11 +19,16 @@ Shinobi アナログコネクタ
 Arduino Motor ShieldのA0コネクタにLED Brickを接続し、一定時間(1秒=1000ms)ごとに点灯/消灯（Lチカ）させています。
 
 ## １．Keilを起動します。
+
+任意の場所プロジェクトフォルダの中にLED101のフォルダを作成します。
 Project → New μ プロジェクト → プロジェクトファイルを保存します。
 
 ![](/img/LED_101/_101_ProjectMake.png)
 
+プロジェクトファイルが作成され。
+
 ## ２．デバイスの選択
+
 ターゲットとなるマイコンを選択します。Nordic Semiconductorを選択。
 ![](/img/LED_101/Selection_Soc.png)
 
@@ -30,46 +36,53 @@ nRF52　Series→nRF528232_xxAAを選択します。
 ![](/img/LED_101/SocVersionSelect.jpg)
 
 ## ３．コンポーネントを選択
-アプリケーョンに必要なコンポーネントを選択します。LED点滅に必要なGPIOと遅延関数Delayを使用いたします。※プロジェクトフォルダ生成時は自動で画面が表示されます。
 
-![](/img/LED_101/ModuleButton.jpg)
+マイコン起動に必要なコンポーネントを選択します。
 
-それぞれのコンポーネントはversionがあり、更新されております。
-デフォルトで自動的に最新パックがインストールされます。
-
-以下のチェックボタンにチェックします。
-
-![](/img/LED_101/Selection_Componet.jpg)
-
-BoardSupport→bspを選択しVariant列をDefinesを選びます。
 CMSIS→CORE
 Device→Startup
-nRF_Drivers→nrf_delay
-nRF_Drivers→nrf_gpio
 
-## ４．コンパイラ制御 および デバッカの設定
+## 4．コンポーネント、ライブラリを選択
+
+管理しやすいように名前を以下のようにします。
+
+必要な以下のSDKのコンポーネントおよびライブラリから参照します。
+
+## 5．インクルードファイルの設定
+
+以下のコンポーネント等のヘッダーファイルを指定します。
+
+## 6．SDK_confing.hの設定
+
+SDK_confing.hを選択しconfigration_Wizardタブをクリック。
+
+以下をチェックします。
+
+## 7．コンパイラ制御の設定
 
 Option for Targetボタンを押し、C/C++をクリックPreprocessor SymbolsのDefine:に
 
-![](/img/LED_101/OptionsButton.jpg)
+
+
+![](/img/Fabo_LED_101/OptionfoTarget101.png)
+
+nRF52 Shinobiの場合
+
+NRF52832 NRF52 BOARD_CUSTOM  NRF52_PAN_12 NRF52_PAN_15 NRF52_PAN_20 NRF52_PAN_31 NRF52_PAN_36 NRF52_PAN_51 CONFIG_GPIO_AS_PINRESET NRF52_PAN_54 NRF52_PAN_55 NRF52_PAN_58 NRF52_PAN_64 BSP_DEFINES_ONLY SWI_DISABLE0
 
 nRF52 DKボード(BOARD_PCA10040)の場合
-BOARD_PCA10040
-を追加します。
 
-![](/img/LED_101/OptionSettigs_Define.jpg)
+NRF52832 NRF52 BOARD_PCA10040  NRF52_PAN_12 NRF52_PAN_15 NRF52_PAN_20 NRF52_PAN_31 NRF52_PAN_36 NRF52_PAN_51 CONFIG_GPIO_AS_PINRESET NRF52_PAN_54 NRF52_PAN_55 NRF52_PAN_58 NRF52_PAN_64 BSP_DEFINES_ONLY SWI_DISABLE0
+
+を追加します。
 
 Langeage / Code Generationの項目
 ARMコンパイラの最適化レベルの設定
 Optimize Level3(-O3)を選択
 
-![](/img/LED_101/OptionSettigs_Optimization.jpg)
-
 Misc　Controls：　--c99を追加します。
 
-![](/img/LED_101/OptionSettigs_MiscContorls.jpg)
-
-### デバッカの設定
+### 8. デバッカの設定
 
 次にDebugタグをクリックします。
 
@@ -95,7 +108,8 @@ Flash Downloadタブをクリックし、書き込み方法を設定いたしま
 OKボタンを押して設定は終了です。
 
 
-## ５．main関数追加
+## 9．main関数追加
+
 Projectファイルと同一のディレクトリにListings,Object,RTEフォルダが自動的に生成されます。
 画面の左フォルダSourceGroup 1を左クリックしAdd New Item to Group'SourceGroup 1'を選択します。C File(.c)を選択します。
 
@@ -108,7 +122,7 @@ Projectファイルと同一のディレクトリにListings,Object,RTEフォル
 main.cをクリックして開きます。
 次のコードを記述してください。
 
-### 直接レジスタ操作によるLED点滅の場合
+### 10.直接レジスタ操作によるLED点滅の場合
 
 Arduino PinA0は、NRF52のピン番号はP0.03にとなります。C言語なのでintなどは、マイコンによってバイト数が２バイトである場合と４バイトである場合があり、unsigned char(unsigned int)ではなくuint8_tなどを使ったほうが可読性や移植性の観点から望ましい。
 
@@ -133,7 +147,7 @@ int main(void)
 ```
 
 
-### boards.hに頼ったLED点滅の場合
+### 11.boards.hに頼ったLED点滅の場合
 
 レジスタ操作は開発効率が悪いので、SDKにはあらかじめ、ボードにあわせたピン定義しているファイルboards.hが存在します。
 
@@ -159,7 +173,7 @@ int main(void)
 ```
 
 
-## 6.実行
+## 12..実行
 
 Buildを実行します。（ショートカットキーF7）
 
@@ -168,6 +182,9 @@ Buildを実行します。（ショートカットキーF7）
 エラーが表示されなければ、コンパイラはbuildフォルダに******.axfが生成されます。
 並びにプログラムサイズも表示されます。
 ![](/img/LED_101/BuildSuccess.jpg)
+
+古いファームウェアを削除します。
+Flash→Erase
 
 ROMに書き込むため、******.hexファイルが生成され、
 Downloadボタン（ショートカットF8）でターゲットに書き込みします。
