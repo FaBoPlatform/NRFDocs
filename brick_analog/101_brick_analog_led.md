@@ -10,6 +10,8 @@ LEDのBrickです。発光色は5色（青・緑・赤・白・黄）ありま�
 接続例：ShinobiのAnalogに接続。
 Shinobi アナログコネクタ
 
+![](/img/Fabo_LED_101/Fabo_101_Connect_LI.jpg)
+
 ## Schematic
 ![](/img/led101_schmatic.png)
 
@@ -117,6 +119,7 @@ nRF_Segger_RTT
 ..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT_printf.c
 
 選択されると、コンポーネントがそれぞれ取り込まれます。
+
 ![](/img/Fabo_LED_101/Projet_tree.PNG)
 
 
