@@ -55,9 +55,68 @@ Device→Startup
 
 ![](/img/Fabo_LED_101/OptionfoTarget101.PNG)
 
+Application
+
+main.c
+
+
+Board Definition
+
+boards.c
+
+
+nRF_Drivers
+
+..\..\..\..\..\..\components\drivers_nrf\clock\nrf_drv_clock.c
+
+..\..\..\..\..\..\components\drivers_nrf\common\nrf_drv_common.c
+
+..\..\..\..\..\..\components\drivers_nrf\uart\nrf_drv_uart.c
+
+..\..\..\..\..\..\components\drivers_nrf\nrf_soc_nosd\nrf_nvic.c
+
+..\..\..\..\..\..\components\drivers_nrf\nrf_soc_nosd\nrf_soc.c
+
+nRF_Libraries
+
+..\..\..\..\..\..\components\libraries\util\app_error.c
+
+..\..\..\..\..\..\components\libraries\util\app_error_weak.c
+
+..\..\..\..\..\..\components\libraries\timer\app_timer.c
+
+..\..\..\..\..\..\components\libraries\util\app_util_platform.c
+
+..\..\..\..\..\..\components\libraries\hardfault\hardfault_implementation.c
+
+..\..\..\..\..\..\components\libraries\util\nrf_assert.c
+
+..\..\..\..\..\..\components\libraries\util\sdk_errors.c
+
+nRF_Log
+
+..\..\..\..\..\..\components\libraries\log\src\nrf_log_backend_serial.c
+
+..\..\..\..\..\..\components\libraries\log\src\nrf_log_frontend.c
+
+nRF_Segger_RTT
+
+..\..\..\..\..\..\external\segger_rtt\RTT_Syscalls_KEIL.c
+
+..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT.c
+
+..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT_printf.c
+
+
 ## 5．インクルードファイルの設定
 
+ボタンをクリックします。
+
+![](/img/Fabo_LED_101/ButtoniconManager.PNG)
+
 以下のコンポーネント等のヘッダーファイルを指定します。
+
+![](/img/Fabo_LED_101/ManageProjectItems.PNG)
 
 ![](/img/Fabo_LED_101/Includepass101.PNG)
 
@@ -69,7 +128,8 @@ SDK_confing.hを選択しconfigration_Wizardタブをクリック。
 
 以下をチェックします。
 
-Configration_anotation101.PNG
+![](/img/Fabo_LED_101/Configration_anotation101.PNG)
+
 
 ## 7．コンパイラ制御の設定
 
