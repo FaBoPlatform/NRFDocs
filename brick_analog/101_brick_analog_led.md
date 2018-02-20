@@ -16,7 +16,7 @@ LEDのBrickです。発光色は5色（青・緑・赤・白・黄）ありま�
 Fabo 101 LEDの回路図
 ![](/img/led101_schmatic.png)
 
-Shinobi Analogの回路図
+Shinobi NRFの回路図
 ![](/img/Fabo_LED_101/Shinobi_Schamtic.PNG)
 
 ## Sample Code
@@ -40,6 +40,10 @@ nRF52　Series→nRF528232_xxAAを選択します。
 ![](/img/LED_101/SocVersionSelect.jpg)
 
 ## ３．コンポーネントを選択
+
+MagageRunTimeEnviromentボタンをクリックします。
+
+![](/img/Fabo_LED_101/ManageRun.PNG)
 
 マイコン起動に必要なコンポーネントを選択します。
 
