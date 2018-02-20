@@ -62,9 +62,7 @@ SDK_confing.hを選択しconfigration_Wizardタブをクリック。
 
 Option for Targetボタンを押し、C/C++をクリックPreprocessor SymbolsのDefine:に
 
-
-
-![](/img/Fabo_LED_101/OptionfoTarget101.png)
+![](/img/Fabo_LED_101/OptionfoTarget101.PNG)
 
 nRF52 Shinobiの場合
 
@@ -86,7 +84,6 @@ Misc　Controls：　--c99を追加します。
 
 次にDebugタグをクリックします。
 
-![](/img/LED_101/OptionsTarget_C.png)
 
 ターゲットのフラッシュメモリ　プログラム開始アドレスが0x0から始まっていることを確認してください。（無線を使用する場合などで、SoftDeviceを前もってDownloadした場合は、その領域の次にアドレス設定をします。他の項で記述）
 
