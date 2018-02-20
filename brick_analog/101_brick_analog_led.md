@@ -16,7 +16,7 @@ Shinobi アナログコネクタ
 ## Sample Code
 Arduino Motor ShieldのA0コネクタにLED Brickを接続し、一定時間(1秒=1000ms)ごとに点灯/消灯（Lチカ）させています。
 
-## １．Keilを起動します。
+## １．Keilを起動
 
 任意の場所プロジェクトフォルダの中にLED101のフォルダを作成します。
 Project → New μ プロジェクト → プロジェクトファイルを保存します。
@@ -116,10 +116,17 @@ nRF_Segger_RTT
 
 ..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT_printf.c
 
+選択されると、コンポーネントがそれぞれ取り込まれます。
+![](/img/Fabo_LED_101/Projet_tree.PNG)
+
 
 ## 5．インクルードファイルの設定
 
-Option for Targetボタンを押し、C/C++をクリックします。Include Pathsの右のボタンをクリックします。
+Option for Targetボタンを押し、
+
+![](/img/Fabo_LED_101/Optiontarget.PNG)
+
+C/C++をクリックします。Include Pathsの右のボタンをクリックします。
 
 ![](/img/Fabo_LED_101/Includepass.PNG)
 
@@ -134,7 +141,7 @@ Option for Targetボタンを押し、C/C++をクリックします。Include Pa
 
 ![](/img/Fabo_LED_101/Configration_Wizard101.PNG)
 
-SDK_confing.hを選択しconfigration_Wizardタブをクリック。
+SDK_confing.hを選択し下のconfigration_Wizardタブをクリック。
 
 以下をチェックします。
 
@@ -142,6 +149,10 @@ SDK_confing.hを選択しconfigration_Wizardタブをクリック。
 
 
 ## 7．コンパイラ制御の設定
+
+Option for Targetボタンを押し、
+
+![](/img/Fabo_LED_101/Optiontarget.PNG)
 
 Option for Targetボタンを押し、C/C++をクリックPreprocessor SymbolsのDefine:に
 
