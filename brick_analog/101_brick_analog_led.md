@@ -317,6 +317,9 @@ Buildを実行します。（ショートカットキーF7）
 ![](/img/LED_101/BuildSuccess.jpg)
 
 古いファームウェアを削除します。
+
+![](/img/Fabo_LED_101/flash_erase.png)
+
 Flash→Erase
 
 ROMに書き込むため、******.hexファイルが生成され、
