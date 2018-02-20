@@ -119,7 +119,7 @@ nRF_Segger_RTT
 
 ## 5．インクルードファイルの設定
 
-C++タブをクリックし、
+Option for Targetボタンを押し、C/C++をクリックします。Include Pathsの右のボタンをクリックします。
 
 ![](/img/Fabo_LED_101/Includepass.PNG)
 
