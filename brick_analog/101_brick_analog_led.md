@@ -39,6 +39,8 @@ nRF52　Series→nRF528232_xxAAを選択します。
 
 ![](/img/Fabo_LED_101/StartupSelect.PNG)
 
+以下をチェックします。
+
 CMSIS→CORE
 
 Device→Startup
@@ -52,6 +54,15 @@ Device→Startup
 必要な以下のSDKのコンポーネントおよびライブラリから参照します。
 
 ![](/img/Fabo_LED_101/OptionfoTarget101.PNG)
+
+ボタンをクリックします。
+
+![](/img/Fabo_LED_101/ButtoniconManager.PNG)
+
+以下のコンポーネント等のヘッダーファイルをAdd Filesボタンをクリックして指定します。
+
+![](/img/Fabo_LED_101/ManageProjectItems.PNG)
+
 
 Application
 
@@ -108,16 +119,11 @@ nRF_Segger_RTT
 
 ## 5．インクルードファイルの設定
 
-ボタンをクリックします。
+C++タブをクリックし、
 
-![](/img/Fabo_LED_101/ButtoniconManager.PNG)
+![](/img/Fabo_LED_101/Includepass.PNG)
 
-以下のコンポーネント等のヘッダーファイルをAdd Filesボタンをクリックして指定します。
-
-前項のコンポーネントと同じ場所となります。
-
-![](/img/Fabo_LED_101/ManageProjectItems.PNG)
-
+ボタンを押して逐次ヘッダファイルがあるパスを追加します。
 選択されると以下のようになります。
 
 ![](/img/Fabo_LED_101/Includepass101.PNG)
@@ -285,7 +291,7 @@ Buildを実行します。（ショートカットキーF7）
 ![](/img/LED_101/BuildButtion.jpg)
 
 エラーが表示されなければ、コンパイラはbuildフォルダに******.axfが生成されます。
-並びにプログラムサイズも表示されます。
+並びにメモリサイズも表示されます。
 ![](/img/LED_101/BuildSuccess.jpg)
 
 古いファームウェアを削除します。
