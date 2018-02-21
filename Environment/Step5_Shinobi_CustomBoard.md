@@ -9,7 +9,7 @@ shinobiは１８ピンは、LED、外部水晶32kHz搭載
 UARTピン
 I2C(TWI)ピン
 
-![](/img/abo_LED_101/Shinobi_Schamtic.PNG)
+![](/img/Fabo_LED_101/Shinobi_Schamtic.PNG)
 
 #ボードの定義
 

@@ -4,8 +4,8 @@
 
 ここでは利用するフォルダーを作成し、名前をNRF_ensyuと名前を付けてます。
 
-![Ensyu](../img\BLE_Ensyu.PNG)
+![Ensyu](/img/prepair/BLE_Ensyu.PNG)
 
 SDKの入っているフォルダのコンポーネント、ライブラリ群をNRF_ensyuフォルダへコピーします。
 
-![Ensyu](../img\copyTihgs.PNG)
+![Ensyu](/img/prepair/copyTihgs.PNG)
