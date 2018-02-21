@@ -12,17 +12,21 @@ DC/DCコンバータ―のためインダクタ搭載、スリープ時には、
 ６つのアナログまたはGPIOが使用できます。
 
 ### 搭載チップ
+
 Nordic Semiconductor NRF52832(Cortex-M4)
 
 ### 通信
+
 Bluetooth 4.0,4.1,4.2(BLE Mode)
 
 ### インターフェース
+
 GPIO ADCインターフェース利用可能
 
 ### メモリ
 
 RAM 64KB
+
 ROM 512KB
 
 ###通信可能距離

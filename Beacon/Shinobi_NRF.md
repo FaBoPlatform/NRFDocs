@@ -16,14 +16,19 @@ DC/DCコンバータ―のためインダクタ搭載
 Nordic Semiconductor NRF52832(Cortex-M4)
 
 ### 通信
+
 Bluetooth 4.0,4.1,4.2(BLE Mode)
 
 ### インターフェース
+
 GPIO,UART,I2C,PWM,ADCインターフェース利用可能
+
 NRF対応（アンテナ接続必要）
 
 ### メモリ
+
 RAM 64KB
+
 ROM 512KB
 
 ###　通信可能距離
