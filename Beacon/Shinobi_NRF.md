@@ -1,13 +1,15 @@
 # #Shinobi_NRF
 
-<center>![](../img/VIBRATOR105/105.jpg)
+<center>![](../img/Shinobi/Shinobi.JPG)
 <!--COLORME-->
 
 ## Overview
 
 Shinobi_NRFは、工事設計認証済み、Raytac(台湾) MDBT42Q(MDBT42Q-512K)BLEモジュール搭載。
 
-DC/DCコンバータ―のためインダクタ搭載、スリープ時には、低速振動子搭載32kHz。
+DC/DCコンバータ―のためインダクタ搭載
+
+スリープ時には、低速振動子搭載32kHz。
 
 ### 搭載チップ
 
