@@ -1,6 +1,6 @@
 # #Shinobi_ANA6
 
-<center>![](../img/Shinobi/Shinobi_ANA6_OLD.JPG)
+![](/img/Shinobi/Shinobi_ANA6_OLD.JPG)
 <!--COLORME-->
 
 ## Overview
