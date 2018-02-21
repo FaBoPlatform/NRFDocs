@@ -1,6 +1,6 @@
 # #Shinobi_NRF
 
-![](/img/Shinobi/Shinobi.JPG)
+![](/img/Shinobi/Shinobi_NRF.JPGG)
 <!--COLORME-->
 
 ## Overview
