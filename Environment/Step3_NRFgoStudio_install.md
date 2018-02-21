@@ -1,4 +1,4 @@
-# nRFgo Stduio
+# nRFgo Stduio（Windows）
 
 nRFgo Stduioは、Nordicセミコンダクター社nRF51,nRF52の開発用アプリケーションです。
 テストやファームウェアの書き込みに使用できます。このアプリケーションはWindows(32bit,64bit)対応です。

@@ -12,9 +12,8 @@ LED Brickの明るさを調節する際などに使用します。
 
 ## Connecting
 
-アナログコネクタ(A0〜A5)のいずれかに接続します。
+Shinobi ANA6を使用します。
 
-![](/img/100_analog/connect/104_angle_connect.jpg)
 
 ## Schematic
 ![](/img/100_analog/schematic/104_angle.png)

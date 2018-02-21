@@ -9,10 +9,14 @@ shinobiは１８ピンは、LED、外部水晶32kHz搭載
 UARTピン
 I2C(TWI)ピン
 
+![](/img/abo_LED_101/Shinobi_Schamtic.PNG)
 
 #ボードの定義
 
 以下のファイルをプロジェクトファイルのどこかに配置します。
+サンプルご利用では、こちらを参考にしてください。
+https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_analog/101_brick_analog_led.md
+
 
 custom_borad.h
 

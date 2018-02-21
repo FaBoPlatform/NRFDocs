@@ -158,6 +158,9 @@ SDK_confing.hを選択し下のconfigration_Wizardタブをクリック。
 
 ![](/img/Fabo_LED_101/Configration_anotation101.PNG)
 
+※SDK configuration header file について
+https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v12.0.0%2Fsdk_config.html
+
 
 ## 7．コンパイラ制御の設定
 
@@ -167,7 +170,7 @@ Option for Targetボタンを押し、
 
 Option for Targetボタンを押し、C/C++をクリックPreprocessor SymbolsのDefine:に
 
-![](/img/Fabo_LED_101/OptionfoTarget101.PNG)
+![](/img/Fabo_LED_101/OptionfoTarget.PNG)
 
 nRF52 Shinobiの場合
 
