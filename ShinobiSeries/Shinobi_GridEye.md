@@ -1,6 +1,6 @@
 # #Shinobi_GridEye
 
-![](/img/Shinobi/Shinobi_ANA6_OLD.JPG)
+![](/img/Shinobi_GridEye/GridEyePhoto.JPG)
 <!--COLORME-->
 
 ## Overview
