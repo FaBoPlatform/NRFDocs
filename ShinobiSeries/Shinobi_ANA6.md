@@ -13,7 +13,7 @@ DC/DCコンバータ―のためインダクタ搭載、低速振動子搭載32k
 
 ### 搭載チップ
 
-Nordic Semiconductor NRF52832(Cortex-M4)
+Nordic Semiconductor NRF52832(Cortex-M4F)
 
 ### 通信
 
