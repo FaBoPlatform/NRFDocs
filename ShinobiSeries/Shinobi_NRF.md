@@ -5,11 +5,13 @@
 
 ## Overview
 
-Shinobi_NRFは、工事設計認証済み、Raytac(台湾) MDBT42Q(MDBT42Q-512K)BLEモジュール搭載。
+Shinobi_NRFは、工事設計認証済み、Raytac(台湾) MDBT42Q(MDBT42Q-512K)BLEモジュール搭載
 
 DC/DCコンバータ―のためインダクタ搭載
 
-低速振動子搭載32kHz。
+低速振動子搭載32kHz
+
+物理ボタン付き
 
 ### 搭載チップ
 
