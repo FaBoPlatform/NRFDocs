@@ -48,6 +48,8 @@ I2Cで通信可能（アドレス数は２つまで）
 
 ## Connecting
 
+※3.3V専用です。Shinobi_NRF,Shinobi_ANA6以外のコネクターには接続しないでください。
+
 ## Parts Specification
 | Document |
 |:--|
