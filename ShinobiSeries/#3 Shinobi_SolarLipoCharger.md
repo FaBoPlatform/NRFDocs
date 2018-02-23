@@ -31,7 +31,7 @@ STAT1とPGが点灯
 
 定電圧
 
-![](/img/Shinobi_Power/LEDS_STAT.jpg)
+![](/img/Solar/LEDS_STAT.jpg)
 
 充電完了（スタンバイ）
 
