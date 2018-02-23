@@ -1,6 +1,6 @@
 # Shinobi_USB_Battery(TPS63000)
 
-![](/img/Shinobi/Shinobi_LipoCharrger.JPG)
+![](/img/Shinobi_Power/Shinobi_LipoCharrger.JPG)
 <!--COLORME-->
 
 ## Overview

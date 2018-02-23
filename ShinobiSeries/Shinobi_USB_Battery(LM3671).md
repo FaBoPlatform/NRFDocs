@@ -1,6 +1,6 @@
 # Shinobi_USB_Battery(LM3671)
 
-![](/img/Shinobi/Shinobi_power_LM3761.JPG)
+![](/img/Shinobi_Power/Shinobi_power_LM3761.JPG)
 <!--COLORME-->
 
 ## Overview
