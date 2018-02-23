@@ -1,4 +1,4 @@
-# #Shinobi_NRF
+# #1 Shinobi_NRF
 
 ![](/img/Shinobi/Shinobi_NRF.JPG)
 <!--COLORME-->
@@ -25,7 +25,7 @@ Bluetooth 4.0,4.1,4.2(BLE Mode)
 
 GPIO,UART,I2C,PWM,ADCインターフェース利用可能
 
-NRF対応（アンテナ接続必要）
+NFC対応（アンテナ接続必要）
 
 ### メモリ
 
@@ -34,6 +34,7 @@ RAM 64KB
 ROM 512KB
 
 ###　通信可能距離
+
 飛距離　最大８０ｍ（オープンスペース）
 
 ### 入力電圧
@@ -42,6 +43,11 @@ ROM 512KB
 
 
 ## Connecting
+
+PHコネクタへ接続（１．７V～３．６V）
+
+SWDに対応したピンヘッダ
+
 
 ## Parts Specification
 | Document |

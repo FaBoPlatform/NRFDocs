@@ -17,7 +17,7 @@ Nordic Semiconductor NRF52832(Cortex-M4F)
 
 ### 通信
 
-Bluetooth 4.0,4.1,4.2(BLE Mode)
+Bluetooth 4.0,4.1,4.2(BLEモード)
 
 ### インターフェース
 
@@ -38,6 +38,8 @@ ROM 512KB
 1.7V~3.6V
 
 ## Connecting
+
+PHコネクタへ接続（１．７V～３．６V）
 
 ## Parts Specification
 | Document |

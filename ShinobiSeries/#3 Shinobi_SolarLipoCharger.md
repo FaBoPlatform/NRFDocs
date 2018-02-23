@@ -1,4 +1,4 @@
-# Shinobi_Solar
+# #3 Shinobi_Solar
 
 ![](/img/Shinobi_Power/Shinobi_LipoCharrger.JPG)
 <!--COLORME-->

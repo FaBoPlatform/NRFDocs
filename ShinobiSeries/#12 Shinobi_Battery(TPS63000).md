@@ -6,15 +6,19 @@
 
 ## Overview
 
-高効率なスイッチング電源　降圧型、昇圧型
+高効率、昇圧、降圧もできるスイッチング電源　降圧型、昇圧型
 
-３．３Vで出力。
+乾電池、USB電源から３．３Vで出力。
 
 ### 搭載チップ
 
 TPS63000
 
 ## Connecting
+
+PHコネクタで出力（3.3V）
+
+EIAJ2 DCプラグに入力。
 
 ## Parts Specification
 | Document |

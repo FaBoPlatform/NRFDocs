@@ -7,15 +7,18 @@
 
 高効率なスイッチング電源　降圧型
 
-３．３Vで出力。
+３．３Vで出力。（６００ｍA)DC/DCコンバータ
 
-2MHz, 600mA Step-Down DC-DC Converter
 
 ### 搭載チップ
 
 LM3671
 
 ## Connecting
+
+PHコネクタで出力（3.3V）
+
+マイクロUSBで入力。
 
 ## Parts Specification
 | Document |
