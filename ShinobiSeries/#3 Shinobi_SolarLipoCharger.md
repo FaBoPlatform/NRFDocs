@@ -9,6 +9,8 @@
 
 ３．３Vレギュレーター搭載。
 
+NTCサーミスタによる充電禁止機能
+
 ※重要　リチウムポリマー電池は、取り扱いに誤ると大変危険です。
 
 リチウムポリマー電池には、軽量なのですが、パッケージは弱く傷や衝撃、圧力を与えないようにしてください。
@@ -19,6 +21,14 @@
 
 Microchip
 MCP73871-2CC
+
+TI
+LP2985-33DBVR
+
+Murata
+NXFT15XH103FA2B050
+
+
 
 ### ステータス表示
 
@@ -101,9 +111,20 @@ NTCサーミスタは、温度計でありリチウムポリマー電池の温�
 温度監視を有効
 
 ## Parts Specification
+
 | Document |
 |:--|
 | [microchip MCP73871](http://www.microchip.com/wwwproducts/en/en536670) |
+
+| Document |
+|:--|
+| [mirata NXFT15XH103FA2B050](https://www.murata.com/~/media/webrenewal/support/library/catalog/products/thermistor/ntc/r44e.ashx) |
+
+| Document |
+|:--|
+| [TI LP2985-33DBVR](http://www.ti.com/lit/ds/symlink/lp2985.pdf
+) |
+
 
 ## Schematic
 

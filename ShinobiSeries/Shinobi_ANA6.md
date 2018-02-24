@@ -33,6 +33,8 @@ ROM 512KB
 
 飛距離　最大８０ｍ（オープンスペース）
 
+※環境によります。
+
 ### 入力電圧
 
 1.7V~3.6V
@@ -40,6 +42,8 @@ ROM 512KB
 ## Connecting
 
 PHコネクタへ接続（１．７V～３．６V）
+
+SWDに対応したピンヘッダ
 
 ## Parts Specification
 | Document |
