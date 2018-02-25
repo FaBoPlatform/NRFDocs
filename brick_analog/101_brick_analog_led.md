@@ -333,6 +333,9 @@ Downloadボタン（ショートカットF8）でターゲットに書き込み�
 書き込みが成功すればLEDが点滅します。
 
 
+## Document
+NRF52 ドキュメント
+http://infocenter.nordicsemi.com/pdf/nRF52832_PS_v1.4.pdf
 
 ## 構成パーツParts
 - 5mm LED(各色)
