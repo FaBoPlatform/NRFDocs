@@ -15,7 +15,7 @@ DCジャックあり
 
 ## Connecting
 
-Shinobi_Solarに接続してください。
+Shinobi_SolarのDCジャックに接続してください。
 
 ## Parts Specification
 
