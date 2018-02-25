@@ -1,6 +1,6 @@
-# Solar_Pannel Ring
+# Shinobi_Solar_Pannel(Round)
 
-![](/img/Shinobi_Power/SolarPannel.JPG)
+![](/img/Solar/SolarPannel.JPG)
 <!--COLORME-->
 
 ## Overview
@@ -8,6 +8,8 @@
 ５Vのソーラー小型ソーラーパネル。
 
 発電量　５V　４０ｍA
+
+1.4mmDCジャック付き
 
 ### ステータス表示
 
