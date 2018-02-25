@@ -1,4 +1,4 @@
-# Shinobi_Solar_Pannel(Midium)
+# Solar_Pannel(Midium)
 
 ![](/img/Solar/SolarPannel_Mid.JPG)
 <!--COLORME-->
