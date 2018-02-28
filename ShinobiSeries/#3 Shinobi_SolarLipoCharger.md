@@ -118,6 +118,11 @@ NTCサーミスタは、温度計でありリチウムポリマー電池の温�
 
 0℃～４０℃
 
+テープでサーミスタをバッテリーに張り付けてでください。
+
+![](/img/Solar/NTC.JPG)
+
+
 ## Parts Specification
 
 | Document |
