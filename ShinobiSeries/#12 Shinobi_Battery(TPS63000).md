@@ -1,6 +1,6 @@
 # Shinobi_USB_Battery(TPS63000)
 
-開発中
+![](/img/Shinobi_Power/Shinobi_Battery12.JPG)
 
 <!--COLORME-->
 
@@ -8,7 +8,8 @@
 
 高効率、昇圧、降圧もできるスイッチング電源　降圧型、昇圧型
 
-乾電池、USB電源から３．３Vで出力。
+乾電池、USB電源から３．３Vで出力。(5Vも選択可能)
+
 
 ### 搭載チップ
 
