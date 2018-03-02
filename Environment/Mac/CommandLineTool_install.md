@@ -30,7 +30,7 @@ nrfjprog --program s132_nrf52_3.0.0_softdevice.hex -f nrf52 --chiperase
 ### アプリケーションインストール
 
 ### ソフトデバイスなしの場合
-nrfjprog --program Shinobi_LED_ANALOG_TESTVersion1.hex -f nrf52 --chiperase
+nrfjprog --program ファイル名.hex -f nrf52 --chiperase
 
 ### ソフトデバイスありの場合
 nrfjprog --program ファイル名.hex -f nrf52 --sectorerase
