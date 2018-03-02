@@ -17,7 +17,7 @@ TPS63000
 
 ## Connecting
 
-PHコネクタで出力（3.3V）
+PHコネクタで出力（3.3V or 5V）
 
 EIAJ2 DCプラグに入力。
 

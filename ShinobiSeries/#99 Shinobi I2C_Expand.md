@@ -1,21 +1,15 @@
-# Solar_Pannel(Midium)
+# #99 Shinobi_I2C Expand
 
 ![](/img/ShinobiExpand/Shinobi_Expand.JPG)
 <!--COLORME-->
 
 ## Overview
 
-6Vのソーラー小型ソーラーパネル。
-
-発電量　6V 2W
-
-DCジャックあり
+Shinobi_NRFは１つのポートですが、このI2C Expandを使えば、複数台デバイスが接続できます。
 
 ### ステータス表示
 
 ## Connecting
-
-Shinobi_SolarのDCジャックに接続してください。
 
 ## Parts Specification
 
