@@ -18,7 +18,10 @@
 ###PWMによる出力
 
 D12コネクタにBuzzer Brickを接続し、ビープ音を鳴らしています。
-音の波形は矩形波でPWM出力します。マイコンが高速にスイッチングすることにより、特別なコンバータを使わずに周波数や波長が変えやすくモーター制御などによく使われます。highとlowの割合をディーティー比といいます。
+音の波形は矩形波でPWM出力します。マイコンが高速にスイッチングすることにより、周波数や波長が変えやすくモーター制御などによく使われます。
+highとlowの割合をディーティー比といいます。
+
+
 
 PWM出力するためにはTIM(タイマー)を使用します。PWMの周波数は、タイマーつまり、マイコンのクロック周波数に依存します。この周波数をPPL回路やプリスケーラなどで加工してタイマーの周波数に使用します。
 
@@ -241,6 +244,16 @@ uint16_t codeF[8]={0xFAD5,0xDF78,0xC716,0xBBEA,0xA769,0x9525,0x84E0,0x7D6A};
 
 
 ```
+
+
+## 参照　API
+nrf_drv_pwm_config_t Struct Referenc
+https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v11.0.0%2Fstructnrf__drv__pwm__config__t.html
+Software Development Kit > nRF5 SDK > nRF5 SDK v12.3.0 > Data Structures > Data Structures
+PWM HAL
+Software Development Kit > nRF5 SDK > nRF5 SDK v12.3.0 > API Reference > Peripheral drivers > PWM HAL and driver
+PWM
+Software Development Kit > nRF5 SDK > nRF5 SDK v12.1.0 > Hardware Drivers
 
 ## 構成Parts
 - 圧電ブザー
