@@ -21,11 +21,13 @@ Nordic Semiconductor NRF52832(Cortex-M4F)
 
 Bluetooth 4.0,4.1,4.2(BLE Mode)
 
+Bluetooth 5にも対応
+
 ### インターフェース
 
-GPIO,UART,I2C,PWM,ADCインターフェース利用可能
+FaboBrick対応　3Pinコネクタ（GPIO,PWM,ADC）、Fabo4Pinコネクタ×２（TWI(I2C),UART)
 
-NFC対応（アンテナ接続必要）
+NFCコネクタ（アンテナ接続必要）
 
 ### メモリ
 
@@ -36,6 +38,8 @@ ROM 512KB
 ###　通信可能距離
 
 飛距離　最大８０ｍ（オープンスペース）
+
+※環境によります。
 
 ### 入力電圧
 
@@ -55,6 +59,8 @@ SWDに対応したピンヘッダ
 | [raytac](http://www.raytac.com/products.php?subid=55) |
 
 ## Schematic
+
+![](/img/Shinobi/Shibobi_NRF_Schematic.PNG)
 
 ## Sample Code
 

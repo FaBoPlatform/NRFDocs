@@ -22,131 +22,61 @@ D12コネクタにBuzzer Brickを接続し、ビープ音を鳴らしていま�
 highとlowの割合をディーティー比といいます。
 
 
+## 出力するPWMの設定
 
-PWM出力するためにはTIM(タイマー)を使用します。PWMの周波数は、タイマーつまり、マイコンのクロック周波数に依存します。この周波数をPPL回路やプリスケーラなどで加工してタイマーの周波数に使用します。
+enum nrf_pwm_mode_t
+PWM modes of operation.
 
+Enumerator
+NRF_PWM_MODE_UP 	
+Up counter (edge-aligned PWM duty cycle).
 
-maic.cのソースコード抜粋（ヘッダー部分）
-```c
-/* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
-
-/* USER CODE BEGIN Includes */
-
-
-#include <stdio.h>
-#include <string.h>
-
-/* USER CODE END Includes */
-
-/* Private variables ---------------------------------------------------------*/
-ADC_HandleTypeDef hadc1;
-
-TIM_HandleTypeDef htim3;
-
-UART_HandleTypeDef huart2;
-
-/* USER CODE BEGIN PV */
-/* Private variables ---------------------------------------------------------*/
-
-int a_Value,adc_fin=0;
-```
-
-AngleBrickからアナログ値を読み取るコールバック関数です。
-
-```c
-
-/* USER CODE BEGIN PFP */
-/* Private function prototypes -----------------------------------------------*/
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
-{
-	a_Value=HAL_ADC_GetValue(hadc);
-	adc_fin=1;
-}
-
-```
-
-pwmを出力する関数です。
-
-```c
-
-void pwmConf(int val)
-{
-	static int period=-1;
-	static int with=-1;
-	TIM_OC_InitTypeDef sConfigOC;
-
-		period=val+10;
-		with=period/2;
-
- 	HAL_TIM_PWM_Stop(&htim3,TIM_CHANNEL_1);
-	HAL_TIM_PWM_DeInit(&htim3);
-	htim3.Init.Period = period;
-	HAL_TIM_PWM_Init(&htim3);
-
-	sConfigOC.OCMode = TIM_OCMODE_PWM1;
-	sConfigOC.Pulse = with;
-	sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-	sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-	HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1);
-	HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
-
-}
+NRF_PWM_MODE_UP_AND_DOWN 	
+Up and down counter (center-aligned PWM duty cycle).
 
 
-```
+enum nrf_pwm_dec_load_t
+PWM decoder load modes.
 
-main関数を以下のように追記してください。
+The selected mode determines how the sequence data is read from RAM and spread to the compare registers.
 
-```c
+Enumerator
+NRF_PWM_LOAD_COMMON 	
+1st half word (16-bit) used in all PWM channels (0-3).
 
-/* USER CODE BEGIN 0 */
+NRF_PWM_LOAD_GROUPED 	
+1st half word (16-bit) used in channels 0 and 1; 2nd word in channels 2 and 3.
 
-char message[15];
+NRF_PWM_LOAD_INDIVIDUAL 	
+1st half word (16-bit) used in channel 0; 2nd in channel 1; 3rd in channel 2; 4th in channel 3.
 
-int main(void)
-{
+NRF_PWM_LOAD_WAVE_FORM 	
+1st half word (16-bit) used in channel 0; 2nd in channel 1; ... ; 4th as the top value for the pulse generator counter.
 
-  /* USER CODE BEGIN 1 */
+enum nrf_pwm_clk_t
+PWM base clock frequencies.
+NRF_PWM_CLK_16MHz 	
+NRF_PWM_CLK_8MHz 	
+NRF_PWM_CLK_4MHz
+NRF_PWM_CLK_2MHz 	
+NRF_PWM_CLK_1MHz 	
+NRF_PWM_CLK_500kHz 	
+NRF_PWM_CLK_250kHz 	
+NRF_PWM_CLK_125kHz 	
 
+enum nrf_pwm_dec_step_t
+PWM decoder next step modes.
 
-  /* USER CODE END 1 */
+The selected mode determines when the next value from the active sequence is loaded.
 
-  /* MCU Configuration----------------------------------------------------------*/
+Enumerator
+NRF_PWM_STEP_AUTO 	
+Automatically after the current value is played and repeated the requested number of times.
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_ADC1_Init();
-  MX_TIM3_Init();
-  MX_USART2_UART_Init();
-
-  /* USER CODE BEGIN 2 */
-	HAL_ADC_Start_IT(&hadc1);
-	HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-		sprintf(message,"%3d\n\r",a_Value>>4);
-    HAL_UART_Transmit(&huart2,(uint8_t*)message,strlen(message),0x1111);
-
-			pwmConf(a_Value>>4);
-
-		HAL_Delay(1);
-		HAL_ADC_Start_IT(&hadc1);	  
-  }
-}
+NRF_PWM_STEP_TRIGGERED 	
+When the NRF_PWM_TASK_NEXTSTEP task is triggered.
 
 
-```
 
 ###ビープ音でドレミを演奏。
 BuzzerBrickをD12に差し込み、STM32CubeMXから新たにプロジェクトを立ち上げます。

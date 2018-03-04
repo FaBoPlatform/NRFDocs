@@ -48,6 +48,10 @@ GATTプロファイルの種類
 
 など
 
+#BLEモジュールサードパーティー
+
+https://www.nordicsemi.com/jpn/node_176/3D-Party-Bluetooth-low-energy
+
 
 
 サービスとキャラクタリスティクで構成。
