@@ -140,18 +140,31 @@ Additional options. Pass any combination of playback flags, or 0 for default set
 ## 音の周波数
 
 音の周波数は、ラの４４０をベースに２＾（１/12）の公差数列であり周波数Hzは下記になります。
+
 ド　　　261.6255653
+
 ド＃　　277.182631
+
 レ　　　293.6647679
+
 レ＃　　311.1269837
+
 ミ　　　329.6275569
+
 ファ　　369.9944227
+
 ファ＃　391.995436
+
 ソ　　　415.3046976
+
 ラ　　　440
+
 ラ＃　　466.1637615
+
 シ　　　493.8833013
+
 ド　　　523.2511306
+
 
 波長lengthは、（１０００／周波数）＊１０００になります。
 繰り返しは１００回です。
@@ -247,11 +260,17 @@ int main(void)
 
 ## 参照　API
 nrf_drv_pwm_config_t Struct Referenc
+
 https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v11.0.0%2Fstructnrf__drv__pwm__config__t.html
+
 Software Development Kit > nRF5 SDK > nRF5 SDK v12.3.0 > Data Structures > Data Structures
+
 PWM HAL
+
 Software Development Kit > nRF5 SDK > nRF5 SDK v12.3.0 > API Reference > Peripheral drivers > PWM HAL and driver
+
 PWM
+
 Software Development Kit > nRF5 SDK > nRF5 SDK v12.3.0 > Hardware Drivers
 
 ## 構成Parts

@@ -12,121 +12,158 @@ LED Brickの明るさを調節する際などに使用します。
 
 ## Connecting
 
-Shinobi ANA6を使用します。
-
-
 ## Schematic
 ![](/img/100_analog/schematic/104_angle.png)
 
+nRF52832は、ADCが使えるピンは決まっており、P0.03は、AIN1となる。
+
+アナログ値はターミナルソフトから確認しましょう。
+
 ## Sample Code
 
-A1コネクタにAngleを接続して、アナログ値を読み。A1コネクタに接続したLED Brickをつなぎ、LEDの点灯間隔の時間をボリュームをかえることによって変化させます。
-
-STM32CubeMXを起動し、ADC１(PA1),USART2をAnsynchrous,GPIO（PA0）は、OUTPUTを設定します。また、パソコンのターミナルソフトから変化量が見れます。
-![](../img/Angle104/PinOutConf.png)
-
-Configurationボタンを押して、次の画面が出てきたら、ADCを選びます。
-![](../img/Angle104/ADCSELECT.png)
-
-NVIC Settingボタンを押し,Enabledにチェックします。
-![](../img/Angle104/ADC_NVIC.png)
-
-GPIO Settingボタンを押し、User LabelはADCとします。
-![](../img/Angle104/ADCConf.png)
-
-CodeGenerateします。
-
-Keilを立ち上げ、main.cファイルに以下のコードを追記します。
-
-コードの一部（抜粋）
-stdio.h,string.hを追記。
 
 ```c
-/* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
-
-/* USER CODE BEGIN Includes */
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-/* USER CODE END Includes */
-```
+#include "nrf.h"
+#include "nrf_drv_saadc.h"
+#include "nrf_drv_ppi.h"
+#include "nrf_drv_timer.h"
+#include "boards.h"
+#include "app_error.h"
+#include "nrf_delay.h"
+#include "app_util_platform.h"
+#include "nrf_pwr_mgmt.h"
+#include "nrf_drv_power.h"
 
-ADCPinの値を入れる変数を用意。
-```c
-/* Private variables ---------------------------------------------------------*/
+#define NRF_LOG_MODULE_NAME "FABO ANGLE"
+#include "nrf_log.h"
+#include "nrf_log_ctrl.h"
 
-int value=0;
+#define SAMPLES_IN_BUFFER 10
+volatile uint8_t state = 1;
 
-/* USER CODE END PV */
-```
+static const nrf_drv_timer_t m_timer = NRF_DRV_TIMER_INSTANCE(0);
+static nrf_saadc_value_t     m_buffer_pool[2][SAMPLES_IN_BUFFER];
+static nrf_ppi_channel_t     m_ppi_channel;
+static uint32_t              m_adc_evt_counter;
 
-HAL_ADC_GetValueでアナログ値（ADC 12bit 値の範囲0~4095）を取得。
-```c
-/* USER CODE BEGIN PFP */
-/* Private function prototypes -----------------------------------------------*/
 
-char adcFlag=0;
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+void timer_handler(nrf_timer_event_t event_type, void * p_context)
 {
-	value=HAL_ADC_GetValue(hadc);
-	adcFlag =1;
+
 }
 
-```
 
-メイン関数は以下のようになります。100ms点灯し、0~4095ms消灯します。
-```c
+void saadc_sampling_event_init(void)
+{
+    ret_code_t err_code;
+
+    err_code = nrf_drv_ppi_init();
+    APP_ERROR_CHECK(err_code);
+
+    nrf_drv_timer_config_t timer_cfg = NRF_DRV_TIMER_DEFAULT_CONFIG;
+    timer_cfg.bit_width = NRF_TIMER_BIT_WIDTH_32;
+    err_code = nrf_drv_timer_init(&m_timer, &timer_cfg, timer_handler);
+    APP_ERROR_CHECK(err_code);
+
+    uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 100);
+    nrf_drv_timer_extended_compare(&m_timer,
+                                   NRF_TIMER_CC_CHANNEL0,
+                                   ticks,
+                                   NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK,
+                                   false);
+    nrf_drv_timer_enable(&m_timer);
+
+    uint32_t timer_compare_event_addr = nrf_drv_timer_compare_event_address_get(&m_timer,
+                                                                                NRF_TIMER_CC_CHANNEL0);
+    uint32_t saadc_sample_task_addr   = nrf_drv_saadc_sample_task_get();
+
+    /* setup ppi channel so that timer compare event is triggering sample task in SAADC */
+    err_code = nrf_drv_ppi_channel_alloc(&m_ppi_channel);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = nrf_drv_ppi_channel_assign(m_ppi_channel,
+                                          timer_compare_event_addr,
+                                          saadc_sample_task_addr);
+    APP_ERROR_CHECK(err_code);
+}
+
+
+void saadc_sampling_event_enable(void)
+{
+    ret_code_t err_code = nrf_drv_ppi_channel_enable(m_ppi_channel);
+
+    APP_ERROR_CHECK(err_code);
+}
+
+
+void saadc_callback(nrf_drv_saadc_evt_t const * p_event)
+{
+    if (p_event->type == NRF_DRV_SAADC_EVT_DONE)
+    {
+        ret_code_t err_code;
+
+        err_code = nrf_drv_saadc_buffer_convert(p_event->data.done.p_buffer, SAMPLES_IN_BUFFER);
+        APP_ERROR_CHECK(err_code);
+
+        int i;
+        NRF_LOG_INFO("ADC event number: %d\r\n", (int)m_adc_evt_counter);
+
+        for (i = 0; i < SAMPLES_IN_BUFFER; i++)
+        {
+            NRF_LOG_INFO("%d\r\n", p_event->data.done.p_buffer[i]);
+        }
+        m_adc_evt_counter++;
+    }
+}
+
+
+void saadc_init(void)
+{
+    ret_code_t err_code;
+    nrf_saadc_channel_config_t channel_config =
+        NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN1);
+
+    err_code = nrf_drv_saadc_init(NULL, saadc_callback);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = nrf_drv_saadc_channel_init(0, &channel_config);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = nrf_drv_saadc_buffer_convert(m_buffer_pool[0], SAMPLES_IN_BUFFER);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = nrf_drv_saadc_buffer_convert(m_buffer_pool[1], SAMPLES_IN_BUFFER);
+    APP_ERROR_CHECK(err_code);
+
+}
+
+
 int main(void)
 {
+    uint32_t err_code = NRF_LOG_INIT(NULL);
+    APP_ERROR_CHECK(err_code);
 
-  /* USER CODE BEGIN 1 */
+    err_code = nrf_drv_power_init(NULL);
+    APP_ERROR_CHECK(err_code);
 
-		char buffer[16];
+    ret_code_t ret_code = nrf_pwr_mgmt_init(0);
+    APP_ERROR_CHECK(ret_code);
 
-  /* USER CODE END 1 */
+    NRF_LOG_INFO("Fabo Shinobi Sample Angle Brick 104\r\n");
+    saadc_init();
+    saadc_sampling_event_init();
+    saadc_sampling_event_enable();
 
-  /* MCU Configuration----------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_ADC1_Init();
-  MX_USART2_UART_Init();
-
-  /* USER CODE BEGIN 2 */
-
-	adcFlag=0;
-  HAL_ADC_Start_IT(&hadc1);
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-		while(adcFlag != 0);
-		sprintf(buffer,"%dms\n\r",value);
-		HAL_UART_Transmit(&huart2,(uint8_t*)buffer,strlen(buffer),0x1111);
-		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_SET);
-		HAL_Delay(100);
-		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
-		HAL_Delay(value);
-		adcFlag=0;
-		HAL_ADC_Start_IT(&hadc1);	  
-  /* USER CODE END WHILE */
-
-  /* USER CODE BEGIN 3 */
-
-  }
-  /* USER CODE END 3 */
-
+    while (1)
+    {
+        nrf_pwr_mgmt_run();
+        NRF_LOG_FLUSH();
+    }
 }
-
 
 ```
 

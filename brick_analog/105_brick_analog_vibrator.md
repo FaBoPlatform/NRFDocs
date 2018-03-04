@@ -10,8 +10,6 @@ I/Oピンから振動モーターのON/OFFを制御することができます�
 
 ## Connecting
 
-アナログコネクタ(A0〜A5)、またはデジタルコネクタ(2〜13)のいずれかに接続します。
-
 ![](/img/100_analog/connect/105_vibrator_connect.jpg)
 
 ## Parts Specification
@@ -23,94 +21,65 @@ I/Oピンから振動モーターのON/OFFを制御することができます�
 <center>![](../img/VIBRATOR105/shematic_vibrator.PNG)
 ## Sample Code
 
-A0コネクタに接続したButton Brickの入力により、D2コネクタに接続したVibrator Brick のON/OFFを制御しています。
-ボタンを押すとバイブレーターが始動します。
+タイマーでバイブレーターを0.5秒ごとに作動、停止させます。
+動作には、５Vの電源が必要となり、そのままでは動きません。代用としてLED Brickで確認しましょう。
 
-STM32CubeMXを起動して、Pinout設定します。GPIO PA0はINPUT GPIO PA10はOUTPUTに設定します。
-<center>![](../img/VIBRATOR105/PinoutSettings.png)
-
-PA0 GPIO INPUTをPullUPします。
-<center>![](../img/VIBRATOR105/GPIOSettings.png)
-
-GenerateCodeをします。
-
-自動的に初期コードが生成されます。
-
-main.cのソースコード（一部抜粋）
-下記のコードは、GPIOを初期化する関数です。PA0はスイッチを入力するポートになります。電圧は供給し通常をHighの状態にし（Pullup）、誤作動を防止します。
 
 ```c
-static void MX_GPIO_Init(void)
+#include <stdbool.h>
+#include <stdint.h>
+#include "nrf.h"
+#include "nrf_drv_timer.h"
+#include "bsp.h"
+#include "app_error.h"
+
+const nrf_drv_timer_t TIMER_LED = NRF_DRV_TIMER_INSTANCE(0);
+
+#define PIN_NUMBER 3
+
+void timer_led_event_handler(nrf_timer_event_t event_type, void* p_context)
 {
 
-  GPIO_InitTypeDef GPIO_InitStruct;
 
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOA_CLK_ENABLE();
+    switch (event_type)
+    {
+        case NRF_TIMER_EVENT_COMPARE0:
+						nrf_gpio_pin_toggle(PIN_NUMBER);
+            break;
 
-  /*Configure GPIO pin : PA0 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+        default:
+            break;
+    }
+}
 
-  /*Configure GPIO pin : PA10 */
-  GPIO_InitStruct.Pin = GPIO_PIN_10;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-
-```
-
-main関数
-```c
 int main(void)
 {
+    uint32_t time_ms = 500;
+    uint32_t time_ticks;
+    uint32_t err_code = NRF_SUCCESS;
 
-  /* USER CODE BEGIN 1 */
+		LEDS_CONFIGURE(1 << PIN_NUMBER);
 
-  /* USER CODE END 1 */
+    nrf_drv_timer_config_t timer_cfg = NRF_DRV_TIMER_DEFAULT_CONFIG;
+    err_code = nrf_drv_timer_init(&TIMER_LED, &timer_cfg, timer_led_event_handler);
+    APP_ERROR_CHECK(err_code);
 
-  /* MCU Configuration----------------------------------------------------------*/
+    time_ticks = nrf_drv_timer_ms_to_ticks(&TIMER_LED, time_ms);
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+    nrf_drv_timer_extended_compare(
+         &TIMER_LED, NRF_TIMER_CC_CHANNEL0, time_ticks, NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, true);
 
-  /* Configure the system clock */
-  SystemClock_Config();
+    nrf_drv_timer_enable(&TIMER_LED);
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-		if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==GPIO_PIN_RESET){
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_10,GPIO_PIN_RESET);
-		}else{
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_10,GPIO_PIN_SET);
-		}
-  /* USER CODE END WHILE */
-
-  /* USER CODE BEGIN 3 */
-
-  }
-  /* USER CODE END 3 */
-
+    while (1)
+    {
+        __WFI();
+    }
 }
 
 ```
 
-ビルドして、書き込みが成功したら、リセットボタンを押し動作を確認します。
 
 ## 構成Parts
 - 振動モーター LA3R5-480AH1
