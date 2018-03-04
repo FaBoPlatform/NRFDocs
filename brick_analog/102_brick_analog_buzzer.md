@@ -4,57 +4,69 @@
 <!--COLORME-->
 
 ## Overview
-圧電ブザーを使ったBrickです。I/Oピンより、鳴らす音や音の長さを制御することができます。
+圧電ブザーを使ったBrickです。
 
 ## Connecting
-アナログコネクタ(A0〜A5)、またはデジタルコネクタ(2〜13)のいずれかに接続します。今回はD13にBuzzer Brickを、A0には、Angle Brickをつないでください。
-
-![](/img/100_analog/connect/102_buzzer_connect.jpg)
 
 ## Schematic
 ![](/img/100_analog/schematic/102_buzzer.png)
 
 ## Sample Code
+
 ###PWMによる出力
 
-D12コネクタにBuzzer Brickを接続し、ビープ音を鳴らしています。
-音の波形は矩形波でPWM出力します。マイコンが高速にスイッチングすることにより、周波数や波長が変えやすくモーター制御などによく使われます。
-highとlowの割合をディーティー比といいます。
-
+Buzzer Brickを接続し、ビープ音を鳴らしています。
+音の波形は矩形波でPWM出力します。
 
 ## 出力するPWMの設定
 
-enum nrf_pwm_mode_t
-PWM modes of operation.
+デューティー比は0.5に設定
+ベースクロックは１MHzで出力
 
-Enumerator
-NRF_PWM_MODE_UP 	
-Up counter (edge-aligned PWM duty cycle).
-
-NRF_PWM_MODE_UP_AND_DOWN 	
-Up and down counter (center-aligned PWM duty cycle).
+設定は構造体でそれぞれ設定しており、各メンバで設定。
 
 
-enum nrf_pwm_dec_load_t
-PWM decoder load modes.
+## 主な構造体
 
-The selected mode determines how the sequence data is read from RAM and spread to the compare registers.
+**nrf_drv_pwm_t**
+PWM ドライバのインスタンスデータ構造体
 
-Enumerator
-NRF_PWM_LOAD_COMMON 	
-1st half word (16-bit) used in all PWM channels (0-3).
+NRF_PWM_Type * p_registers
+PWMペリフェラルインスタンスレジスタの指し示す
+
+uint8_t drv_inst_idx
+ ドライバインスタンスインデックス
+
+**enum nrf_pwm_mode_t**
+PWMモード
+
+NRF_PWM_MODE_UP
+アップカウンタ（エッジデューティーサイクル） 	
+
+NRF_PWM_MODE_UP_AND_DOWN
+アップ、ダウンカウンタ　（センターデューティーサイクル）
+
+
+**enum nrf_pwm_dec_load_t**
+
+PWMデコーダーロードモード
+
+シーケンスデータのRAMから読み出され、コンペアレジスタに格納方法。
+
+NRF_PWM_LOAD_COMMON 	.
+すべてのPWMチャンネル（0〜3）で使用される一番最初のハーフワード（16ビット）
 
 NRF_PWM_LOAD_GROUPED 	
-1st half word (16-bit) used in channels 0 and 1; 2nd word in channels 2 and 3.
+チャンネル0と1で使用される一番最初のハーフワード（16ビット）。チャンネル2と3の2番目のワード。
 
 NRF_PWM_LOAD_INDIVIDUAL 	
-1st half word (16-bit) used in channel 0; 2nd in channel 1; 3rd in channel 2; 4th in channel 3.
+チャンネル0で使用される一番最初のハーフワード（16ビット）、チャンネル1では2番目、チャネル2の3番目、チャンネル3の4番目
 
 NRF_PWM_LOAD_WAVE_FORM 	
-1st half word (16-bit) used in channel 0; 2nd in channel 1; ... ; 4th as the top value for the pulse generator counter.
+チャンネル0で使用される一番最初のハーフワード（16ビット）、チャンネル1では2番目、4番目は、パルスジェネレータカウンタの最上位の値
 
-enum nrf_pwm_clk_t
-PWM base clock frequencies.
+**enum nrf_pwm_clk_t**
+ベースクロック周波数。
 NRF_PWM_CLK_16MHz 	
 NRF_PWM_CLK_8MHz 	
 NRF_PWM_CLK_4MHz
@@ -64,111 +76,168 @@ NRF_PWM_CLK_500kHz
 NRF_PWM_CLK_250kHz 	
 NRF_PWM_CLK_125kHz 	
 
-enum nrf_pwm_dec_step_t
-PWM decoder next step modes.
+**enum nrf_pwm_dec_step_t.**
+PWMデコーダーネクストステップモード
 
-The selected mode determines when the next value from the active sequence is loaded.
+アクティブシーケンスからの次の値がいつロードされるかを決定します
 
-Enumerator
 NRF_PWM_STEP_AUTO 	
 Automatically after the current value is played and repeated the requested number of times.
+自動的に、現在の値がプレイされた後、要求された回数だけ繰り返されます
 
 NRF_PWM_STEP_TRIGGERED 	
 When the NRF_PWM_TASK_NEXTSTEP task is triggered.
+NRF_PWM_TASK_NEXTSTEPタスクがトリガーしたとき
 
+## 主な関数
 
+**ret_code_t nrf_drv_pwm_init**
+(nrf_drv_pwm_t const \*const p_instance, nrf_drv_pwm_config_t const \* p_config, nrf_drv_pwm_handler_t handler )
+
+PWMドライバを初期化する関数
+
+パラメータ
+
+p_instance
+ドライバーのインスタンス
+
+p_config
+初期設定構造体を指し示す。もし、デフォルト設定ならNULLをいれます。
+
+handler
+ユーザーによって供給されたイベントハンドラー。もし使わないなら、代わりにNULLを入れ、イベントの通知はされず、PWM割り込みは使えません。
+
+返り値
+
+NRF_SUCCESS
+成功した場合。
+
+NRF_ERROR_INVALID_STATE
+すでに初期化されている場合。
+
+**void nrf_drv_pwm_uninit	(	nrf_drv_pwm_t const \*const 	p_instance	)**
+
+PWMドライバを初期化しない関数
+
+プレイ中の場合は、すぐに停止します。
+
+void nrf_drv_pwm_simple_playback (nrf_drv_pwm_t const \*const p_instance, nrf_pwm_sequence_t const * p_sequence,uint16_tplayback_count,uint32_t flags )
+
+１回のシーケンス再生を行う関数
+
+※指定されたシーケンスのデューティサイクル値を含む配列はRAMになければならず、スタックに配置することはできません。
+
+p_instance
+PWMドライバのインスタンスを指し示す
+p_sequence
+プレイバックするシーケンスを指し示す
+playback_count
+プレイバックする回数(０であってはなりません。).
+flags
+Additional options. Pass any combination of playback flags, or 0 for default settings.
+オプションを追加します。いくつかのプレイバックフラッグの組み合わせ渡すか、デフォルトセッティングは０となります。
+
+## 音の周波数
+
+音の周波数は、ラの４４０をベースに２＾（１/12）の公差数列であり周波数Hzは下記になります。
+ド　　　261.6255653
+ド＃　　277.182631
+レ　　　293.6647679
+レ＃　　311.1269837
+ミ　　　329.6275569
+ファ　　369.9944227
+ファ＃　391.995436
+ソ　　　415.3046976
+ラ　　　440
+ラ＃　　466.1637615
+シ　　　493.8833013
+ド　　　523.2511306
+
+波長lengthは、（１０００／周波数）＊１０００になります。
+繰り返しは１００回です。
 
 ###ビープ音でドレミを演奏。
-BuzzerBrickをD12に差し込み、STM32CubeMXから新たにプロジェクトを立ち上げます。
-ピンは、以下のようになります。PA0からPWM出力します。
-![](../img/BUZZER102/Pinout_Select_Doremi.png)
-
-クロックを設定します。の内部クロックHSI RCT 16Mhz内部クロックから、PLLを使い逓倍して、Prescalerで分割させ、Timerclocksの周波数を84MHzまで大きくします。
-![](../img/BUZZER102/ClockConfing.png)
-
-設定画面に移動してTIM3を選びます。
-![](../img/BUZZER102/Config_SELECT.png)
-
-プリスケーラーを５に設定します。
-![](../img/BUZZER102/TIM3_prescara.png)
-
-Generatecordeします。
-
-
-main.cのファイルです。（抜粋）
-
-以下のコードを追記します。valueは幅となります。
-ディーティー比は５０％であり、その半分が波長となります。
 
 ```c
 
-void soundBeep(uint16_t value)
+#include <stdio.h>
+#include <string.h>
+#include "nrf_drv_pwm.h"
+#include "app_util_platform.h"
+#include "app_error.h"
+#include "boards.h"
+#include "bsp.h"
+#include "app_timer.h"
+#include "nrf_drv_clock.h"
+#include "nrf_delay.h"
+
+static nrf_drv_pwm_t m_pwm0 = NRF_DRV_PWM_INSTANCE(0);
+
+static void sound(int freq)
 {
-	uint16_t widht;
-	TIM_OC_InitTypeDef sConfigOC;
+    uint32_t                   err_code;
+    nrf_drv_pwm_config_t config0 =
+    {
+        .output_pins =
+        {
+            3 | NRF_DRV_PWM_PIN_INVERTED,
+        },
+        .irq_priority = APP_IRQ_PRIORITY_LOWEST,
+        .base_clock   = NRF_PWM_CLK_1MHz,
+        .count_mode   = NRF_PWM_MODE_UP,
+        .top_value    = freq,
+        .load_mode    = NRF_PWM_LOAD_COMMON,
+        .step_mode    = NRF_PWM_STEP_AUTO
+    };
 
-	widht=value/2;
+    err_code = nrf_drv_pwm_init(&m_pwm0, &config0, NULL);
+    APP_ERROR_CHECK(err_code);
 
- 	HAL_TIM_PWM_Stop(&htim3,TIM_CHANNEL_1);
-	HAL_TIM_PWM_DeInit(&htim3);
-	htim3.Init.Period = value;
-	HAL_TIM_PWM_Init(&htim3);
-
-	sConfigOC.OCMode = TIM_OCMODE_PWM1;
-	sConfigOC.Pulse = widht;
-	sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-	sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-	HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1);
-
-	HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
-
+    // This array cannot be allocated on stack (hence "static") and it must
+    // be in RAM.
+    static nrf_pwm_values_common_t seq0_values[2];
+    nrf_pwm_sequence_t const       seq0 =
+    {
+        .values.p_common = seq0_values,
+        .length          = NRF_PWM_VALUES_LENGTH(seq0_values),
+        .repeats         = 100,
+        .end_delay       = 0
+    };
+        seq0_values[0] = freq / 2;
+			nrf_drv_pwm_simple_playback(&m_pwm0, &seq0, 1,
+                                NRF_DRV_PWM_FLAG_LOOP);
 }
 
-```
-
-main関数は以下のようにします。前に、タイマークロックは８４MHZ、プリスケーラは５に設定したことによりそれぞれの音階の周期を求めます。
-
-```c
 
 int main(void)
-{
-
-  /* USER CODE BEGIN 1 */
-uint16_t codeF[8]={0xFAD5,0xDF78,0xC716,0xBBEA,0xA769,0x9525,0x84E0,0x7D6A};
-  /* USER CODE END 1 */
-
-  /* MCU Configuration----------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* Initialize all configured peripherals */
-
-	MX_GPIO_Init();
-  MX_TIM3_Init();
-  MX_USART2_UART_Init();
-
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-  /* USER CODE END WHILE */
-		for (int i=0;i<8;i++){
-			soundBeep(codeF[i]);
-			HAL_Delay(1500);
-		}
-
-  /* USER CODE BEGIN 3 */
-
-  }
-  /* USER CODE END 3 */
+{  
+    while(1){
+		sound(3822);
+		nrf_delay_ms(200);
+    nrf_drv_pwm_uninit(&m_pwm0);
+		sound(3405);
+		nrf_delay_ms(200);
+    nrf_drv_pwm_uninit(&m_pwm0);
+		sound(3033);
+		nrf_delay_ms(200);
+    nrf_drv_pwm_uninit(&m_pwm0);
+		sound(2863);
+		nrf_delay_ms(200);
+    nrf_drv_pwm_uninit(&m_pwm0);
+		sound(2551);
+		nrf_delay_ms(200);
+		nrf_drv_pwm_uninit(&m_pwm0);
+		sound(2272);
+		nrf_delay_ms(200);
+		nrf_drv_pwm_uninit(&m_pwm0);
+		sound(2024);
+		nrf_delay_ms(200);
+		nrf_drv_pwm_uninit(&m_pwm0);
+		sound(1911);
+		nrf_delay_ms(200);
+		nrf_drv_pwm_uninit(&m_pwm0);
+		nrf_delay_ms(1000);
+	}
 
 }
 
@@ -183,7 +252,7 @@ Software Development Kit > nRF5 SDK > nRF5 SDK v12.3.0 > Data Structures > Data 
 PWM HAL
 Software Development Kit > nRF5 SDK > nRF5 SDK v12.3.0 > API Reference > Peripheral drivers > PWM HAL and driver
 PWM
-Software Development Kit > nRF5 SDK > nRF5 SDK v12.1.0 > Hardware Drivers
+Software Development Kit > nRF5 SDK > nRF5 SDK v12.3.0 > Hardware Drivers
 
 ## 構成Parts
 - 圧電ブザー

@@ -54,6 +54,9 @@ SWDに対応したピンヘッダ
 
 
 ## Parts Specification
+
+MDBT42Q – 512K (Chip Antenna)
+
 | Document |
 |:--|
 | [raytac](http://www.raytac.com/products.php?subid=55) |
