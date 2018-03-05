@@ -1,6 +1,6 @@
-# #4 Shinobi_Motor
+# #5 Shinobi_Motor
 
-![](..\img\Shinobi_Motor\Shinobi_Motor.JPG)
+![](\img\Shinobi_Motor\Shinobi_Motor.JPG)
 <!--COLORME-->
 
 ## Overview
