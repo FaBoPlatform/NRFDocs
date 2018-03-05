@@ -9,10 +9,6 @@
 
 ## Connecting
 
-アナログコネクタ(A0〜A5)のいずれかに接続します。
-
-![](/img/100_analog/connect/108_temperature_connect.jpg)
-
 ## LM61CIZ Datasheet
 | Document |
 |:--|
@@ -23,28 +19,6 @@
 
 
 ## Sample Code
-
-A0コネクタにTemprature Brickを接続して、取得した温度をシリアルモニタへ出力します。
-STM32CubeMXを起動してnewProjectを選び、ターゲットとなるボードを選ぶ。
-HALライブラリがダウンロードすると、Pinout画面表示されます。
-
-Brickを接続するコネクタをA0に接続するため、ADC1をIN0をチェックインして、USART2をAnsynchrousに設定しターミナルモニタで温度を確認できるようにする。
-
-![](../img/TMP108/Pinout.png)
-
-ADC１を選びます。
-![](../img/TMP108/ADC1SELECT.png)
-
-ParameterSettingsで解像度が12bitであるかを確認します。
-![](../img/TMP108/ParameterSettings.png)
-
-GPIO Settingsを選び、UserLabelを追加します。
-![](../img/TMP108/GPIOSetting.png)
-
-GenerateCordeを実行し、Keilを起動させます。
-
-main.cに自動で追加されるコード（抜粋）
-STM32CubeMXで設定が反映され自動追加されています。
 
 ```c
 
@@ -102,53 +76,149 @@ main.cのコード（抜粋）
 main.c関数のコードを下記のように追加します。12bitであるから0~4096　3.3Vの時その時の電圧の値は4095になります。0.6Vの時は0℃,1.6Vで100℃となり、１℃上がるごとに0.01V上昇することになる。
 
 ```c
-int main(void)
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+#include "nrf.h"
+#include "nrf_drv_saadc.h"
+#include "nrf_drv_ppi.h"
+#include "nrf_drv_timer.h"
+#include "boards.h"
+#include "app_error.h"
+#include "nrf_delay.h"
+#include "app_util_platform.h"
+#include "nrf_pwr_mgmt.h"
+#include "nrf_drv_power.h"
+
+#define NRF_LOG_MODULE_NAME "FABO Temprature 106"
+#include "nrf_log.h"
+#include "nrf_log_ctrl.h"
+
+#define SAMPLES_IN_BUFFER 10
+volatile uint8_t state = 1;
+
+static const nrf_drv_timer_t m_timer = NRF_DRV_TIMER_INSTANCE(0);
+static nrf_saadc_value_t     m_buffer_pool[2][SAMPLES_IN_BUFFER];
+static nrf_ppi_channel_t     m_ppi_channel;
+static uint32_t              m_adc_evt_counter;
+
+
+void timer_handler(nrf_timer_event_t event_type, void * p_context)
 {
 
-  /* USER CODE BEGIN 1 */
-	int adc_Value;
-	double	tmp_Value;
-	char str[16];
-  ADC_ChannelConfTypeDef sConfig;
-  /* USER CODE END 1 */
+}
 
-  /* MCU Configuration----------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+void saadc_sampling_event_init(void)
+{
+    ret_code_t err_code;
 
-  /* Configure the system clock */
-  SystemClock_Config();
+    err_code = nrf_drv_ppi_init();
+    APP_ERROR_CHECK(err_code);
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_ADC1_Init();
-  MX_USART2_UART_Init();
+    nrf_drv_timer_config_t timer_cfg = NRF_DRV_TIMER_DEFAULT_CONFIG;
+    timer_cfg.bit_width = NRF_TIMER_BIT_WIDTH_32;
+    err_code = nrf_drv_timer_init(&m_timer, &timer_cfg, timer_handler);
+    APP_ERROR_CHECK(err_code);
 
-  /* USER CODE BEGIN 2 */
-	double ZeroTMP = 0.6 / (3.3 / 4096.0);
-  double KatamukiTMP = ((1.6-0.6) / (3.3 / 4096.0)) /100.0;
-	/* USER CODE END 2 */
+    uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 100);
+    nrf_drv_timer_extended_compare(&m_timer,
+                                   NRF_TIMER_CC_CHANNEL0,
+                                   ticks,
+                                   NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK,
+                                   false);
+    nrf_drv_timer_enable(&m_timer);
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-  /* USER CODE END WHILE */
-		HAL_ADC_Start(&hadc1);
-    HAL_ADC_PollForConversion(&hadc1, 100);
-		adc_Value = HAL_ADC_GetValue(&hadc1);
-		tmp_Value = (adc_Value - ZeroTMP) /KatamukiTMP;
-		sprintf(str,"%02f\n\r",tmp_Value);
-		HAL_UART_Transmit(&huart2,(uint8_t *)str,strlen(str),0x1111);
-    HAL_ADC_Stop(&hadc1);
-		HAL_Delay(200);	  	  
-  /* USER CODE BEGIN 3 */
+    uint32_t timer_compare_event_addr = nrf_drv_timer_compare_event_address_get(&m_timer,
+                                                                                NRF_TIMER_CC_CHANNEL0);
+    uint32_t saadc_sample_task_addr   = nrf_drv_saadc_sample_task_get();
 
-  }
-  /* USER CODE END 3 */
+    /* setup ppi channel so that timer compare event is triggering sample task in SAADC */
+    err_code = nrf_drv_ppi_channel_alloc(&m_ppi_channel);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = nrf_drv_ppi_channel_assign(m_ppi_channel,
+                                          timer_compare_event_addr,
+                                          saadc_sample_task_addr);
+    APP_ERROR_CHECK(err_code);
+}
+
+
+void saadc_sampling_event_enable(void)
+{
+    ret_code_t err_code = nrf_drv_ppi_channel_enable(m_ppi_channel);
+
+    APP_ERROR_CHECK(err_code);
+}
+
+
+void saadc_callback(nrf_drv_saadc_evt_t const * p_event)
+{
+    if (p_event->type == NRF_DRV_SAADC_EVT_DONE)
+    {
+        ret_code_t err_code;
+
+        err_code = nrf_drv_saadc_buffer_convert(p_event->data.done.p_buffer, SAMPLES_IN_BUFFER);
+        APP_ERROR_CHECK(err_code);
+
+        int i;
+        NRF_LOG_INFO("ADC event number: %d\r\n", (int)m_adc_evt_counter);
+
+        for (i = 0; i < SAMPLES_IN_BUFFER; i++)
+        {
+						double temp = (((p_event->data.done.p_buffer[i] / 1024.0)*3300.0) - 600.0)/10.0;
+						NRF_LOG_INFO(" Celsius=" NRF_LOG_FLOAT_MARKER "\r\n", NRF_LOG_FLOAT(temp));
+        }
+        m_adc_evt_counter++;
+    }
+}
+
+
+void saadc_init(void)
+{
+    ret_code_t err_code;
+    nrf_saadc_channel_config_t channel_config =
+        NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN1);
+
+    err_code = nrf_drv_saadc_init(NULL, saadc_callback);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = nrf_drv_saadc_channel_init(0, &channel_config);
+    APP_ERROR_CHECK(err_code);  
+
+    err_code = nrf_drv_saadc_buffer_convert(m_buffer_pool[0], SAMPLES_IN_BUFFER);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = nrf_drv_saadc_buffer_convert(m_buffer_pool[1], SAMPLES_IN_BUFFER);
+    APP_ERROR_CHECK(err_code);
 
 }
+
+
+int main(void)
+{
+		uint32_t err_code = NRF_LOG_INIT(NULL);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = nrf_drv_power_init(NULL);
+    APP_ERROR_CHECK(err_code);
+
+    ret_code_t ret_code = nrf_pwr_mgmt_init(0);
+    APP_ERROR_CHECK(ret_code);
+
+    NRF_LOG_INFO("Fabo Shinobi Temprature Brick 108\r\n");
+    saadc_init();
+    saadc_sampling_event_init();
+    saadc_sampling_event_enable();
+
+    while (1)
+    {
+        nrf_pwr_mgmt_run();
+        NRF_LOG_FLUSH();
+    }
+}
+
 
 ```
 

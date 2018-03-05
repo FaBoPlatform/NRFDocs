@@ -1,4 +1,4 @@
-# Keil Install
+# KEIL MDK-ARM Install
 
 ターゲットとなるNRF5シリーズは、オープンソースのGCCや純正ARMコンパイラが使用できるKEIL,日本語対応、様々なマイコンに対応したIARやEmbedStduioで開発ができます。
 
@@ -14,7 +14,6 @@ ARMCCコンパイラ
 
 http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0472bj/BABBEAEH.html
 
-# コンポーネントのダウンロード
-ソフトウェアパックから選択する方法やSDKをダウンロードし必要なモジュールやドライバをインクルードする方法があります。
+# Keil uVersionをダウンロード
 
-#Keil uVersionをダウンロード
+https://www.keil.com/download/

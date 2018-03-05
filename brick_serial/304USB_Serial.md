@@ -1,6 +1,6 @@
 # #304 USB Serial Brick
 
-![Cube](../img/USB304/304.jpg)
+![Cube](../img/USBSerial304/USBSerial304.JPG)
 <!--COLORME-->
 
 ## Overview
