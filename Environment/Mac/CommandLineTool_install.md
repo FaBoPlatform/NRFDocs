@@ -25,15 +25,23 @@ brew cask install nrf5x-command-line-tools
 ## ターミナルから以下実行
 
 アプリケーションがソフトデバイスに依存しているものは、前もって以下をインストール
+
 nrfjprog --program s132_nrf52_3.0.0_softdevice.hex -f nrf52 --chiperase
 
 ### アプリケーションインストール
 
 ### ソフトデバイスなしの場合
+
 nrfjprog --program ファイル名.hex -f nrf52 --chiperase
 
 ### ソフトデバイスありの場合
+
 nrfjprog --program ファイル名.hex -f nrf52 --sectorerase
 
 ### 最後にリセット命令
-nrfjprog --reset -f nrf52 (edited)
+
+nrfjprog --reset -f nrf52
+
+###　書き込めないときは
+
+nrfjprog --rbp ALL -f nrf52
