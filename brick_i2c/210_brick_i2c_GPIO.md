@@ -10,9 +10,6 @@ I2Cで8個のLEDを制御できます。
 
 ## Connecting
 
-
-### CubeMXの設定
-
 ```c
 
 #include <stdio.h>
