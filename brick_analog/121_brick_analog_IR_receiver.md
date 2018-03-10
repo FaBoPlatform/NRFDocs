@@ -48,7 +48,7 @@ int main(void)
 				BUTTON_SWITCH = nrf_gpio_pin_read(FaBo_Shinobi_ANALOGPIN);
 
 				if (BUTTON_SWITCH == 1) {
-					nrf_gpio_pin_clear(3);
+					nrf_gpio_pin_clear(FaBo_Shinobi_BUTTONPIN);
 				}
 				else {
 					nrf_gpio_pin_set(FaBo_Shinobi_BUTTONPIN);
