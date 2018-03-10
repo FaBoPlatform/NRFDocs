@@ -15,11 +15,6 @@ I/Oピンより距離センサーの正面についているレンズから物�
 
 ## Connecting
 
-アナログコネクタ(A0〜A5)のいずれかに接続します。
-![](/img/100_analog/connect/116_distance_connect.jpg)
-今回はＡ０に接続します。
-
-
 ## GP2Y0A21YK Datasheet
 | Document |
 | -- |
@@ -27,184 +22,163 @@ I/Oピンより距離センサーの正面についているレンズから物�
 
 ## Sample Code
 
-A0コネクタに接続して、距離を計測します。
-
-ピン設定します。USART1,USART6をAsyncrousに設定し有効にします。
-<center>![](../img/DISTANCE116/PinConfig.png)
-
-クロックは以下のように設定します。
-<center>![](../img/DISTANCE116/Clock_Configration.png)
-
-ADCを設定します。
-<center>![](../img/DISTANCE116/Configration_ADC.png)
-
-NVIC(割り込みコントローラ)をADCに対して有効化します。
-<center>![](../img/DISTANCE116/NVIC_Config.png)
-
-CodeGenarateし、コードやプロジェクトが自動生成されます。Keilを起動させます。
-
-ソースコード（一部）
-インクルード、ペリフェラル設定初期化とADCのコールバック関数
 ```c
-/* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
-
-/* USER CODE BEGIN Includes */
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include "nrf.h"
+#include "nrf_drv_saadc.h"
+#include "nrf_drv_ppi.h"
+#include "nrf_drv_timer.h"
+#include "boards.h"
+#include "app_error.h"
+#include "nrf_delay.h"
+#include "app_util_platform.h"
+#include "nrf_pwr_mgmt.h"
+#include "nrf_drv_power.h"
 
-/* USER CODE END Includes */
+#define NRF_LOG_MODULE_NAME "FABO Distance 116"
+#include "nrf_log.h"
+#include "nrf_log_ctrl.h"
 
-/* Private variables ---------------------------------------------------------*/
-ADC_HandleTypeDef hadc1;
+#define SAMPLES_IN_BUFFER 10
+volatile uint8_t state = 1;
 
-UART_HandleTypeDef huart2;
+void map(const int *source, int *result, size_t n, int (*func)(int));
 
-/* USER CODE BEGIN PV */
-/* Private variables ---------------------------------------------------------*/
-
-/* USER CODE END PV */
-
-/* Private function prototypes -----------------------------------------------*/
-void SystemClock_Config(void);
-void Error_Handler(void);
-static void MX_GPIO_Init(void);
-static void MX_ADC1_Init(void);
-static void MX_USART2_UART_Init(void);
+static const nrf_drv_timer_t m_timer = NRF_DRV_TIMER_INSTANCE(0);
+static nrf_saadc_value_t     m_buffer_pool[2][SAMPLES_IN_BUFFER];
+static nrf_ppi_channel_t     m_ppi_channel;
+static uint32_t              m_adc_evt_counter;
 
 
-/* USER CODE BEGIN PFP */
-/* Private function prototypes -----------------------------------------------*/
-
-/* USER CODE END PFP */
-
-int value=0;
-
-/* USER CODE BEGIN 0 */
-char adcFlag=0;
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+void timer_handler(nrf_timer_event_t event_type, void * p_context)
 {
-    value=HAL_ADC_GetValue(hadc);
-    adcFlag =1;
-}
-```
 
-main関数
-データシートより測定ポイントとベクトルを求めて近似値を出しています。
-```c
-/* USER CODE END 0 */
+}
+
+void map(const int *source, int *result, size_t n, int (*func)(int))  
+{  
+    unsigned int i;  
+
+    for (i = 0; i < n; i++) {  
+        result[i] = func(source[i]);  
+     }  
+}
+
+
+void saadc_sampling_event_init(void)
+{
+    ret_code_t err_code;
+
+    err_code = nrf_drv_ppi_init();
+    APP_ERROR_CHECK(err_code);
+
+    nrf_drv_timer_config_t timer_cfg = NRF_DRV_TIMER_DEFAULT_CONFIG;
+    timer_cfg.bit_width = NRF_TIMER_BIT_WIDTH_32;
+    err_code = nrf_drv_timer_init(&m_timer, &timer_cfg, timer_handler);
+    APP_ERROR_CHECK(err_code);
+
+    uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 100);
+    nrf_drv_timer_extended_compare(&m_timer,
+                                   NRF_TIMER_CC_CHANNEL0,
+                                   ticks,
+                                   NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK,
+                                   false);
+    nrf_drv_timer_enable(&m_timer);
+
+    uint32_t timer_compare_event_addr = nrf_drv_timer_compare_event_address_get(&m_timer,
+                                                                                NRF_TIMER_CC_CHANNEL0);
+    uint32_t saadc_sample_task_addr   = nrf_drv_saadc_sample_task_get();
+
+    /* setup ppi channel so that timer compare event is triggering sample task in SAADC */
+    err_code = nrf_drv_ppi_channel_alloc(&m_ppi_channel);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = nrf_drv_ppi_channel_assign(m_ppi_channel,
+                                          timer_compare_event_addr,
+                                          saadc_sample_task_addr);
+    APP_ERROR_CHECK(err_code);
+}
+
+
+void saadc_sampling_event_enable(void)
+{
+    ret_code_t err_code = nrf_drv_ppi_channel_enable(m_ppi_channel);
+
+    APP_ERROR_CHECK(err_code);
+}
+
+
+void saadc_callback(nrf_drv_saadc_evt_t const * p_event)
+{
+    if (p_event->type == NRF_DRV_SAADC_EVT_DONE)
+    {
+        ret_code_t err_code;
+
+        err_code = nrf_drv_saadc_buffer_convert(p_event->data.done.p_buffer, SAMPLES_IN_BUFFER);
+        APP_ERROR_CHECK(err_code);
+
+        int i;
+        NRF_LOG_INFO("ADC event number: %d\r\n", (int)m_adc_evt_counter);
+
+        for (i = 0; i < SAMPLES_IN_BUFFER; i++)
+        {
+						double voltage = (p_event->data.done.p_buffer[i]/1024.0)*3300.0;
+						double distance = 80 - ((70.0/2700.0)*voltage);
+						NRF_LOG_INFO("DISTANCE=" NRF_LOG_FLOAT_MARKER "cm\r\n", NRF_LOG_FLOAT(distance));
+        }
+        m_adc_evt_counter++;
+    }
+}
+
+
+void saadc_init(void)
+{
+    ret_code_t err_code;
+    nrf_saadc_channel_config_t channel_config =
+        NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN1);
+
+    err_code = nrf_drv_saadc_init(NULL, saadc_callback);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = nrf_drv_saadc_channel_init(0, &channel_config);
+    APP_ERROR_CHECK(err_code);  
+
+    err_code = nrf_drv_saadc_buffer_convert(m_buffer_pool[0], SAMPLES_IN_BUFFER);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = nrf_drv_saadc_buffer_convert(m_buffer_pool[1], SAMPLES_IN_BUFFER);
+    APP_ERROR_CHECK(err_code);
+
+}
+
 
 int main(void)
 {
+		uint32_t err_code = NRF_LOG_INIT(NULL);
+    APP_ERROR_CHECK(err_code);
 
-  /* USER CODE BEGIN 1 */
-	char buffer[16];
+    err_code = nrf_drv_power_init(NULL);
+    APP_ERROR_CHECK(err_code);
 
+    ret_code_t ret_code = nrf_pwr_mgmt_init(0);
+    APP_ERROR_CHECK(ret_code);
 
+    NRF_LOG_INFO("Fabo Shinobi Distance 116 Brick\r\n");
+    saadc_init();
+    saadc_sampling_event_init();
+    saadc_sampling_event_enable();
 
-  /* USER CODE END 1 */
-
-  /* MCU Configuration----------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_ADC1_Init();
-  MX_USART2_UART_Init();
-
-  /* USER CODE BEGIN 2 */
-	//電圧と距離のサンプルデータ
-	double distanceChar[14][2] = {{5.00,3.10},{6.20,3.13},{7.00,2.98},{8.00,2.70},{10.00,2.30},
-	{12.50,1.70},{20.00,1.30},{22.50,1.05},{30.00,0.93},{40.00,0.75},{50.00,0.60},{60.00,0.51},
-	{70.00,0.45},{80.00,0.40}};
-	//それぞれのヘクトルを求める。
-	double vector[13][2];
-		for (int i=0;i<13;i++){
-	vector[i][0] = distanceChar[i+1][0]-distanceChar[i][0];
-	vector[i][1] = distanceChar[i+1][1]-distanceChar[i][1];
-		}
-
-    adcFlag=0;
-  HAL_ADC_Start_IT(&hadc1);
-
-
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-	/* USER CODE END WHILE */
-		   while(adcFlag != 0){
-			 }
-       //取得した値を電圧に変換
-				double voltage = value * (3.3/4096);
-			 sprintf(buffer,"%fmV : ",voltage);
-        HAL_UART_Transmit(&huart2,(uint8_t*)buffer,strlen(buffer),0x1111);
-        //近似値求める。
-			 double d;
-			if (voltage<0.4){
-				sprintf(buffer,"Unmeasurable\n\r");
-			 }else if(voltage> distanceChar[0][1]){
-				d = (((voltage - distanceChar[0][1])/vector[0][1])* vector[0][0])+distanceChar[0][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[1][1]){
-				d = (((voltage - distanceChar[1][1])/vector[1][1])* vector[1][0])+distanceChar[1][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[2][1]){
-				d = (((voltage - distanceChar[2][1])/vector[2][1])* vector[2][0])+distanceChar[2][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[3][1]){
-				d = (((voltage - distanceChar[3][1])/vector[3][1])* vector[3][0])+distanceChar[3][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[4][1]){
-				d = (((voltage - distanceChar[4][1])/vector[4][1])* vector[4][0])+distanceChar[4][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[5][1]){
-				d = (((voltage - distanceChar[5][1])/vector[5][1])* vector[5][0])+distanceChar[5][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[6][1]){
-				d = (((voltage - distanceChar[6][1])/vector[6][1])* vector[6][0])+distanceChar[6][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[7][1]){
-				d = (((voltage - distanceChar[7][1])/vector[7][1])* vector[7][0])+distanceChar[7][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[8][1]){
-				d = (((voltage - distanceChar[8][1])/vector[8][1])* vector[8][0])+distanceChar[8][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[9][1]){
-				d = (((voltage - distanceChar[9][1])/vector[9][1])* vector[9][0])+distanceChar[9][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[10][1]){
-				d = (((voltage - distanceChar[10][1])/vector[10][1])* vector[10][0])+distanceChar[10][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[11][1]){
-				d = (((voltage - distanceChar[11][1])/vector[11][1])* vector[11][0])+distanceChar[11][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[12][1]){
-				d = (((voltage - distanceChar[12][1])/vector[12][1])* vector[12][0])+distanceChar[12][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }else if(voltage> distanceChar[13][1]){
-				d = (((voltage - distanceChar[13][1])/vector[13][1])* vector[13][0])+distanceChar[13][0];
-				sprintf(buffer,"%f cm\n\r",d);
-			 }
-			 HAL_UART_Transmit(&huart2,(uint8_t*)buffer,strlen(buffer),0x1111);			 
-			 HAL_Delay(100);
-        adcFlag=0;
-        HAL_ADC_Start_IT(&hadc1);   
-
-  /* USER CODE BEGIN 3 */
-
-  }
-  /* USER CODE END 3 */
-
+    while (1)
+    {
+        nrf_pwr_mgmt_run();
+        NRF_LOG_FLUSH();
+    }
 }
+
+
 ```
 
 TeraTermを起動し確認します。リセットボタンを押すと起動します。
