@@ -1,4 +1,4 @@
-# #121 IR_RECEVIER Brick
+# #113 IR_RECEVER Brick
 
 ## Overview
 
@@ -8,7 +8,8 @@
 
 ## Sample
 
-Shinobi_NRFのボタンを利用します。ボタンを押すと、赤外線LEDが発行されます。
+赤外線を受光することで、Shinobi_NRFのLEDが発光します。
+112 IR_LEDを使用し、2台のShinobi_NRFで簡単に動作確認ができます。
 
 ```c
 
@@ -19,18 +20,18 @@ Shinobi_NRFのボタンを利用します。ボタンを押すと、赤外線LED
 #include "nrf_delay.h"
 #include "app_util_platform.h"
 
-#define NRF_LOG_MODULE_NAME "FABO 121 IR_RECEIVER"
+#define NRF_LOG_MODULE_NAME "FABO 113 IR_RECEIVER Brick"
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 
-#define FaBo_Shinobi_ANALOGPIN 16
-#define FaBo_Shinobi_BUTTONPIN 3
+#define FaBo_Shinobi_ANALOGPIN 3
+#define FaBo_Shinobi_LEDPIN 18
 
 static void gpio_init(void)
 {
-	nrf_gpio_cfg_sense_input(FaBo_Shinobi_ANALOGPIN, NRF_GPIO_PIN_PULLUP, NRF_GPIO_PIN_SENSE_LOW);
-	nrf_gpio_cfg_output(FaBo_Shinobi_BUTTONPIN);
-	nrf_gpio_pin_clear(FaBo_Shinobi_BUTTONPIN);
+	nrf_gpio_cfg_sense_input(FaBo_Shinobi_ANALOGPIN, NRF_GPIO_PIN_PULLDOWN, NRF_GPIO_PIN_SENSE_HIGH);
+	nrf_gpio_cfg_output(FaBo_Shinobi_LEDPIN);
+	nrf_gpio_pin_clear(FaBo_Shinobi_LEDPIN);
 }
 
 int main(void)
@@ -48,13 +49,13 @@ int main(void)
 				BUTTON_SWITCH = nrf_gpio_pin_read(FaBo_Shinobi_ANALOGPIN);
 
 				if (BUTTON_SWITCH == 1) {
-					nrf_gpio_pin_clear(FaBo_Shinobi_BUTTONPIN);
-				}
-				else {
-					nrf_gpio_pin_set(FaBo_Shinobi_BUTTONPIN);
-					NRF_LOG_INFO("Button pressed Emission.: %d\r\n",push_time);
+					nrf_gpio_pin_set(FaBo_Shinobi_LEDPIN);
+					NRF_LOG_INFO("IR_Received!: %d\r\n",push_time);
 					NRF_LOG_FLUSH();
 					push_time++;
+				}
+				else {
+					nrf_gpio_pin_clear(FaBo_Shinobi_LEDPIN);
 				}
     }
 
