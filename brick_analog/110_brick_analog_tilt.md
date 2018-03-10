@@ -14,57 +14,57 @@ LED Brickを点灯/消灯させる際などに使用します。
 
 
 ## Connecting
-アナログコネクタ(A0〜A5)、またはデジタルコネクタ(2〜13)のいずれかに接続します。
-![](/img/100_analog/connect/110_tilt_connect.jpg)
 
 ## Schematic
 ![](/img/100_analog/schematic/110_tilt.png)
 
 ## Sample Code
 
-A1コネクタに接続したTilt Brickの傾きによって、A0コネクタに接続したLED Brickを点灯/消灯させています。
-STM32CubeMXを起動して、GPIO設定します。PA0をOUTPUT PA1をINPUTにします。Codegenerateして、main.cに以下のコードを追記するだけです。
 ```c
+#include <stdbool.h>
+#include <stdint.h>
+#include "nrf.h"
+#include "bsp.h"
+#include "nrf_delay.h"
+#include "app_util_platform.h"
+
+#define NRF_LOG_MODULE_NAME "FABO 110 TILT"
+#include "nrf_log.h"
+#include "nrf_log_ctrl.h"
+
+#define FaBo_Shinobi_ANALOGPIN 3
+
+static void gpio_init(void)
+{
+	nrf_gpio_cfg_sense_input(FaBo_Shinobi_ANALOGPIN, NRF_GPIO_PIN_PULLDOWN, NRF_GPIO_PIN_SENSE_HIGH);
+	nrf_gpio_cfg_output(BSP_LED_0);
+	nrf_gpio_pin_clear(BSP_LED_0);
+}
+
 int main(void)
 {
+		uint32_t err_code = NRF_LOG_INIT(NULL);
+    APP_ERROR_CHECK(err_code);
+		gpio_init();
 
-  /* USER CODE BEGIN 1 */
+    while (true)
+    {
+				uint32_t TILT_PIN = 0;
+				TILT_PIN = nrf_gpio_pin_read(FaBo_Shinobi_ANALOGPIN);
 
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration----------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-  /* USER CODE END WHILE */
-		 if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_1)==GPIO_PIN_RESET){
-    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
-  }else{
-    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_SET);
-  }
-
-  /* USER CODE BEGIN 3 */
-
-  }
-  /* USER CODE END 3 */
+				if (TILT_PIN == 1) {
+					nrf_gpio_pin_set(BSP_LED_0);
+					NRF_LOG_INFO("Detect Slope.\r\n");
+					NRF_LOG_FLUSH();
+				}
+				else {
+					nrf_gpio_pin_clear(BSP_LED_0);
+				}
+    }
 
 }
+
+
 ```
 
 ## 構成Parts
