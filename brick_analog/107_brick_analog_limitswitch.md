@@ -51,9 +51,9 @@ int main(void)
 
     while (true)
     {
-				uint32_t LimitSwitch = 0;
-				static uint32_t push_time = 0;
-				LimitSwitch = nrf_gpio_pin_read(FaBo_Shinobi_ANALOGPIN);
+      uint32_t LimitSwitch = 0;
+      static uint32_t push_time = 0;
+      LimitSwitch = nrf_gpio_pin_read(FaBo_Shinobi_ANALOGPIN);
 
 				if (LimitSwitch == 1) {
 					nrf_gpio_pin_set(BSP_LED_0);
