@@ -1,6 +1,6 @@
 # #113 IR_RECEVER Brick
 
-![](/img/IR_RECEIVER113/113.jpg)
+![](/img/IR_RECEIVER113/113.png)
 
 ## Overview
 
