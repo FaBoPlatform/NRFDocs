@@ -1,6 +1,6 @@
 # #104 Angle Brick
 
-<center>![](../img/Angle104/104.jpg)
+<center>![](/img/Angle104/104.jpg)
 <!--COLORME-->
 
 ## Overview
@@ -12,7 +12,7 @@ LED Brickの明るさを調節する際などに使用します。
 
 ## Connecting
 
-<center>![](../img/FaBo_104_ANGLE_CONNECT.JPG)
+<center>![](/img/FaBo_104_ANGLE_CONNECT.JPG)
 
 ## Schematic
 
