@@ -293,18 +293,17 @@ int main(void)
 #include "boards.h"
 #define PINNUMBER 3
 
-const uint8_t led_pin = PINNUMBER;
-
 int main(void)
 {
     LEDS_CONFIGURE(1 << PINNUMBER);
 
     while (true)
     {  
-            LEDS_INVERT(1 << led_pin);
+            LEDS_INVERT(1 << PINNUMBER);
             nrf_delay_ms(1000);
     }
 }
+
 
 ```
 

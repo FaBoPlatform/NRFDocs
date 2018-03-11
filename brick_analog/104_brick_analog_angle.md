@@ -12,12 +12,13 @@ LED Brickの明るさを調節する際などに使用します。
 
 ## Connecting
 
+<center>![](../img/FaBo_104_ANGLE_CONNECT.JPG)
+
 ## Schematic
-![](/img/100_analog/schematic/104_angle.png)
 
-nRF52832は、ADCが使えるピンは決まっており、P0.03は、AIN1となる。
+nRF52832は、ADCが使えるピンは決まっており、P0.03は、AIN1となります。
 
-アナログ値はターミナルソフトから確認しましょう。
+アナログ値はターミナルソフト(Teratermなど)から確認しましょう。
 
 ## Sample Code
 
