@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Component Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'saadc_pca10040' 
+ * Project: 'FaBo_109_AMBIENTLIGHT' 
  * Target:  'nrf52832_xxaa' 
  */
 

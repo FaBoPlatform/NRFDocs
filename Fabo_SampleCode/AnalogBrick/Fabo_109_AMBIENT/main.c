@@ -13,7 +13,7 @@
 #include "nrf_pwr_mgmt.h"
 #include "nrf_drv_power.h"
 
-#define NRF_LOG_MODULE_NAME "FABO Ambient_Light 109"
+#define NRF_LOG_MODULE_NAME "FaBo_109_AMBIENTLIGHT"
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 
@@ -32,16 +32,6 @@ void timer_handler(nrf_timer_event_t event_type, void * p_context)
 {
 
 }
-
-void map(const int *source, int *result, size_t n, int (*func)(int))  
-{  
-    unsigned int i;  
-  
-    for (i = 0; i < n; i++) {  
-        result[i] = func(source[i]);  
-     }  
-}
-
 
 void saadc_sampling_event_init(void)
 {
@@ -140,7 +130,7 @@ int main(void)
     ret_code_t ret_code = nrf_pwr_mgmt_init(0);
     APP_ERROR_CHECK(ret_code);
 
-    NRF_LOG_INFO("Fabo Shinobi Distance 116 Brick\r\n");
+    NRF_LOG_INFO("Fabo Shinobi_AMBIENTLIGHT_109\r\n");
     saadc_init();
     saadc_sampling_event_init();
     saadc_sampling_event_enable();
