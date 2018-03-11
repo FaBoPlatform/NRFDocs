@@ -21,6 +21,8 @@
 	* [Debug](./basic/debug.md)
 	* [Timer](./basic/timer.md)
 	* [Error Handle](./basic/error.md)
+	* [Persistent Storage Interface](./basic/pstorage.md)
+	* [Softdevice](./basic/softdevice.md)
 * Analog
 	* [101 LED](./brick_analog/101_brick_analog_led.md)
 	* [102 Buzzer](./brick_analog/102_brick_analog_buzzer.md)
