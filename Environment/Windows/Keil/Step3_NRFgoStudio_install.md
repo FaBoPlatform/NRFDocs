@@ -16,7 +16,7 @@ nRFgo Stduioは、Nordicセミコンダクター社のSOCであるRF51,nRF52の�
 
 https://www.nordicsemi.com/eng/nordic/Products/nRFgo-Studio/nRFgo-Studio-Win64/14964
 
-![NRFGO](../img/NRF_GO/download.png)
+![NRFGO](/img/NRF_GO/download.png)
 
 解凍し、nRFgoStudio　インストール終了後、自動的にダイヤログが開き、J-linkドライバもインストールします。
 
@@ -26,22 +26,22 @@ https://www.nordicsemi.com/eng/nordic/Products/nRFgo-Studio/nRFgo-Studio-Win64/1
 
 https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF5-SDK
 
-![NRFGO](../img/NRF_GO/sdk_download.png)
+![NRFGO](/img/NRF_GO/sdk_download.png)
 
 今回は、12.3をダウンロードします。
 
-![NRFGO](../img/NRF_GO/DownloadSDK123.PNG)
+![NRFGO](/img/NRF_GO/DownloadSDK123.PNG)
 
 ## nRFgoStduioでファーウェア書き込み
 
 下記のように接続します。J-link liteをShinobiに接続し、Shinobiの電源（3V）もONにします。
 
-![NRFGO](../img/NRF_GO/Connect.JPG)
+![NRFGO](/img/NRF_GO/Connect.JPG)
 
 プロジェクトフォルダからビルドした、hexファイルを用意し、nRFgoStudioを起動、左の画面　DeviceManegerのnRF5x Programmingをクリック。
 しばらくすると、正常に接続されている場合、Region1,またはRegion0,Region1など領域を表す画面が出てきます。
 
-![NRFGO](../img/NRF_GO/Write.png)
+![NRFGO](/img/NRF_GO/Write.png)
 
 ## 消去
 
