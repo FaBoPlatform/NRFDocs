@@ -1,8 +1,10 @@
 ## 目次
 * [はじめに](README.md)
-* 開発環境
+* 開発環境(Windows)
 	* [Keil](./Environment/Windows/Keil/Step1_Keil_MDK-ARM_install.md)
-	* [VSCodeでの環境構築(OSX)](./Environment/Mac/VisualStudio.md)
+	* [NRF5 SDK](./Environment/Windows/Keil/Step2_SDK_Download.md)
+* 開発環境(OSX)
+	* [VSCodeでの環境構築](./Environment/Mac/VisualStudio.md)
 * Analog
 	* [101 LED](./brick_analog/101_brick_analog_led.md)
 	* [102 Buzzer](./brick_analog/102_brick_analog_buzzer.md)
