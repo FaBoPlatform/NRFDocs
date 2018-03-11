@@ -7,8 +7,9 @@
 	* [開発の事前準備](./Environment/Windows/Keil/Step4_SDK_Preparation.md)
 * 開発環境(OSX)
 	* [VSCodeでの環境構築](./Environment/Mac/VisualStudio.md)
-* デバッカー
+* 開発ツール
 	* [ARM対応のデバッカー一覧](./Environment/JTAG/debugger.md)
+	* [スニファー](./Environment/Sniffer/sniffer.md)
 * 開発ボード
 	* [開発ボード](./Environment/Board/board.md)
 * Shinobi
