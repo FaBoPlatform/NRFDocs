@@ -1,21 +1,10 @@
-# #201 3Aixs I2C Brick
-
-## Overview
-
-## Connecting
-
-ShinobiとFabo 3Axisを接続。
-
-##必要なソフトウェアコンポーネント
-
-```c
 #include <stdio.h>
 #include "boards.h"
 #include "app_util_platform.h"
 #include "app_error.h"
 #include "nrf_drv_twi.h"
 #include "nrf_delay.h"
-#define NRF_LOG_MODULE_NAME "FaBo_210_3Aix"
+#define NRF_LOG_MODULE_NAME "FaBo_210_3Axis"
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 
@@ -68,7 +57,7 @@ ShinobiとFabo 3Axisを接続。
 #define ADXL345_WAKEUP_1HZ 0x03
 
 void writeI2c(uint8_t register_addr, uint8_t value);
-
+	
 static volatile bool m_xfer_done = false;
 static const nrf_drv_twi_t m_twi = NRF_DRV_TWI_INSTANCE(TWI_INSTANCE_ID);
 static uint8_t m_sample[6];
@@ -147,24 +136,26 @@ bool isDoubleTap(uint8_t value)
 }
 
 __STATIC_INLINE void data_handler(uint8_t *axis_buff)
-{
+{	
+	/*
 	NRF_LOG_INFO("Device=%x\n\r",axis_buff[0]);
 	NRF_LOG_INFO("Device=%x\n\r",axis_buff[1]);
 	NRF_LOG_INFO("Device=%x\n\r",axis_buff[2]);
 	NRF_LOG_INFO("Device=%x\n\r",axis_buff[3]);
 	NRF_LOG_INFO("Device=%x\n\r",axis_buff[4]);
 	NRF_LOG_INFO("Device=%x\n\r",axis_buff[5]);
-
+	*/
+	
 	int16_t x = (((int)axis_buff[0]) << 8) | axis_buff[1];
   int16_t y = (((int)axis_buff[2]) << 8) | axis_buff[3];
 	int16_t z = (((int)axis_buff[4]) << 8) | axis_buff[5];
-
+	
 	NRF_LOG_INFO("x= %d y= %d z= %d \r\n",x,y,z);
-
+	
 	 if(axis_buff[0] == ADXL345_DEVICE){
     NRF_LOG_INFO("I am ADXL345\n\r");
   }
-
+	
 }
 
 
@@ -210,7 +201,7 @@ static void read_sensor_data()
 }
 
 void writeI2c(uint8_t register_addr, uint8_t value)
-{
+{	
 		uint32_t err_code;
     uint8_t reg[2] = {register_addr, value};
     err_code = nrf_drv_twi_tx(&m_twi, ADXL345_SLAVE_ADDRESS, reg, sizeof(reg), false);
@@ -221,7 +212,7 @@ void writeI2c(uint8_t register_addr, uint8_t value)
 int main(void)
 {
     APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
-    NRF_LOG_INFO("FaBo_3AiX_201 Sample\r\n");
+    NRF_LOG_INFO("FaBo_201_3AiXSample\r\n");
     NRF_LOG_FLUSH();
     twi_init();
 		searchDevice();
@@ -242,11 +233,3 @@ int main(void)
 		NRF_LOG_FLUSH();
 	}
 }
-
-```
-
-
-## 構成Parts
--
-
-## GitHub
