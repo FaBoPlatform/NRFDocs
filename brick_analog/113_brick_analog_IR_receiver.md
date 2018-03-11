@@ -71,10 +71,6 @@ int main(void)
 
 ## 動作確認
 
+Fabo IR_LEDを使用します。
+
 ![](/img/IR_RECEIVER113/FaBo_113_IR_RECEIVER_CHEAK.JPG)
-
-## 構成Parts
-- 12mm角タクトスイッチ
-
-## GitHub
-- https://github.com/FaBoPlatform/FaBo/tree/master/103_button
