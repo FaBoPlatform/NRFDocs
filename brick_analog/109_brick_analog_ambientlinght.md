@@ -172,8 +172,3 @@ int main(void)
 
 
 ```
-
-## 構成Parts
-- IC温度センサ LM61CIZ
-
-## GitHub
