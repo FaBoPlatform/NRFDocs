@@ -1,5 +1,8 @@
 # #120 Button Brick
 
+![](/img/BUTTON120/120_pre.png)
+
+
 ## Overview
 ボタンを使ったBrickです。I/OピンよりボタンのON/OFFの状態を取得することができます。
 
@@ -7,6 +10,7 @@
 
 ## Connecting
 
+![](/img/BUTTON120/FaBo_120_BUTTON_CONNECT.JPG)
 
 ## Schematic
 
@@ -15,12 +19,6 @@
 
 ウォッチタイマーのサンプル。
 LEDが点灯後２秒経過前に押さないとリセットがかかるサンプルコードです。
-
-Shinobi_NRFの３ピンの設定をボタンに変えます。
-
-PCA10040.hのファイルを
-
-\#define BUTTON_1       3に変更します。
 
 ```c
 

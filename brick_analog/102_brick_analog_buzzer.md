@@ -1,6 +1,6 @@
 # #102 Buzzer Brick
 
-<center>![](../img/BUZZER102/102.jpg)
+![](/img/BUZZER102/102.jpg)
 <!--COLORME-->
 
 ## Overview
@@ -8,8 +8,9 @@
 
 ## Connecting
 
+![](/img/BUZZER102/FaBo_102_BUZZER_CONNECT.JPG)
+
 ## Schematic
-![](/img/100_analog/schematic/102_buzzer.png)
 
 ## Sample Code
 

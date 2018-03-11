@@ -1,5 +1,6 @@
 # #108 Temperature Brick
-<center>![](../img/TMP108/108.jpg)
+
+![](/img/TMP108/108.jpg)
 <!--COLORME-->
 
 ## Overview
@@ -8,6 +9,8 @@
 アナログ値(ADC 12bitの場合　0〜4096)を取得でき、変換することで−30度から100度までの温度を計測することができます。
 
 ## Connecting
+
+![](/img/TMP108/FaBo_108_TEMPRATURE_CONNECT.JPG)
 
 ## LM61CIZ Datasheet
 | Document |

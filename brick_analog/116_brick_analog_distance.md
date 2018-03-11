@@ -1,6 +1,6 @@
 # #116 Distance Brick
 
-<center>![](../img/DISTANCE116/116.jpg)
+![](/img/DISTANCE116/116.jpg)
 <!--COLORME-->
 
 ## Overview
@@ -14,6 +14,8 @@ I/Oピンより距離センサーの正面についているレンズから物�
 
 
 ## Connecting
+
+![](/img/DISTANCE116/FaBo_116_DISTANCE_CONNECT.JPG)
 
 ## GP2Y0A21YK Datasheet
 | Document |

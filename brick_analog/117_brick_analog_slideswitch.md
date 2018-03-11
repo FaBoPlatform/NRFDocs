@@ -1,6 +1,6 @@
 # #117 Switch Brick
 
-<center>![](/img/100_analog/product/117.jpg)
+![](/img/SWITCH117/117.jpg)
 <!--COLORME-->
 
 ## Overview
@@ -9,6 +9,8 @@
 I/OピンよりスライドスイッチのON/OFFをデジタル値で取得できます。
 
 ## Connecting
+
+![](/img/SWITCH117/FaBo_117_SWITCH_CONNECT.JPG)
 
 ## Sample Code
 

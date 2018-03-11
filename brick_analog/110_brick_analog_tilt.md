@@ -1,6 +1,6 @@
 # #110 Tilt Brick
 
-<center>![](../img/TILT110/110.jpg)
+![](/img/TILT110/110.jpg)
 <!--COLORME-->
 
 ## Overview
@@ -14,6 +14,8 @@ LED Brickを点灯/消灯させる際などに使用します。
 
 
 ## Connecting
+
+![](/img/TILT110/FaBo_110_TILT_CONNECT.JPG)
 
 ## Schematic
 ![](/img/100_analog/schematic/110_tilt.png)

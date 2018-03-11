@@ -1,11 +1,13 @@
 # #118 Hall Brick
 
-<center>![](/img/100_analog/product/117.jpg)
+![](/img/HALL118/118.jpg)
 <!--COLORME-->
 
 ## Overview
 
 ## Connecting
+
+![](/img/HALL118/FaBo_118_HALL_CONNECT.JPG)
 
 ## Sample Code
 

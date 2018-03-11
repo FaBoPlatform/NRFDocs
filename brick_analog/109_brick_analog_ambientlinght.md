@@ -1,11 +1,13 @@
 # #109 AmbientLinght Brick
 
-<center>![](../img/TMP108/108.jpg)
+![](/img/AMBIENTLIGHT109/109.jpg)
 <!--COLORME-->
 
 ## Overview
 
 ## Connecting
+
+![](/img/AMBIENTLIGHT109/FaBo_109_AMBIENTLIGHT.JPG)
 
 ## Schematic
 ![](/img/100_analog/schematic/108_temperature.png)

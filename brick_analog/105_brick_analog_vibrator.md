@@ -1,6 +1,6 @@
 # #105 Vibrator Brick
 
-<center>![](../img/VIBRATOR105/105.jpg)
+![](/img/VIBRATOR105/105.jpg)
 <!--COLORME-->
 
 ## Overview
@@ -9,8 +9,6 @@
 I/Oピンから振動モーターのON/OFFを制御することができます。
 
 ## Connecting
-
-![](/img/100_analog/connect/105_vibrator_connect.jpg)
 
 ## Parts Specification
 | Document |
@@ -26,6 +24,7 @@ I/Oピンから振動モーターのON/OFFを制御することができます�
 
 
 ```c
+
 #include <stdbool.h>
 #include <stdint.h>
 #include "nrf.h"

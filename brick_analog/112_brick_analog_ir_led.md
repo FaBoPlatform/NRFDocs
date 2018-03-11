@@ -1,14 +1,18 @@
 # #121 IR_LED Brick
 
+![](/img/IR_LED112/112.jpg)
+
 ## Overview
 
 ## Connecting
+
+![](/img/IR_LED112/FaBo_112_IR_LED_CONNECT.JPG)
 
 ## Schematic
 
 ## Sample
 
-Shinobi_NRFのボタンを利用します。ボタンを押すと、赤外線LEDが発行されます。
+Shinobi_NRFのボタンを利用します。ボタンを押すと、赤外線LEDが発光されます。
 
 ```c
 #include <stdbool.h>

@@ -1,8 +1,12 @@
 # #113 IR_RECEVER Brick
 
+![](/img/IR_RECEIVER113/113.jpg)
+
 ## Overview
 
 ## Connecting
+
+![](/img/IR_RECEIVER113/FaBo_113_IR_RECEIVER.JPG)
 
 ## Schematic
 
@@ -64,6 +68,10 @@ int main(void)
 
 
 ```
+
+## 動作確認
+
+![](/img/IR_RECEIVER113/FaBo_113_IR_RECEIVER_CHEAK.JPG)
 
 ## 構成Parts
 - 12mm角タクトスイッチ

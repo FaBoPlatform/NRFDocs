@@ -1,5 +1,5 @@
 # #106 Touch Brick
-<center>![](../img/TOUCH106/106.jpg)
+![](/img/TOUCH106/106.jpg)
 <!--COLORME-->
 
 ## Overview
@@ -8,9 +8,7 @@ I/Oピンより、感圧部分に加えられた力の大きさの変化をア�
 
 ## Connecting
 
-アナログコネクタ(A0〜A5)のいずれかに接続します。
-
-![](/img/100_analog/connect/106_touch_connect.jpg)
+![](/img/TOUCH106/FaBo_106_TOUCH_CONNECT.JPG)
 
 ## Datasheet
 | Document |

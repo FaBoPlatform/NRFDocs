@@ -1,6 +1,6 @@
 # #107 LimitSwitch Brick
 
-<center>![](../img/LIMITSWICH107/107.jpg)
+![](/img/LIMITSWICH107/107.jpg)
 <!--COLORME-->
 
 ## Overview
@@ -11,6 +11,8 @@ I/OピンよりスイッチのON/OFFの状態を取得することができま�
 機械の自動停止や位置検出の際に使用します。
 
 ## Connecting
+
+![](/img/LIMITSWICH107/FaBo_107_LIMITSWITCH_CONNECT.JPG)
 
 ### Arduino
 
