@@ -40,7 +40,7 @@ A1コネクタに接続したTouch Brickの感圧によって、A0コネクタ�
 #include "nrf_pwr_mgmt.h"
 #include "nrf_drv_power.h"
 
-#define NRF_LOG_MODULE_NAME "FABO ANGLE"
+#define NRF_LOG_MODULE_NAME "FaBo_106_TOUCH"
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 
@@ -133,7 +133,7 @@ void saadc_init(void)
     APP_ERROR_CHECK(err_code);
 
     err_code = nrf_drv_saadc_channel_init(0, &channel_config);
-    APP_ERROR_CHECK(err_code);  uint32_t err_code = NRF_LOG_INIT(NULL);
+    err_code = NRF_LOG_INIT(NULL);
     APP_ERROR_CHECK(err_code);
 
     err_code = nrf_drv_saadc_buffer_convert(m_buffer_pool[0], SAMPLES_IN_BUFFER);
@@ -147,15 +147,14 @@ void saadc_init(void)
 
 int main(void)
 {
-
-
+		ret_code_t err_code;
     err_code = nrf_drv_power_init(NULL);
     APP_ERROR_CHECK(err_code);
 
     ret_code_t ret_code = nrf_pwr_mgmt_init(0);
     APP_ERROR_CHECK(ret_code);
 
-    NRF_LOG_INFO("Fabo Shinobi Sample Angle Brick 104\r\n");
+    NRF_LOG_INFO("Fabo Shinobi TOUCH Brick 106 Sample.\r\n");
     saadc_init();
     saadc_sampling_event_init();
     saadc_sampling_event_enable();
@@ -166,6 +165,7 @@ int main(void)
         NRF_LOG_FLUSH();
     }
 }
+
 
 ```
 

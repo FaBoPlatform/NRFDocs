@@ -184,6 +184,8 @@ Additional options. Pass any combination of playback flags, or 0 for default set
 #include "nrf_drv_clock.h"
 #include "nrf_delay.h"
 
+#define Fabo_Shinobi_AnalogPin 3
+
 static nrf_drv_pwm_t m_pwm0 = NRF_DRV_PWM_INSTANCE(0);
 
 static void sound(int freq)
@@ -193,7 +195,7 @@ static void sound(int freq)
     {
         .output_pins =
         {
-            3 | NRF_DRV_PWM_PIN_INVERTED,
+            Fabo_Shinobi_AnalogPin | NRF_DRV_PWM_PIN_INVERTED,
         },
         .irq_priority = APP_IRQ_PRIORITY_LOWEST,
         .base_clock   = NRF_PWM_CLK_1MHz,
@@ -220,6 +222,7 @@ static void sound(int freq)
 			nrf_drv_pwm_simple_playback(&m_pwm0, &seq0, 1,
                                 NRF_DRV_PWM_FLAG_LOOP);
 }
+
 
 
 int main(void)
@@ -253,6 +256,7 @@ int main(void)
 	}
 
 }
+
 
 
 ```
