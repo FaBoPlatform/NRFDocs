@@ -1,16 +1,7 @@
-##本ドキュメントについて
-入門者向けのプログラム学習用のドキュメントになっています。
-ノルディックセミコンダクター搭載BLEモジュールをターゲットとしたマイコンアプリケーション開発
-##対象レベル
-プログラムを過去に書いたことがある
-##使用言語
-C言語
-##使用ハード
-Shinobi_NRF
-Shinobi_ANA6
-Fabo_Brick Series
-
+## 目次
 * [はじめに](README.md)
+* Analog
+	* [101 LED](./brick_analog/101_brick_analog_led.md)
 * [NRF5xシリーズ](nrf.md)
 * Macでの開発環境
 	* [VSCodeでの環境構築](./Environment/Mac/VisualStudio.md)
