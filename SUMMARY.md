@@ -3,6 +3,7 @@
 * 開発環境(Windows)
 	* [Keil](./Environment/Windows/Keil/Step1_Keil_MDK-ARM_install.md)
 	* [NRF5 SDK](./Environment/Windows/Keil/Step2_SDK_Download.md)
+	* [nRFgo Studio](./Environment/Windows/Keil/Step3_NRFgoStudio_install.md)
 * 開発環境(OSX)
 	* [VSCodeでの環境構築](./Environment/Mac/VisualStudio.md)
 * Analog
