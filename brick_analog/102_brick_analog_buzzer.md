@@ -32,11 +32,10 @@ Buzzer Brickを接続し、ビープ音を鳴らしています。
 **nrf_drv_pwm_t**
 PWM ドライバのインスタンスデータ構造体
 
-NRF_PWM_Type * p_registers
-PWMペリフェラルインスタンスレジスタの指し示す
-
-uint8_t drv_inst_idx
- ドライバインスタンスインデックス
+| 変数名 | 概要 |
+|:--|:--|
+| NRF_PWM_Type * p_registers | PWMペリフェラルインスタンスレジスタの指し示す |
+| uint8_t drv_inst_idx |ドライバインスタンスインデックス |
 
 **enum nrf_pwm_mode_t**
 PWMモード
