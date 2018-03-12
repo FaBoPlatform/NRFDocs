@@ -77,11 +77,13 @@ C/C++をクリックします。Include Pathsの右のボタンをクリック�
 |フォルダ|必要なHeader File|
 |:--|:--|
 |カレントパス|自分自身へのパス|
-|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/hal|nrf_gpio.h|
-|nRF5_SDK_12.3.0_d7731ad/components/libraries/util|nrf_assert.h|
-|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/nrf_soc_nosd | nrf_error.h|
-|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/delay|nrf_delay.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/hal/ |nrf_gpio.h|
+|nRF5_SDK_12.3.0_d7731ad/components/libraries/util/ |nrf_assert.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/nrf_soc_nosd/  | nrf_error.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/delay/ |nrf_delay.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/boards/ |boards.h|
 
+boards.hは、Nordic製の開発ボード使用の際に参照されます。Shinobiの使用時は、さらに、custom_boards.hも参照されます。
 
 ## 6．SDK_confing.hの設定
 
