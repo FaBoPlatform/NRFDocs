@@ -53,81 +53,11 @@ MagageRunTimeEnviromentボタンをクリックします。
 
 ![](/img/101/led010.png)
 
-## 4．コンポーネント、ライブラリを選択
+## 4．フォルダ構成
 
 管理しやすいように名前を以下のようにします。
 
-![](/img/Fabo_LED_101/makeLibraryFolder.PNG)
-
-必要な以下のSDKのコンポーネントおよびライブラリから参照します。
-
-![](/img/Fabo_LED_101/OptionfoTarget101.PNG)
-
-ボタンをクリックします。
-
-![](/img/Fabo_LED_101/ButtoniconManager.PNG)
-
-以下のコンポーネント等のヘッダーファイルをAdd Filesボタンをクリックして指定します。
-
-![](/img/Fabo_LED_101/ManageProjectItems.PNG)
-
-
-Application
-
-main.c
-
-
-Board Definition
-
-boards.c
-
-
-nRF_Drivers
-
-..\..\..\..\..\..\components\drivers_nrf\clock\nrf_drv_clock.c
-
-..\..\..\..\..\..\components\drivers_nrf\common\nrf_drv_common.c
-
-..\..\..\..\..\..\components\drivers_nrf\uart\nrf_drv_uart.c
-
-..\..\..\..\..\..\components\drivers_nrf\nrf_soc_nosd\nrf_nvic.c
-
-..\..\..\..\..\..\components\drivers_nrf\nrf_soc_nosd\nrf_soc.c
-
-nRF_Libraries
-
-..\..\..\..\..\..\components\libraries\util\app_error.c
-
-..\..\..\..\..\..\components\libraries\util\app_error_weak.c
-
-..\..\..\..\..\..\components\libraries\timer\app_timer.c
-
-..\..\..\..\..\..\components\libraries\util\app_util_platform.c
-
-..\..\..\..\..\..\components\libraries\hardfault\hardfault_implementation.c
-
-..\..\..\..\..\..\components\libraries\util\nrf_assert.c
-
-..\..\..\..\..\..\components\libraries\util\sdk_errors.c
-
-nRF_Log
-
-..\..\..\..\..\..\components\libraries\log\src\nrf_log_backend_serial.c
-
-..\..\..\..\..\..\components\libraries\log\src\nrf_log_frontend.c
-
-nRF_Segger_RTT
-
-..\..\..\..\..\..\external\segger_rtt\RTT_Syscalls_KEIL.c
-
-..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT.c
-
-..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT_printf.c
-
-選択されると、コンポーネントがそれぞれ取り込まれます。
-
-![](/img/Fabo_LED_101/Projet_tree.PNG)
-
+![](/img/101/led011.png)
 
 ## 5．インクルードファイルの設定
 
@@ -147,7 +77,6 @@ C/C++をクリックします。Include Pathsの右のボタンをクリック�
 |フォルダ|必要なHeader File|
 |:--|:--|
 |nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/delay|nrf_delay.h|
-|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/hal|nrf_gpio.h|
 |nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/hal|nrf_gpio.h|
 |nRF5_SDK_12.3.0_d7731ad/components/libraries/util|nrf_assert.h|
 |nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/nrf_soc_nosd | nrf_error.h|
