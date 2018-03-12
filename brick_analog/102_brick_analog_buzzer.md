@@ -151,6 +151,22 @@ PWMドライバを初期化しない関数
 波長lengthは、（１０００／周波数）＊１０００になります。
 繰り返しは１００回です。
 
+## Inclue File
+
+|フォルダ|必要なHeader File|
+|:--|:--|
+|プロジェクトのRootパス|自分自身へのパス|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/hal/ |nrf_gpio.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/nrf_soc_nosd/  | nrf_error.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/pwm/ |nrf_drv_pwm.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/delay/ |nrf_delay.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/clock/ |nrf_drv_clock.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/common/ |nrf_drv_common.h|
+|nRF5_SDK_12.3.0_d7731ad/components/libraries/bsp/ |bsp.h|
+|nRF5_SDK_12.3.0_d7731ad/components/libraries/util/ |nrf_assert.h|
+|nRF5_SDK_12.3.0_d7731ad/components/libraries/timer/ |app_timer.h|
+|nRF5_SDK_12.3.0_d7731ad/components/boards/ |boards.h|
+
 ###ビープ音でドレミを演奏。
 
 ```c
@@ -238,8 +254,6 @@ int main(void)
 	}
 
 }
-
-
 
 ```
 
