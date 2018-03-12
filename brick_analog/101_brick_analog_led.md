@@ -63,16 +63,16 @@ MagageRunTimeEnviromentボタンをクリックします。
 
 Option for Targetボタンを押し、
 
-![](/img/Fabo_LED_101/Optiontarget.PNG)
+![](/img/101/led012.png)
 
 C/C++をクリックします。Include Pathsの右のボタンをクリックします。
 
-![](/img/Fabo_LED_101/Includepass.PNG)
+![](/img/101/led013.png)
 
 ボタンを押して逐次ヘッダファイルがあるパスを追加します。
 選択されると以下のようになります。
 
-![](/img/Fabo_LED_101/Includepass101.PNG)
+![](/img/101/led014.png)
 
 |フォルダ|必要なHeader File|
 |:--|:--|
