@@ -53,13 +53,13 @@ MagageRunTimeEnviromentボタンをクリックします。
 
 ![](/img/101/led010.png)
 
-## 4．フォルダ構成と環境ファイル
+## 4．フォルダの構成
 
 管理しやすいように名前を以下のようにします。
 
 ![](/img/101/led011.png)
 
-srcフォルダに名前を変更します。
+フォルダ名をsrcに変更します。
 
 ![](/img/101/led012.png)
 
@@ -69,7 +69,9 @@ configフォルダを作成します。
 
 ![](/img/101/led014.png)
 
-configフォルダにcustom_boards.hを追加します。
+## 5. custom_board.h の作成
+
+configフォルダにcustom_board.hを追加します。
 
 ![](/img/101/led015.png)
 
@@ -77,33 +79,93 @@ configフォルダにcustom_boards.hを追加します。
 
 ![](/img/101/led017.png)
 
-## 5．インクルードファイルの設定
+config/custom_board.h
+```c
+// Shinobi Dev Board
 
-Option for Targetボタンを押し、
+#ifndef CUSTOM_BOARD_H
+#define CUSTOM_BOARD_H
+
+#define LEDS_NUMBER    1
+#define LED_1          18
+#define LEDS_LIST { LED_1 }
+#define LEDS_ACTIVE_STATE 1
+#define BSP_LED_0      LED_1
+#define BUTTONS_NUMBER 1
+#define BUTTON_0       16
+#define BUTTONS_ACTIVE_STATE 0
+#define BSP_BUTTON_0   BUTTON_0
+#define BUTTONS_LIST { BUTTON_0 }
+#define BUTTON_PULL    NRF_GPIO_PIN_PULLUP
+
+#define LEDS_INV_MASK  0
+
+#define RX_PIN_NUMBER  9
+#define TX_PIN_NUMBER  11
+#define CTS_PIN_NUMBER 10
+#define RTS_PIN_NUMBER 8
+#define HWFC           false
+
+#define SPIS_MISO_PIN  20    // SPI MISO signal.
+#define SPIS_CSN_PIN   21    // SPI CSN signal.
+#define SPIS_MOSI_PIN  22    // SPI MOSI signal.
+#define SPIS_SCK_PIN   23    // SPI SCK signal.
+
+#define SPIM0_SCK_PIN       23u     /**< SPI clock GPIO pin number. */
+#define SPIM0_MOSI_PIN      20u     /**< SPI Master Out Slave In GPIO pin number. */
+#define SPIM0_MISO_PIN      22u     /**< SPI Master In Slave Out GPIO pin number. */
+#define SPIM0_SS_PIN        21u     /**< SPI Slave Select GPIO pin number. */
+
+#define SPIM1_SCK_PIN       29u     /**< SPI clock GPIO pin number. */
+#define SPIM1_MOSI_PIN      24u     /**< SPI Master Out Slave In GPIO pin number. */
+#define SPIM1_MISO_PIN      28u     /**< SPI Master In Slave Out GPIO pin number. */
+#define SPIM1_SS_PIN        25u     /**< SPI Slave Select GPIO pin number. */
+
+// serialization APPLICATION board
+
+// UART
+// this configuration works with the SPI wires setup
+#define SER_APP_RX_PIN              20     // UART RX pin number.
+#define SER_APP_TX_PIN              22     // UART TX pin number.
+#define SER_APP_CTS_PIN             23     // UART Clear To Send pin number.
+#define SER_APP_RTS_PIN             21     // UART Request To Send pin number.
+
+// serialization CONNECTIVITY board
+
+// UART
+#if 0
+#define SER_CON_RX_PIN              22    // UART RX pin number.
+#define SER_CON_TX_PIN              20    // UART TX pin number.
+#define SER_CON_CTS_PIN             21    // UART Clear To Send pin number. Not used if HWFC is set to false.
+#define SER_CON_RTS_PIN             23    // UART Request To Send pin number. Not used if HWFC is set to false.
+#else
+// this configuration works with the SPI wires setup
+#define SER_CON_RX_PIN              20    // UART RX pin number.
+#define SER_CON_TX_PIN              22    // UART TX pin number.
+#define SER_CON_CTS_PIN             21    // UART Clear To Send pin number. Not used if HWFC is set to false.
+#define SER_CON_RTS_PIN             23    // UART Request To Send pin number. Not used if HWFC is set to false.
+#endif
+
+#define SER_CONN_ASSERT_LED_PIN     LED_0
+
+#define NRF_CLOCK_LFCLKSRC      {.source        = NRF_CLOCK_LF_SRC_XTAL,            \
+                                 .rc_ctiv       = 0,                                \
+                                 .rc_temp_ctiv  = 0,                                \
+                                 .xtal_accuracy = NRF_CLOCK_LF_XTAL_ACCURACY_20_PPM}
+
+#endif
+```
+
+## 6. sdk_condig.hの取り込み
+
+configフォルダに、[SDK Root]/examples/ble_peripheral/ble_app_template/pca10040/s132/config/sdk_config.hをプロジェクトフォルダにコピーし、Keil上に取り込みます。
 
 ![](/img/101/led018.png)
 
-C/C++をクリックします。Include Pathsの右のボタンをクリックします。
-
 ![](/img/101/led019.png)
-
-ボタンを押して逐次ヘッダファイルがあるパスを追加します。
-選択されると以下のようになります。
 
 ![](/img/101/led020.png)
 
-|フォルダ|必要なHeader File|
-|:--|:--|
-|カレントパス|自分自身へのパス|
-|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/hal/ |nrf_gpio.h|
-|nRF5_SDK_12.3.0_d7731ad/components/libraries/util/ |nrf_assert.h|
-|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/nrf_soc_nosd/  | nrf_error.h|
-|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/delay/ |nrf_delay.h|
-|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/boards/ |boards.h|
-
-boards.hは、Nordic製の開発ボード使用の際に参照されます。Shinobiの使用時は、さらに、custom_boards.hも参照されます。
-
-## 6．SDK_confing.hの設定
 
 コンパイルするモジュールを指定します。
 
@@ -119,7 +181,33 @@ SDK_confing.hを選択し下のconfigration_Wizardタブをクリック。
 https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v12.0.0%2Fsdk_config.html
 
 
-## 7．コンパイラ制御の設定
+## 7．インクルードファイルの設定
+
+Option for Targetボタンを押し、
+
+![](/img/101/led021.png)
+
+C/C++をクリックします。Include Pathsの右のボタンをクリックします。
+
+![](/img/101/led022.png)
+
+ボタンを押して逐次ヘッダファイルがあるパスを追加します。
+選択されると以下のようになります。
+
+![](/img/101/led023.png)
+
+|フォルダ|必要なHeader File|
+|:--|:--|
+|プロジェクトのRootパス|自分自身へのパス|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/hal/ |nrf_gpio.h|
+|nRF5_SDK_12.3.0_d7731ad/components/libraries/util/ |nrf_assert.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/nrf_soc_nosd/  | nrf_error.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/delay/ |nrf_delay.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/boards/ |boards.h|
+
+boards.hは、Nordic製の開発ボード使用の際に参照されます。Shinobiの使用時は、さらに、custom_boards.hも参照されます。
+
+## 8．コンパイラ制御の設定
 
 Option for Targetボタンを押し、
 
@@ -145,7 +233,7 @@ Optimize Level3(-O3)を選択
 
 Misc　Controls：　--c99を追加します。
 
-### 8. デバッカの設定
+### 9. デバッカの設定
 
 次にDebugタグをクリックします。
 
@@ -170,7 +258,7 @@ Flash Downloadタブをクリックし、書き込み方法を設定いたしま
 OKボタンを押して設定は終了です。
 
 
-## 9．main関数追加
+## 10．main関数追加
 
 Projectファイルと同一のディレクトリにListings,Object,RTEフォルダが自動的に生成されます。
 画面の左フォルダSourceGroup 1を左クリックしAdd New Item to Group'SourceGroup 1'を選択します。C File(.c)を選択します。
@@ -184,7 +272,7 @@ Projectファイルと同一のディレクトリにListings,Object,RTEフォル
 main.cをクリックして開きます。
 次のコードをコピーアンドペーストしてください。
 
-### 10. 1秒間隔でFaboBrickを点滅させる。
+### 11. 1秒間隔でFaboBrickを点滅させる。
 
 ```c
 
@@ -209,8 +297,7 @@ int main(void)
 
 ```
 
-
-### 11.直接レジスタ操作によるLED点滅の場合
+### 12.直接レジスタ操作によるLED点滅の場合
 
 Arduino PinA0は、NRF52のピン番号はP0.03にとなります。C言語なのでintなどは、マイコンによってバイト数が２バイトである場合と４バイトである場合があり、unsigned char(unsigned int)ではなくuint8_tなどを使ったほうが可読性や移植性の観点から望ましい。
 
@@ -265,7 +352,7 @@ int main(void)
 ```
 
 
-## 12..実行
+## 13.実行
 
 Buildを実行します。（ショートカットキーF7）
 
