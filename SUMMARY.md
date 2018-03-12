@@ -19,6 +19,7 @@
 	* [BLE SoC](./chip/chiplist.md)
 	* [Module](./module/modulenordic.md)
 	* [LoRa SoC](./chip/loralist.md)
+	* [Sensor SoC](./chip/sensor.md)
 * Basic
 	* [開発環境(nRF52)](./basic/dev_nrf52.md)
 	* [UART](./basic/uart.md)
