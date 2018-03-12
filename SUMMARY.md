@@ -16,7 +16,7 @@
 * Shinobi
 	* [Shinobiボード定義(custom_borad.h)](./Environment/Shinobi/Shinobi_CustomBoard.md)
 * BLEとLoRa
-	* [BLE SoC](./chip.md)
+	* [BLE SoC](./chip/chiplist.md)
 * Basic
 	* [開発環境(nRF52)](./basic/dev_nrf52.md)
 	* [UART](./basic/uart.md)
