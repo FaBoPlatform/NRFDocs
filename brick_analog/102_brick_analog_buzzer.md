@@ -29,7 +29,7 @@ Buzzer Brickを接続し、ビープ音を鳴らしています。
 
 ## 主な構造体
 
-> nrf_drv_pwm_t
+### nrf_drv_pwm_t
 
 PWM ドライバのインスタンスデータ構造体
 
@@ -38,7 +38,8 @@ PWM ドライバのインスタンスデータ構造体
 | NRF_PWM_Type * p_registers | PWMペリフェラルインスタンスレジスタの指し示す |
 | uint8_t drv_inst_idx |ドライバインスタンスインデックス |
 
-> enum nrf_pwm_mode_t
+
+###  enum nrf_pwm_mode_t
 
 PWMモード
 
@@ -47,7 +48,8 @@ PWMモード
 |NRF_PWM_MODE_UP|アップカウンタ（エッジデューティーサイクル）|
 |NRF_PWM_MODE_UP_AND_DOWN|アップ、ダウンカウンタ　（センターデューティーサイクル）|
 
-> enum nrf_pwm_dec_load_t
+
+###  enum nrf_pwm_dec_load_t
 
 PWMデコーダーロードモード
 シーケンスデータのRAMから読み出され、コンペアレジスタに格納方法。
@@ -59,7 +61,7 @@ PWMデコーダーロードモード
 |NRF_PWM_LOAD_INDIVIDUAL |チャンネル0で使用される一番最初のハーフワード（16ビット）、チャンネル1では2番目、チャネル2の3番目、チャンネル3の4番目|
 |NRF_PWM_LOAD_WAVE_FORM | チャンネル0で使用される一番最初のハーフワード（16ビット）、チャンネル1では2番目、4番目は、パルスジェネレータカウンタの最上位の値 |
 
-> enum nrf_pwm_clk_t
+###  enum nrf_pwm_clk_t
 
 ベースクロック周波数。
 
@@ -74,7 +76,7 @@ PWMデコーダーロードモード
 |NRF_PWM_CLK_250kHz|	
 |NRF_PWM_CLK_125kHz|
 
-> enum nrf_pwm_dec_step_t
+### enum nrf_pwm_dec_step_t
 
 PWMデコーダーネクストステップモード
 
@@ -87,6 +89,7 @@ PWMデコーダーネクストステップモード
 
 ## 主な関数
 
+###  ret_code_t nrf_drv_pwm_init
 > ret_code_t nrf_drv_pwm_init
 (nrf_drv_pwm_t const \*const p_instance, nrf_drv_pwm_config_t const \* p_config, nrf_drv_pwm_handler_t handler )
 
@@ -105,12 +108,14 @@ PWMドライバを初期化する関数
 |NRF_SUCCESS|成功した場合。|
 |NRF_ERROR_INVALID_STATE|すでに初期化されている場合。|
 
+### nrf_drv_pwm_uninit
 > void nrf_drv_pwm_uninit	(	nrf_drv_pwm_t const \*const 	p_instance	)
 
 PWMドライバを初期化しない関数
 
 プレイ中の場合は、すぐに停止します。
 
+### nrf_drv_pwm_simple_playback
 > void nrf_drv_pwm_simple_playback (nrf_drv_pwm_t const \*const p_instance, nrf_pwm_sequence_t const * p_sequence,uint16_tplayback_count,uint32_t flags )
 
 １回のシーケンス再生を行う関数
