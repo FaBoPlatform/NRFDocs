@@ -53,26 +53,44 @@ MagageRunTimeEnviromentボタンをクリックします。
 
 ![](/img/101/led010.png)
 
-## 4．フォルダ構成
+## 4．フォルダ構成と環境ファイル
 
 管理しやすいように名前を以下のようにします。
 
 ![](/img/101/led011.png)
 
+srcフォルダに名前を変更します。
+
+![](/img/101/led012.png)
+
+configフォルダを作成します。
+
+![](/img/101/led013.png)
+
+![](/img/101/led014.png)
+
+configフォルダにcustom_boards.hを追加します。
+
+![](/img/101/led015.png)
+
+![](/img/101/led016.png)
+
+![](/img/101/led017.png)
+
 ## 5．インクルードファイルの設定
 
 Option for Targetボタンを押し、
 
-![](/img/101/led012.png)
+![](/img/101/led018.png)
 
 C/C++をクリックします。Include Pathsの右のボタンをクリックします。
 
-![](/img/101/led013.png)
+![](/img/101/led019.png)
 
 ボタンを押して逐次ヘッダファイルがあるパスを追加します。
 選択されると以下のようになります。
 
-![](/img/101/led014.png)
+![](/img/101/led020.png)
 
 |フォルダ|必要なHeader File|
 |:--|:--|
