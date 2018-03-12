@@ -61,8 +61,6 @@ MagageRunTimeEnviromentボタンをクリックします。
 
 フォルダ名をsrcに変更します。
 
-![](/img/101/led012.png)
-
 configフォルダを作成します。
 
 ![](/img/101/led013.png)
@@ -203,19 +201,19 @@ C/C++をクリックします。Include Pathsの右のボタンをクリック�
 |nRF5_SDK_12.3.0_d7731ad/components/libraries/util/ |nrf_assert.h|
 |nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/nrf_soc_nosd/  | nrf_error.h|
 |nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/delay/ |nrf_delay.h|
-|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/boards/ |boards.h|
+|nRF5_SDK_12.3.0_d7731ad/components/boards/ |boards.h|
 
-boards.hは、Nordic製の開発ボード使用の際に参照されます。Shinobiの使用時は、さらに、custom_boards.hも参照されます。
+boards.hは、Nordic製の開発ボード使用の際に参照されます。Shinobiの使用時は、さらに、custom_board.hも参照されます。
 
 ## 8．コンパイラ制御の設定
 
 Option for Targetボタンを押し、
 
-![](/img/Fabo_LED_101/Optiontarget.PNG)
+![](/img/101/led024.png)
 
 Option for Targetボタンを押し、C/C++をクリックPreprocessor SymbolsのDefine:に
 
-![](/img/Fabo_LED_101/OptionfoTarget.PNG)
+![](/img/101/led025.png)
 
 nRF52 Shinobiの場合
 
@@ -237,23 +235,22 @@ Misc　Controls：　--c99を追加します。
 
 次にDebugタグをクリックします。
 
-
 ターゲットのフラッシュメモリ　プログラム開始アドレスが0x0から始まっていることを確認してください。（無線を使用する場合などで、SoftDeviceを前もってDownloadした場合は、その領域の次にアドレス設定をします。他の項で記述）
 
-![](/img/LED_101/OptionsTarget.png)
+![](/img/101/led026.png)
 
 使用するデバッカを設定します。J-linkの場合は、J-LINK/J-TRACE Cortexを選択。
 
-![](/img/LED_101/J-linkSettings.jpg)
+![](/img/101/led027.png)
 
 Settingボタンを押します。port:をJTAG(4～5線式)からSW(2線式)に変更いたします。
 
-![](/img/LED_101/build_Settings.jpg)
+![](/img/101/led028.png)
 
 Flash Downloadタブをクリックし、書き込み方法を設定いたします。
 書き込み後すぐ実行させるため、Reset and Runを選択します。
 
-![](/img/LED_101/WriteSettings.jpg)
+![](/img/101/led029.png)
 
 OKボタンを押して設定は終了です。
 
@@ -263,11 +260,11 @@ OKボタンを押して設定は終了です。
 Projectファイルと同一のディレクトリにListings,Object,RTEフォルダが自動的に生成されます。
 画面の左フォルダSourceGroup 1を左クリックしAdd New Item to Group'SourceGroup 1'を選択します。C File(.c)を選択します。
 
-![](/img/LED_101/AddNewGroup.png)
+![](/img/101/100.png)
 
 一番最初に呼ばれるファイルなのでファイル名はmain.cと名前で保存してください。
 
-![](/img/LED_101/SouceGroupSelection.png)
+![](/img/101/101.png)
 
 main.cをクリックして開きます。
 次のコードをコピーアンドペーストしてください。
