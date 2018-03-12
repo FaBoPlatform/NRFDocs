@@ -1,6 +1,6 @@
 # #101 LED Brick
 
-![](/img/LED_101/101_led.jpg)
+![](/img/101/led001.jpg)
 <!--COLORME-->
 
 ## Overview
@@ -9,15 +9,15 @@ LEDのBrickです。発光色は5色（青・緑・赤・白・黄）ありま�
 ## Connecting
 接続例：J-Linke LiteをShinobi_NRF、USB電源をShinobiBatterry,Fabo1010をShinobiアナログコネクタに接続します。
 
-![](/img/Fabo_LED_101/Fabo_101_Connect_LI.jpg)
+![](/img/101/led002.jpg)
 
 ## Schematic
 
 Fabo 101 LEDの回路図
-![](/img/led101_schmatic.png)
+![](/img/101/led003.png)
 
 Shinobi NRFの回路図
-![](/img/Fabo_LED_101/Shinobi_Schamtic.PNG)
+![](/img/101/led004.png)
 
 ## Sample Code
 Arduino Motor ShieldのA0コネクタにLED Brickを接続し、一定時間(1秒=1000ms)ごとに点灯/消灯（Lチカ）させています。
@@ -27,33 +27,31 @@ Arduino Motor ShieldのA0コネクタにLED Brickを接続し、一定時間(1�
 任意の場所プロジェクトフォルダの中にLED101のフォルダを作成します。
 Project → New μ プロジェクト → プロジェクトファイルを保存します。
 
-![](/img/LED_101/_101_ProjectMake.png)
+![](/img/101/led005.png)
 
 プロジェクトファイルが作成され。
 
 ## ２．デバイスの選択
 
 ターゲットとなるマイコンを選択します。Nordic Semiconductorを選択。
-![](/img/LED_101/Selection_Soc.png)
+![](/img/101/led006.png)
 
 nRF52　Series→nRF528232_xxAAを選択します。
-![](/img/LED_101/SocVersionSelect.jpg)
+![](/img/101/led007.jpg)
 
 ## ３．コンポーネントを選択
 
 MagageRunTimeEnviromentボタンをクリックします。
 
-![](/img/Fabo_LED_101/ManageRun.PNG)
+![](/img/101/led008.png)
 
 マイコン起動に必要なコンポーネントを選択します。
 
-![](/img/Fabo_LED_101/StartupSelect.PNG)
+![](/img/101/led009.png)
 
-以下をチェックします。
+依存性を解消します。
 
-CMSIS→CORE
-
-Device→Startup
+![](/img/101/led010.png)
 
 ## 4．コンポーネント、ライブラリを選択
 
@@ -145,6 +143,15 @@ C/C++をクリックします。Include Pathsの右のボタンをクリック�
 選択されると以下のようになります。
 
 ![](/img/Fabo_LED_101/Includepass101.PNG)
+
+|フォルダ|必要なHeader File|
+|:--|:--|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/delay|nrf_delay.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/hal|nrf_gpio.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/hal|nrf_gpio.h|
+|nRF5_SDK_12.3.0_d7731ad/components/libraries/util|nrf_assert.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/nrf_soc_nosd | nrf_error.h|
+
 
 ## 6．SDK_confing.hの設定
 
