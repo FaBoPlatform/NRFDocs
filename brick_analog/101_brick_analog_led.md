@@ -76,10 +76,11 @@ C/C++をクリックします。Include Pathsの右のボタンをクリック�
 
 |フォルダ|必要なHeader File|
 |:--|:--|
-|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/delay|nrf_delay.h|
+|カレントパス|自分自身へのパス|
 |nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/hal|nrf_gpio.h|
 |nRF5_SDK_12.3.0_d7731ad/components/libraries/util|nrf_assert.h|
 |nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/nrf_soc_nosd | nrf_error.h|
+|nRF5_SDK_12.3.0_d7731ad/components/drivers_nrf/delay|nrf_delay.h|
 
 
 ## 6．SDK_confing.hの設定
