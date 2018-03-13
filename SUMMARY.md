@@ -53,6 +53,7 @@
 	* [app_templateのコピー](./beacon/001_template.md)
 	* [LEDの点灯](./beacon/002_led.md)
 	* [ログの出力](./beacon/003_log.md)
-	* [SoftDeviceの焼き込み](./beacon/004_softdevice.md)
+	* [エラーハンドラ](./beacon/004_error.md)
+	* [SoftDeviceの焼き込み](./beacon/005_softdevice.md)
 * [NRF5xシリーズ](nrf.md)
 	
