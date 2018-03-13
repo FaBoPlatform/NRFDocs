@@ -18,5 +18,5 @@ nRFGOを起動して、SoftDevice 132を焼き込みます。
 
 SoftDeviceを焼き込んだので、Firmwareの焼き込み開始位置を0x1f000 に変更します。
 
-![](./img/sb_008.png)
+![](./img/sb_006.png)
 
