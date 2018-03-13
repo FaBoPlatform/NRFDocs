@@ -9,11 +9,9 @@ FT232RLを使用した、USBシリアル通信ができるBrickです。
 ## Connecting
 Serialコネクタへ接続し、MicroUSBコネクタを他のデバイスに接続します。Necleoのi/oは3.3Vで駆動しますのでUSB Brickの電圧スイッチを3.3Vにしてください。
 
-UART_OUTPUT
+sdk_config.h printfで出力する設定。
 
-printfの設定
-
-![](/img/101/led001.jpg)
+![](/img/USB304/UART_OUTPUT.PNG)
 
 ## Sample Code
 
