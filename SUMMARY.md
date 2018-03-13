@@ -48,8 +48,6 @@
 	* [iBeaconとは？](./basic/beacon.md)
 	* [iBeaconのフォーマット](./basic/beaconadvparam.md)
 	* [iBeaconのパケット](./basic/beaconadvdata.md)
-	* [iBeaconのSample](./basic/beaconsample.md)
-* iBeaconの開発
 	* [app_templateのコピー](./beacon/001_template.md)
 	* [LEDの点灯](./beacon/002_led.md)
 	* [ログの出力](./beacon/003_log.md)
