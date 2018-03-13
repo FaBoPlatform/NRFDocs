@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Component Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'Shinobi_GridEye' 
+ * Project: 'uart_pca10040' 
  * Target:  'nrf52832_xxaa' 
  */
 
