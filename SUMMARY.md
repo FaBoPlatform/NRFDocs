@@ -55,5 +55,6 @@
 	* [ログの出力](./beacon/003_log.md)
 	* [エラーハンドラ](./beacon/004_error.md)
 	* [SoftDeviceの焼き込み](./beacon/005_softdevice.md)
+	* [PowerManage](./beacon/006_power.md)
 * [NRF5xシリーズ](nrf.md)
 	

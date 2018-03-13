@@ -63,9 +63,12 @@ int main(void)
  */
 ```
 
+
 ## Error Handlerが呼ばれたらSystemReset
 
-app_error_fault_handlerが呼ばれたら、NVIC_SystemReset()でシステムリセット
+app_error_fault_handlerが呼ばれたら、NVIC_SystemReset()でシステムリセットする。
+また、err_code = NRF_LOG_INIT(NULL);のerr_codeをAPP_ERROR_CHECKでチェックする。
+
 
 ```c
 #include <stdbool.h>
@@ -110,7 +113,8 @@ int main(void)
 {        
         ret_code_t err_code;
         err_code = NRF_LOG_INIT(NULL);
-				
+		APP_ERROR_CHECK(err_code);
+
         NRF_LOG_INFO("TEST\r\n");
 		NRF_LOG_FLUSH();
 		
