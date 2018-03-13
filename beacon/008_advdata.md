@@ -1,5 +1,68 @@
 # Advertising DataのInit
 
+## Defineの定義
+
+```c
+#define APP_COMPANY_IDENTIFIER 0x002C // Apple
+#define APP_BEACON_INFO_LENGTH 0x17 // Beaconのデータの長さ
+#define APP_BEACON_TYPE 0x02, 0x15 // Beaconのタイプ
+#define APP_BEACON_UUID     0x01, 0x12, 0x23, 0x34, \
+                            0x45, 0xaa, 0x67, 0x78, \
+                            0x89, 0xba, 0x13, 0xbc, \
+                            0x33, 0x1a, 0x22, 0xf0 // iBeaconのUUID
+#define APP_MAJOR_VALUE 0x01, 0x02                        // iBeaconのMajor 
+#define APP_MINOR_VALUE 0x03, 0x04                        // iBeaconのMinor 
+#define APP_MEASURED_RSSI 0xC3 // RSSI出力の計測値
+```
+
+## AdvDataの作成
+
+```c
+/**@brief Function for initializing the Advertising functionality.
+ */
+static void advertising_init(void)
+{
+    uint32_t err_code;
+   
+    // AdvDataのManufacture Specificの領域の値の定義.
+    ble_advdata_manuf_data_t manuf_specific_data;
+    manuf_specific_data.company_identifier = APP_COMPANY_IDENTIFIER;
+    manuf_specific_data.data.p_data = (uint8_t *) m_beacon_info;
+    manuf_specific_data.data.size = APP_BEACON_INFO_LENGTH;
+
+    // AdvDataを構築.
+    ble_advdata_t advdata;
+    memset(&advdata, 0, sizeof(advdata));
+    
+    // AdvDataの設定.
+    advdata.name_type = BLE_ADVDATA_NO_NAME;
+    //advdata.include_appearance = true;
+    advdata.flags = BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE;
+
+    // Manufacture Specificの値を設定.
+    advdata.p_manuf_specific_data = &manuf_specific_data;
+
+    // AdvDataを登録.
+    err_code = ble_advdata_set(&advdata, NULL);
+    APP_ERROR_CHECK(err_code);
+
+    // AdvData設定後にLED2を点灯
+    bsp_board_led_on(LED2);
+}
+```
+
+>  ble_advdata_manuf_data_t 構造体
+
+http://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v13.0.0%2Fstructble__advdata__manuf__data__t.html
+
+> ble_advdata_t 構造体
+
+https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v13.0.0%2Fstructble__advdata__t.html
+
+> ble_advdata_set
+
+
+
 ## ソースコード
 
 ```c
@@ -114,7 +177,7 @@ static void ble_stack_init(void)
 }
 
 /**@brief Function for initializing the Advertising functionality.
- * /
+ */
 static void advertising_init(void)
 {
     uint32_t err_code;
@@ -131,7 +194,7 @@ static void advertising_init(void)
     
     // AdvDataの設定.
     advdata.name_type = BLE_ADVDATA_NO_NAME;
-    advdata.include_appearance = true;
+    //advdata.include_appearance = true;
     advdata.flags = BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE;
 
     // Manufacture Specificの値を設定.
@@ -140,6 +203,9 @@ static void advertising_init(void)
     // AdvDataを登録.
     err_code = ble_advdata_set(&advdata, NULL);
     APP_ERROR_CHECK(err_code);
+
+    // AdvData設定後にLED2を点灯
+    bsp_board_led_on(LED2);
 }
 
 /**@brief Function for application main entry.
@@ -148,7 +214,7 @@ int main(void)
 {        
         ret_code_t err_code;
         err_code = NRF_LOG_INIT(NULL);
-		PP_ERROR_CHECK(err_code);
+		APP_ERROR_CHECK(err_code);
 		leds_init();
 		ble_stack_init();
 		advertising_init();
