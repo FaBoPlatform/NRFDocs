@@ -1,4 +1,4 @@
-# Advertising DataのInit
+# AdvDataの設定
 
 ## Defineの定義
 
@@ -61,6 +61,7 @@ https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.
 
 > ble_advdata_set
 
+https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v13.0.0%2Fgroup__ble__sdk__lib__advdata.html
 
 
 ## ソースコード
