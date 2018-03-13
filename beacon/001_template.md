@@ -1,7 +1,17 @@
-# BOARD
+# BLE Peripheral templateのコピー
 
+プロジェクトをコピー。
 
-## nRF52832開発ボード
+![](./img/cp_001.png)
 
-PCA10036 プレビュー版
-PCA10040 開発用ボードの名称（NFC追加）
+プロジェクトを貼り付け。
+
+![](./img/cp_002.png)
+
+プロジェクトをble_app_mybeaconにリネーム
+
+![](./img/cp_003.png)
+
+Keilでプロジェクトをオープン
+
+![](./img/cp_004.png)
