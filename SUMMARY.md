@@ -58,6 +58,6 @@
 	* [PowerManage](./beacon/006_power.md)
 	* [BLE初期化](./beacon/007_init_ble.md)
 	* [AdvDataの設定](./beacon/008_advdata.md)
-	* [Advertising](./beacon/009_advertisingmd)
+	* [Advertisingを開始](./beacon/009_advstart.md)
 * [NRF5xシリーズ](nrf.md)
 	
