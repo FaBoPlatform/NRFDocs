@@ -187,7 +187,7 @@ int main(void)
 {        
         ret_code_t err_code;
         err_code = NRF_LOG_INIT(NULL);
-		PP_ERROR_CHECK(err_code);
+		APP_ERROR_CHECK(err_code);
 		leds_init();
 		ble_stack_init();
         
