@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug51",
+            "type": "gdb",
+            "request": "attach",
+            "executable": "${workspaceRoot}/nRF51822/gcc/_build/akabeacon51.out",
+            "target": "localhost:2331",
+            "cwd": "${workspaceRoot}",
+            "gdbpath": "/usr/local/bin/arm-none-eabi-gdb",
+            "remote": true,
+            "autorun": [
+                "load ./nRF51822/gcc/_build/akabeacon51.out",
+                "break main",
+                "monitor reset"
+            ],
+            "preLaunchTask": "Run GDB-Server 51"
+        },
+        {
+            "name": "Debug52",
+            "type": "gdb",
+            "request": "attach",
+            "executable": "${workspaceRoot}/nRF52832/gcc/_build/akabeacon52.out",
+            "target": "localhost:2331",
+            "cwd": "${workspaceRoot}",
+            "gdbpath": "/usr/local/bin/arm-none-eabi-gdb",
+            "remote": true,
+            "autorun": [
+                "load ./nRF52832/gcc/_build/akabeacon52.out",
+                "break main",
+                "monitor reset"
+            ],
+            "preLaunchTask": "Run GDB-Server 52"
+        }
+    ]
+}

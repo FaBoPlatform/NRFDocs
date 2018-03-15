@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "app_error.h": "c",
+        "app_uart.h": "c",
+        "stdio.h": "c",
+        "boards.h": "c",
+        "aka_service.h": "c",
+        "nrf_log.h": "c"
+    }
+}

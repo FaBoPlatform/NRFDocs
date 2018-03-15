@@ -1,0 +1,65 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the ocumentation about the tasks.json format
+    "version": "0.1.0",
+    "command": "make",
+    "isShellCommand": true,
+    "args": ["-C"],
+    "showOutput": "always",
+    "suppressTaskName": true,
+    "tasks": [
+    {
+        "isBuildCommand": true,
+        "taskName": "Build 51",
+        "args": ["./nRF51822/gcc/", "DEBUG=yes"]
+    },
+    {
+        "taskName": "Release 51",
+        "args": ["./nRF51822/gcc/"]
+    },
+    {
+        "taskName": "Clean 51",
+        "args": ["./nRF51822/gcc/", "clean"]
+    },
+    {
+        "taskName": "Flash 51",
+        "args": ["./nRF51822/gcc/", "flash"]
+    },
+    {
+        "taskName": "Flash ALL 51",
+        "args": ["./nRF51822/gcc/", "flash_all"]
+    },
+    {
+        "taskName": "Build 52",
+        "args": ["./nRF52832/gcc/", "DEBUG=yes"]
+    },
+    {
+        "taskName": "Clean 52",
+        "args": ["./nRF52832/gcc/", "clean"]
+    },
+    {
+        "taskName": "Flash 52",
+        "args": ["./nRF52832/gcc/", "flash"]
+    },
+    {
+        "taskName": "Flash SoftDevice 51",
+        "args": ["'./nRF51822/gcc/", "flash_softdevice"]
+    },
+    {
+        "taskName": "Flash SoftDevice 52",
+        "args": ["./nRF52832/gcc/", "flash_softdevice"]
+    },
+    {
+        "taskName": "Protect 51",
+        "args": ["./nRF51822/gcc/", "protect"]
+    },
+    {
+        "taskName": "Run GDB-Server 51",
+        "args": ["./nRF51822/gcc/", "debugger"]
+    },
+    {
+        "taskName": "Run GDB-Server 52",
+        "args": ["./nRF52832/gcc/", "debugger"]
+    }
+  ]
+}
