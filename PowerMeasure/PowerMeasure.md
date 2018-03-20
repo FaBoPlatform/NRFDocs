@@ -22,28 +22,28 @@ DKボード、PowerProfilerKit（USB5V外部 Max70mA,電圧調整可能）、外
 
 Windowsの場合、Windows版nRFConnectを選択します。
 
-![](/img/Shinobi/nRFConnect.PNG)
+![](/img/PPK/nRFConnect.PNG)
 
 Windows版をダウンロード、インストールします。
 
-![](/img/Shinobi/PPK_Download1.PNG)
+![](/img/PPK/PPK_Download1.PNG)
 
 nRFConnectを起動し、Add/remove appsを選び、PowerProfilerをインストールします。
 
-![](/img/Shinobi/nRFConnect.PNG)
+![](/img/PPK/nRFConnect.PNG)
 
 PowerProfilerを起動します。
 
-![](/img/Shinobi/nrfconnect3.PNG)
+![](/img/PPK/nrfconnect3.PNG)
 
 下記のような、画面が現れ、DKボードのポートを選択し、正常の場合、しばらく経つと波形が現れます。
 
-![](/img/Shinobi/nRFConnect_PowerMeasurement.PNG)
+![](/img/PPK/nRFConnect_PowerMeasurement.PNG)
 
 
 # 設定
 
-![](/img/Shinobi/PPK_F.JPG)
+![](/img/PPK/PPK_F.JPG)
 
 ## スイッチ
 
