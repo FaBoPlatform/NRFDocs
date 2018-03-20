@@ -1,6 +1,6 @@
 # 電力測定の方法
 
-![](/img/Shinobi/PPK.JPG)
+![](/img/PPK/PPK.JPG)
 <!--COLORME-->
 
 ## Overview
