@@ -62,7 +62,7 @@ Windows版をダウンロード、インストールします。
 
 nRFConnectを起動し、Add/remove appsを選び、PowerProfilerをインストールします。
 
-![](/img/PPK/nRFConnect.PNG)
+![](/img/PPK/nrfconnect2.PNG)
 
 LanchAppを選択し、PowerProfilerを起動します。ComPortを適切に選択します。
 
