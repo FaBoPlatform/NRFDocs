@@ -11,7 +11,9 @@ http://developer.nordicsemi.com/
 
 ## nRF52サポート
 
-__nRF5 SDK v14.2.0__
+__nRF5 SDK v15.0.0__ SoftDevicesは、S112 v6.0.0、S132 v6.0.0、S140 v6.0.0、およびS212 v5.0.0です。このリリースでは、nRF52840の完全なサポートと、このデバイスのライブラリの生産品質および例が提供されています。その他の機能には、暗号化機能とDFU機能の大幅な変更、SDKでの周辺機器ドライバの新しい処理方法などがあります。
+
+__nRF5 SDK v14.2.0__ このバージョンに対応するSoftDeviceは、S112 v5.1.0、S132 v5.0.x、S140 v5.0.0-2.alpha、S212 v5.0.x、およびS332 v5.0.xです。このリリースでは、S112の例がS112 SoftDevice v5.1.0を使用するように更新されました。
 
 __nRF5 SDK v14.1.0__ IoT SDKとnRF5 SDKが統合、Segger Embedded Studioサポート、PCA10040でのnRF52810開発のサポート
 
