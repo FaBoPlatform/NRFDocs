@@ -16,9 +16,15 @@ LED Brickの明るさを調節する際などに使用します。
 
 ## Schematic
 
+## Code explanation
+
 nRF52832は、ADCが使えるピンは決まっており、P0.03は、AIN1となります。
 
 アナログ値はターミナルソフト(Teratermなど)から確認しましょう。
+
+ドライバはPPI（Programmable peripheral interconnect）ドライバを使います。A/D変換するの
+にARMコアを起動するのは消費電力の無駄であり、PPIという仕組みを利用して、PPIのチャンネルを指定
+、コアを起動しないで、イベントメモリとタスクで計測データをPPIのメモリに保存します。
 
 ## Sample Code
 
