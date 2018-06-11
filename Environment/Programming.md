@@ -16,7 +16,7 @@
 
 提供している会社は、SEGGER,PEmicro
 
-SEGGER使用でコマンドラインツールがあり、nrfjprogを使えば、バッチ処理でのマイコンへプログラミングできます。
+SEGGER使用でコマンドラインツールがあり、nrfjprogを使えば、バッチ処理でマイコンへプログラミングできます。ハードごとに異なった値をROMに書き込みなどができて便利です。
 
 参考URL
 http://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.gs%2Fdita%2Fgs%2Fnordic_tools.html
