@@ -1,5 +1,9 @@
 # Seggerでの環境構築
 
+## Document
+
+http://infocenter.nordicsemi.com/pdf/getting_started_ses.pdf
+
 ## SeggerのDownload
 
 https://www.segger.com/downloads/embedded-studio
