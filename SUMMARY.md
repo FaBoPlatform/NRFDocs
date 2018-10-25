@@ -11,22 +11,30 @@
 	* [NRF5 SDK](./Environment/Mac/NRF5_SDK.md)
 	* [J-LINKの設定](./Environment/Mac/JLINK.md)
 	* [Command Line Toolsのインストール](./Environment/Mac/CommandLineTool_install.md)
+	* [Sampleの実行](./Environment/Mac/Sample.md)
 	* [Errorとその対処](./Environment/Mac/error.md)
 * Shinobi
 	* [認識させるコツ](./recognize.md)
+	* [Shinobiボード定義(custom_borad.h)](./Environment/Shinobi/Shinobi_CustomBoard.md)
+	* [#1 Shinobi_NRF](./ShinobiSeries/#1_Shinobi_NRF.md)
+	* [#2 Shinobi_Battery.md](./ShinobiSeries/#2_Shinobi_Battery.md.md)
+	* [#3 Shinobi_SolarLipoCharger.md](./ShinobiSeries/#3_Shinobi_SolarLipoCharger.md.md)
+	* [#4 Shinobi_ANA6](./ShinobiSeries/#4_Shinobi_ANA6.md)
+	* [#5 Shinobi_Motor](./ShinobiSeries/#5_Shinobi_Motor.md)
+	* [#8 Shinobi_USB_BatteryLDO)](./ShinobiSeries/#8_Shinobi_USB_Battery_LDO.md)
+	* [#9 Shinobi_USB_Battery(LM3671)](./ShinobiSeries/#9_Shinobi_USB_Battery_LM3671.md)
+	* [#10 Shinobi_GridEye](./ShinobiSeries/#10_Shinobi_GridEye.md)
+	* [#12_Shinobi_Battery(TPS63000)](./ShinobiSeries/#12_Shinobi_Battery_TPS63000.md)
+	* [#99 Shinobi I2C_Expand](./ShinobiSeries/#99_Shinobi_I2C_Expand.md)
+	* [Li-PoBattery](./ShinobiSeries/Li-PoBattery.md)
+	* [Shinobi_NFC](./ShinobiSeries/Shinobi_NFC.md)
+	* [Solarpanel_Medium](./ShinobiSeries/Solarpanel_Medium.md)
+	* [Solarpanel_Round](./ShinobiSeries/Solarpanel_Round.md)
 * 開発ツール
+	* [開発ボード](./Environment/Board/board.md)
 	* [ARM対応のデバッカー一覧](./Environment/JTAG/debugger.md)
 	* [スニファー(TI)](./Environment/Sniffer/sniffer.md)
-	* [スニファー(NRF)](./Environment/Sniffer/sniffer_nrf.md)
-* 開発ボード
-	* [開発ボード](./Environment/Board/board.md)
-* Shinobi
-	* [Shinobiボード定義(custom_borad.h)](./Environment/Shinobi/Shinobi_CustomBoard.md)
-* 各種 SoC
-	* [BLE SoC](./chip/chiplist.md)
-	* [Module](./module/modulenordic.md)
-	* [LoRa SoC](./chip/loralist.md)
-	* [Sensor SoC](./chip/sensor.md)
+	* [スニファー(NRF)](./Environment/Sniffer/sniffer_nrf.md)	
 * Basic
 	* [開発環境(nRF52)](./basic/dev_nrf52.md)
 	* [UART](./basic/uart.md)
@@ -67,3 +75,7 @@
 * [NRF5xシリーズ](nrf.md)
 * ETC
 	* [VSCodeでの環境構築](./Environment/Mac/VisualStudio.md)
+	* [BLE SoC](./chip/chiplist.md)
+	* [Module](./module/modulenordic.md)
+	* [LoRa SoC](./chip/loralist.md)
+	* [Sensor SoC](./chip/sensor.md)
