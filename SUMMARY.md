@@ -6,8 +6,9 @@
 	* [nRFgo Studio](./Environment/Windows/Keil/Step3_NRFgoStudio_install.md)
 	* [開発の事前準備](./Environment/Windows/Keil/Step4_SDK_Preparation.md)
 * 開発環境(OSX)
-	* [SEGGER toolsのインストール](./Environment/Mac/Segger.md)
-	* [SEGGER tools対応の開発ボード](./Environment/Mac/Segger_board.md)
+	* [SESのインストール](./Environment/Mac/Segger.md)
+	* [SES対応の開発ボード](./Environment/Mac/Segger_board.md)
+	* [J-LINKの設定](./Environment/Mac/JLINK.md)
 	* [Command Line Toolsのインストール](./Environment/Mac/CommandLineTool_install.md)
 * 開発ツール
 	* [ARM対応のデバッカー一覧](./Environment/JTAG/debugger.md)
