@@ -1,13 +1,13 @@
 ## 目次
 * [はじめに](README.md)
 * 開発環境(Windows)
-	* [Keil](./Environment/Windows/Keil/Step1_Keil_MDK-ARM_install.md)
+	* [Keilでの開発環境](./Environment/Windows/Keil/Step1_Keil_MDK-ARM_install.md)
 	* [NRF5 SDK](./Environment/Windows/Keil/Step2_SDK_Download.md)
 	* [nRFgo Studio](./Environment/Windows/Keil/Step3_NRFgoStudio_install.md)
 	* [開発の事前準備](./Environment/Windows/Keil/Step4_SDK_Preparation.md)
 * 開発環境(OSX)
 	* [Seggerでの環境構築](./Environment/Mac/Segger.md)
-	* [VSCodeでの環境構築](./Environment/Mac/VisualStudio.md)
+	* [Seggerに対応の開発ボード](./Environment/Mac/Segger_board.md)
 * 開発ツール
 	* [ARM対応のデバッカー一覧](./Environment/JTAG/debugger.md)
 	* [スニファー(TI)](./Environment/Sniffer/sniffer.md)
@@ -59,4 +59,5 @@
 	* [AdvDataの設定](./beacon/008_advdata.md)
 	* [Advertisingを開始](./beacon/009_advstart.md)
 * [NRF5xシリーズ](nrf.md)
-	
+* ETC
+	* [VSCodeでの環境構築](./Environment/Mac/VisualStudio.md)

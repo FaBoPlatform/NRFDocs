@@ -17,12 +17,14 @@ https://www.segger.com/products/debug-probes/j-link/models/j-link-lite/j-link-li
 
 Segger Embedded Studioを起動。
 
-LicenseのActivateをおこなう。
+LicenseのActivateをおこなう。[Build]-[Build and Debug]を実行する。
 
 ![](./img/segger001.png)
 
 ![](./img/segger002.png)
 
 ![](./img/segger003.png)
+
+メールで、Licenseコードが届くので、それをコピーして、Activateする。
 
 ![](./img/segger004.png)
