@@ -2,6 +2,6 @@
 
 https://www.segger.com/downloads/embedded-studio
 
-* SDKのDownload
+* nRF5 SDKのDownload
 
 https://developer.nordicsemi.com/nRF5_SDK/
