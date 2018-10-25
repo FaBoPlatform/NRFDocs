@@ -16,3 +16,13 @@ https://www.segger.com/products/debug-probes/j-link/models/j-link-lite/j-link-li
 ## Segger Embedded StudioのLicenseのActivate
 
 Segger Embedded Studioを起動。
+
+LicenseのActivateをおこなう。
+
+![](./img/segger001.png)
+
+![](./img/segger002.png)
+
+![](./img/segger003.png)
+
+![](./img/segger004.png)
