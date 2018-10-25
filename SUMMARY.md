@@ -11,6 +11,7 @@
 	* [NRF5 SDK](./Environment/Mac/NRF5_SDK.md)
 	* [J-LINKの設定](./Environment/Mac/JLINK.md)
 	* [Command Line Toolsのインストール](./Environment/Mac/CommandLineTool_install.md)
+	* [Errorとその対処](./Environment/Mac/error.md)
 * 開発ツール
 	* [ARM対応のデバッカー一覧](./Environment/JTAG/debugger.md)
 	* [スニファー(TI)](./Environment/Sniffer/sniffer.md)
