@@ -8,6 +8,7 @@
 * 開発環境(OSX)
 	* [SESのインストール](./Environment/Mac/Segger.md)
 	* [SES対応の開発ボード](./Environment/Mac/Segger_board.md)
+	* [NRF5 SDK](./Environment/Mac/NRF5_SDK.md)
 	* [J-LINKの設定](./Environment/Mac/JLINK.md)
 	* [Command Line Toolsのインストール](./Environment/Mac/CommandLineTool_install.md)
 * 開発ツール
