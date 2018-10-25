@@ -12,3 +12,7 @@ https://developer.nordicsemi.com/nRF5_SDK/
 
 J-Link Lite
 https://www.segger.com/products/debug-probes/j-link/models/j-link-lite/j-link-lite-arm/
+
+## Segger Embedded StudioのLicenseのActivate
+
+Segger Embedded Studioを起動。
