@@ -9,3 +9,11 @@
 |PCA10040|[nRF52 DK](https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF52-DK)|nRF52832|
 |PCA10028|[nRF51 DK](https://www.nordicsemi.com/eng/Products/nRF51-DK)|nRF51422|
 |PCA10032|[nRF51 Dongle](https://www.nordicsemi.com/eng/Products/nRF51-Dongle)|nRF51422|
+
+## Shinobi
+
+|ボード名|CHIP|
+|:--|:--|
+|#1|nRF52832|
+
+Shinobi #1は、nRF52832を使用しているため、PCA10040のProfileが使える。

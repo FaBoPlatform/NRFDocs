@@ -1,5 +1,20 @@
 # Sample
 
+## 使用できるサンプル
+
+BLEなしのサンプル
+```
+nRF5_SDK_14.2.0_17b948a/examples/peripheral
+```
+
+BLEありのサンプル
+```
+nRF5_SDK_14.2.0_17b948a/examples/ble_central
+```
+
+
+## Blink
+
 nRF5_SDK_14.2.0_17b948a/examples/peripheral/blinky/pca10040/s132/ses
 
 のプロジェクトを開く。
