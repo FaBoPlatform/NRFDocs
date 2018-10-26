@@ -4,6 +4,7 @@ nRF5_SDK_14.2.0_17b948a/examples/peripheral/blinky/pca10040/s132/ses
 
 のプロジェクトを開く。
 
+main.c
 ```c
 #include "nrf_delay.h"
 #include "nrf_gpio.h"
