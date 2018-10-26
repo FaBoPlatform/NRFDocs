@@ -4,7 +4,7 @@
 
 http://infocenter.nordicsemi.com/pdf/getting_started_ses.pdf
 
-## SeggerのDownload
+## Segger Embedded StudioのDownload
 
 https://www.segger.com/downloads/embedded-studio
 
@@ -12,16 +12,9 @@ https://www.segger.com/downloads/embedded-studio
 
 https://developer.nordicsemi.com/nRF5_SDK/
 
-## Debugger
-
-J-Link Lite
-https://www.segger.com/products/debug-probes/j-link/models/j-link-lite/j-link-lite-arm/
-
 ## Segger Embedded StudioのLicenseのActivate
 
-Segger Embedded Studioを起動。
-
-LicenseのActivateをおこなう。[Build]-[Build and Debug]を実行する。
+Segger Embedded Studioを起動。LicenseのActivateをおこなう。[Build]-[Build and Debug]を実行する。
 
 ![](./img/segger001.png)
 

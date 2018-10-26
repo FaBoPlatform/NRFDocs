@@ -12,9 +12,10 @@
 	* [J-LINKの設定](./Environment/Mac/JLINK.md)
 	* [Command Line Toolsのインストール](./Environment/Mac/CommandLineTool_install.md)
 	* [Sampleの実行](./Environment/Mac/Sample.md)
+	* [CMSIS-COREのImport](./Environment/Mac/cmsis.md)
 	* [Errorとその対処](./Environment/Mac/error.md)
 * Shinobi
-	* [認識させるコツ](./Environment/Mac/recognize.md)
+	* [認識させるコツ](./shinobi/recognize.md)
 	* [Shinobiボード定義(custom_borad.h)](./Environment/Shinobi/Shinobi_CustomBoard.md)
 	* [#1 Shinobi_NRF](./ShinobiSeries/1_Shinobi_NRF.md)
 	* [#2 Shinobi_Battery](./ShinobiSeries/2_Shinobi_Battery.md)
