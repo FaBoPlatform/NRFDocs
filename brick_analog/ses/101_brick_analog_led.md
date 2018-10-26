@@ -1,6 +1,6 @@
 # #101 LED Brick
 
-![](../img/led001.jpg)
+
 <!--COLORME-->
 
 ## Overview
@@ -28,6 +28,8 @@ Arduino Motor ShieldのA0コネクタにLED Brickを接続し、一定時間(1�
 
 SDKのフィルだに参照元ファイルは存在
 
+![](./img/led001.jpg)
+
 |ファイル名|参照先パス|
 |:--|:--|
 |Board Definition/board.c|nRF5_SDK_14.2.0_17b948a/components/boards/boards.c|
@@ -39,7 +41,7 @@ SDKのフィルだに参照元ファイルは存在
 |nRF_Libraries/app_util_platform.c|nRF5_SDK_14.2.0_17b948a/components/libraries/util/app_util_platform.c|
 |nRF_Libraries/nrf_assert.c|nRF5_SDK_14.2.0_17b948a/components/libraries/util/nrf_assert.c|
 |nRF_Libraries/nrf_strerror.c|nRF5_SDK_14.2.0_17b948a/components/libraries/strerror/nrf_strerror.c|
-|Segger Startup Files|thumb_crt0.s|/Applications/SEGGER Embedded Studio for ARM 4.10/source/thumb_crt0.s|
+|Segger Startup Files/thumb_crt0.s|/Applications/SEGGER Embedded Studio for ARM 4.10/source/thumb_crt0.s|
 
 ## 3 sdk_config.h を用意
 
