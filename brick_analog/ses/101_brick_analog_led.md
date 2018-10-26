@@ -28,7 +28,7 @@ Arduino Motor ShieldのA0コネクタにLED Brickを接続し、一定時間(1�
 
 SDKのフォルダに参照したいファイルは存在する。
 
-![](./img/led001.jpg)
+![](./img/led001.png)
 
 |ファイル名|参照先パス|
 |:--|:--|
