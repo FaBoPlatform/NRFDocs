@@ -53,6 +53,7 @@
 	* [103 Button(Keil)](./brick_analog/103_brick_analog_button.md)
 	* [104 Angle(SES)](./brick_analog/ses/104_brick_analog_angle.md)
 	* [104 Angle(Keil)](./brick_analog/104_brick_analog_angle.md)
+	* [105 Vibrator(SES)](./brick_analog/ses/105_brick_analog_vibrator.md)
 	* [105 Vibrator(Keil)](./brick_analog/105_brick_analog_vibrator.md)
 	* [106 Touch(Keil)](./brick_analog/106_brick_analog_touch.md)
 	* [107 Limit Switch(Keil)](./brick_analog/107_brick_analog_limitswitch.md)
