@@ -61,6 +61,7 @@
 	* [107 Limit Switch(Keil)](./brick_analog/107_brick_analog_limitswitch.md)
 	* [108 Temperature(SES)](./brick_analog/ses/108_brick_analog_temperature.md)
 	* [108 Temperature(Keil)](./brick_analog/108_brick_analog_temperature.md)
+	* [109 Ambient Light(SES)](./brick_analog/ses/109_brick_analog_ambientlinght.md)
 	* [109 Ambient Light(Keil)](./brick_analog/109_brick_analog_ambientlinght.md)
 	* [110 Tilt(Keil)](./brick_analog/110_brick_analog_tilt.md)
 	* [112 IR(Keil)](./brick_analog/112_brick_analog_ir_led.md)
