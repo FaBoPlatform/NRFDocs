@@ -66,6 +66,11 @@ Solution Option -> Preprocessor -> Preprocessor Definitionsに以下を追加す
 |POWER_ENABLED|
 |TIMER0_ENABLED|
 |TIMER_ENABLED|
+|NRFX_SAADC_ENABLED|
+|NRFX_PPI_ENABLED|
+|NRFX_POWER_ENABLED|
+|NRFX_TIMER0_ENABLED|
+|NRFX_TIMER_ENABLED|
 |BOARD_CUSTOM|
 |NRF52832_XXAB|
 |DEBUG|
@@ -105,36 +110,43 @@ Projectに以下のファイルを追加する。(../nRF5_SDKの部分は適宜�
 |nrfx_uarte.c|../nRF5_SDK/modules/nrfx/drivers/src|
 
 ## Section
-SEGGER_Flash.icfファイルを編集する。(SEGGER_Flash.icfはProject配下に自動生成されているハズ。以下抜粋)
+SEGGER_Flash.icfファイルを編集する。(SEGGER_Flash.icfはProject配下に自動生成されている。以下抜粋)
 ```c
-place in FLASH                           {  
+ :
+
+define block log_const_data_start with size = 8 { symbol __start_log_const_data };
+define block log_const_data_list { section .log_const_data* };
+define block log_const_data_stop with size = 8 { symbol __stop_log_const_data };
+define block log_const_data with fixed order { block log_const_data_start, block log_const_data_list, block log_const_data_stop };
+
+ :
+
+place in FLASH                           {
                                            block tdata_load,                       // Thread-local-storage load image
-                                           //この下の4Lineを追加する
-                                           section .log_const_data_FABO_104_ANGLE,
                                            section .log_backends,
                                            section .nrf_balloc,
-                                           section .log_const_data_app
+                                           block log_const_data
                                          };
+ :
 ```
 
-## SAADC_IRQHandler
+## IRQHandler
 Cortex_M_Startup.sファイルを編集する。(長いので抜粋)
 ```c
 ISR_HANDLER ExternalISR0
 ISR_HANDLER ExternalISR1
-ISR_HANDLER ExternalISR2
+ISR_HANDLER UARTE0_UART0_IRQHandler //ExternalISR2
 ISR_HANDLER ExternalISR3
 ISR_HANDLER ExternalISR4
 ISR_HANDLER ExternalISR5
 ISR_HANDLER ExternalISR6
-ISR_HANDLER ExternalISR7 //<-ここをSAADC_IRQHandlerに書き換える
+ISR_HANDLER SAADC_IRQHandler        //ExternalISR7
 ISR_HANDLER ExternalISR8
+ISR_HANDLER ExternalISR9
+ISR_HANDLER ExternalISR10
 ```
 
-
 ## Sample Code
-
-
 ```c
 #include <stdbool.h>
 #include <stdint.h>
@@ -164,23 +176,17 @@ static nrf_saadc_value_t     m_buffer_pool[2][SAMPLES_IN_BUFFER];
 static nrf_ppi_channel_t     m_ppi_channel;
 static uint32_t              m_adc_evt_counter;
 
-nrf_log_module_const_data_t* __start_log_const_data;
-void* __stop_log_const_data;
-void* __start_pwr_mgmt_data;
-void* __stop_pwr_mgmt_data;
-nrf_log_module_dynamic_data_t* __start_log_dynamic_data;
-
-void nrf_log_module_initialize()
-{
-    APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
-    NRF_LOG_DEFAULT_BACKENDS_INIT();
-    *(NRF_SECTION_ITEM_GET(log_const_data, nrf_log_module_const_data_t, NRF_LOG_MODULE_ID_GET_CONST(&NRF_LOG_ITEM_DATA_CONST(NRF_LOG_MODULE_NAME)) & 0x0000ffff)) = NRF_LOG_ITEM_DATA_CONST(NRF_LOG_MODULE_NAME);
-}
+nrf_log_module_const_data_t*    __start_log_const_data;
+nrf_log_module_dynamic_data_t*  __start_log_dynamic_data;
+void*                           __start_pwr_mgmt_data;
+void*                           __stop_log_const_data;
+void*                           __stop_log_dynamic_data;
+void*                           __stop_pwr_mgmt_data;
 
 void timer_handler(nrf_timer_event_t event_type, void * p_context)
 {
-}
 
+}
 
 void saadc_sampling_event_init(void)
 {
@@ -267,14 +273,16 @@ void saadc_init(void)
 }
 
 int main(void)
-{    
-    nrf_log_module_initialize();
+{
+    APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
+    NRF_LOG_DEFAULT_BACKENDS_INIT();
 
     APP_ERROR_CHECK(nrf_drv_power_init(NULL));
 
     APP_ERROR_CHECK(nrf_pwr_mgmt_init());
 
     NRF_LOG_INFO("Fabo Shinobi Sample Angle Brick 104");
+
     saadc_init();
     saadc_sampling_event_init();
     saadc_sampling_event_enable();
@@ -285,7 +293,6 @@ int main(void)
         NRF_LOG_FLUSH();
     }
 }
-
 ```
 
 

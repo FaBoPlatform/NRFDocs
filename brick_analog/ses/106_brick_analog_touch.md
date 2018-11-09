@@ -104,14 +104,22 @@ Projectに以下のファイルを追加する。(../nRF5_SDKの部分は適宜�
 ## Section
 SEGGER_Flash.icfファイルを編集する。(SEGGER_Flash.icfはProject配下に自動生成されているハズ。以下抜粋)
 ```c
-place in FLASH                           {  
+ :
+
+define block log_const_data_start with size = 8 { symbol __start_log_const_data };
+define block log_const_data_list { section .log_const_data* };
+define block log_const_data_stop with size = 8 { symbol __stop_log_const_data };
+define block log_const_data with fixed order { block log_const_data_start, block log_const_data_list, block log_const_data_stop };
+
+ :
+
+place in FLASH                           {
                                            block tdata_load,                       // Thread-local-storage load image
-                                           //この下の4Lineを追加する
-                                           section .log_const_data_FABO_106_TOUCH,
+                                           section .log_backends,
                                            section .nrf_balloc,
-                                           section .log_const_data_app,
-                                           section .log_backends
+                                           block log_const_data
                                          };
+ :
 ```
 
 ## IRQHandler
@@ -164,17 +172,12 @@ static nrf_saadc_value_t     m_buffer_pool[2][SAMPLES_IN_BUFFER];
 static nrf_ppi_channel_t     m_ppi_channel;
 static uint32_t              m_adc_evt_counter;
 nrf_log_module_const_data_t*    __start_log_const_data;
+nrf_log_module_dynamic_data_t*  __start_log_dynamic_data;
 void*                           __start_pwr_mgmt_data;
 void*                           __stop_log_const_data;
+void*                           __stop_log_dynamic_data;
 void*                           __stop_pwr_mgmt_data;
-nrf_log_module_dynamic_data_t*  __start_log_dynamic_data;
 
-void nrf_log_module_initialize()
-{
-    APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
-    NRF_LOG_DEFAULT_BACKENDS_INIT();
-    *(NRF_SECTION_ITEM_GET(log_const_data, nrf_log_module_const_data_t, NRF_LOG_MODULE_ID_GET_CONST(&NRF_LOG_ITEM_DATA_CONST(NRF_LOG_MODULE_NAME)) & 0x0000ffff)) = NRF_LOG_ITEM_DATA_CONST(NRF_LOG_MODULE_NAME);
-}
 
 void timer_handler(nrf_timer_event_t event_type, void * p_context)
 {
@@ -256,7 +259,6 @@ void saadc_init(void)
     APP_ERROR_CHECK(err_code);
 
     err_code = nrf_drv_saadc_channel_init(0, &channel_config);
-    err_code = NRF_LOG_INIT(NULL);
     APP_ERROR_CHECK(err_code);
 
     err_code = nrf_drv_saadc_buffer_convert(m_buffer_pool[0], SAMPLES_IN_BUFFER);
@@ -267,10 +269,11 @@ void saadc_init(void)
 
 }
 
-
 int main(void)
 {
-    nrf_log_module_initialize();
+    APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
+    NRF_LOG_DEFAULT_BACKENDS_INIT();
+
     APP_ERROR_CHECK(nrf_drv_power_init(NULL));
 
     APP_ERROR_CHECK(nrf_pwr_mgmt_init());
@@ -286,7 +289,6 @@ int main(void)
         NRF_LOG_FLUSH();
     }
 }
-
 
 ```
 

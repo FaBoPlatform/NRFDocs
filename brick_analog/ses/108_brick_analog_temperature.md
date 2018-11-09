@@ -104,73 +104,24 @@ Projectに以下のファイルを追加する。(../nRF5_SDKの部分は適宜�
 |nrfx_uarte.c|../nRF5_SDK/modules/nrfx/drivers/src|
 
 ## Section
-SEGGER_Flash.icfファイルを編集する。(SEGGER_Flash.icfはProject配下に自動生成されている)
+SEGGER_Flash.icfファイルを編集する。(SEGGER_Flash.icfはProject配下に自動生成されている。以下抜粋)
 ```c
-define memory with size = 4G;
-//
-// Block definitions
-//
-define block ctors { section .ctors, section .ctors.*, block with alphabetical order { init_array } };
-define block dtors { section .dtors, section .dtors.*, block with reverse alphabetical order { fini_array } };
-define block exidx { section .ARM.exidx, section .ARM.exidx.* };
-define block tbss  { section .tbss,  section .tbss.*  };
-define block tdata { section .tdata, section .tdata.* };
-define block tls   { block tbss, block tdata };
-define block tdata_load { copy of block tdata };
-define block heap  with size = __HEAPSIZE__,  alignment = 8, /* fill =0x00, */ readwrite access { };
-define block stack with size = __STACKSIZE__, alignment = 8, /* fill =0xCD, */ readwrite access { };
+ :
 
 define block log_const_data_start with size = 8 { symbol __start_log_const_data };
 define block log_const_data_list { section .log_const_data* };
 define block log_const_data_stop with size = 8 { symbol __stop_log_const_data };
 define block log_const_data with fixed order { block log_const_data_start, block log_const_data_list, block log_const_data_stop };
 
-//
-// Explicit initialization settings for sections
-//
-do not initialize                           { section .non_init, section .non_init.* };
-initialize by copy /* with packing=auto */  { section .data, section .data.* };
-initialize by copy /* with packing=auto */  { section .fast, section .fast.* };
-//
-// ROM Placement
-//
-place at start of FLASH                 {
-                                           section .vectors,                         // Vector table section
-                                        };
-place in FLASH with minimum size order  {
-                                           section .init, section .init.*,          // Init code section
-                                           section .text, section .text.*,          // Code section
-                                           section .rodata, section .rodata.*,      // Read-only data section
-                                           section .segger.*,                       // Auto-generated initialization
-                                           block exidx,                             // ARM exception unwinding block
-                                           block ctors,                             // Constructors block
-                                           block dtors                              // Destructors block
-                                         };
+ :
+
 place in FLASH                           {
                                            block tdata_load,                       // Thread-local-storage load image
                                            section .log_backends,
                                            section .nrf_balloc,
                                            block log_const_data
                                          };
-//                                      
-// RAM Placement                        
-//                                      
-place in RAM                             {                                          // Special sections
-                                           section .non_init, section .non_init.*,  // No initialization section
-                                           block tls,                                // Thread-local-storage block
-                                           section .log_dynamic_data
-                                         };
-place in RAM with auto order             {                                          // Initialized sections
-                                           section .fast, section .fast.*,          // "ramfunc" section
-                                           section .data, section .data.*,          // Initialized data section
-                                           section .bss, section .bss.*             // Static data section
-                                         };
-place in RAM                             {
-                                           /* expandable */ block heap              // Heap reserved block
-                                         };
-place at end of RAM                      {
-                                           block stack                              // Stack reserved block at the end
-                                         };
+ :
 ```
 
 ## IRQHandler
@@ -330,10 +281,8 @@ int main(void)
 
     APP_ERROR_CHECK(nrf_pwr_mgmt_init());
 
-    int nrf_log_item_data_const = &NRF_LOG_ITEM_DATA_CONST(NRF_LOG_MODULE_NAME);
-    int nrf_log_module_id = NRF_LOG_MODULE_ID;
-    int log_const_data_addr = NRF_SECTION_START_ADDR(log_const_data);
     NRF_LOG_INFO("Fabo Shinobi Temprature Brick 108");
+
     saadc_init();
     saadc_sampling_event_init();
     saadc_sampling_event_enable();

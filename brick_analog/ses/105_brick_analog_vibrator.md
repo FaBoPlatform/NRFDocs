@@ -88,57 +88,39 @@ Projectに以下のファイルを追加する。(../nRF5_SDKの部分は適宜�
 |nrfx_uarte.c|../nRF5_SDK/modules/nrfx/drivers/src|
 
 ## Section
-SEGGER_Flash.icfファイルを編集する。(SEGGER_Flash.icfはProject配下に自動生成されているハズ。以下抜粋)
+SEGGER_Flash.icfファイルを編集する。(SEGGER_Flash.icfはProject配下に自動生成されている。以下抜粋)
 ```c
-place in FLASH                           {  
+ :
+
+define block log_const_data_start with size = 8 { symbol __start_log_const_data };
+define block log_const_data_list { section .log_const_data* };
+define block log_const_data_stop with size = 8 { symbol __stop_log_const_data };
+define block log_const_data with fixed order { block log_const_data_start, block log_const_data_list, block log_const_data_stop };
+
+ :
+
+place in FLASH                           {
                                            block tdata_load,                       // Thread-local-storage load image
-                                           //この下の4Lineを追加する
+                                           section .log_backends,
                                            section .nrf_balloc,
-                                           section .log_const_data_app,
-                                           section .log_const_data_L104_FABO_VIBRATOR,
-                                           section .log_backends
+                                           block log_const_data
                                          };
+ :
 ```
 
-## TIMER0_IRQHandler
+## IRQHandler
 Cortex_M_Startup.sファイルを編集する。(長いので抜粋)
 ```c
 ISR_HANDLER ExternalISR0
 ISR_HANDLER ExternalISR1
-ISR_HANDLER ExternalISR2
+ISR_HANDLER UARTE0_UART0_IRQHandler //ExternalISR2
 ISR_HANDLER ExternalISR3
 ISR_HANDLER ExternalISR4
 ISR_HANDLER ExternalISR5
 ISR_HANDLER ExternalISR6
 ISR_HANDLER ExternalISR7
-ISR_HANDLER TIMER0_IRQHandler //<-ExternalISR8のところを書き換える
+ISR_HANDLER TIMER0_IRQHandler //ExternalISR8
 ISR_HANDLER ExternalISR9
-```
-
-## sdk_config.h
-sdk_config.hを編集する。(長いので抜粋)
-```c
-// <o> NRFX_TIMER_DEFAULT_CONFIG_BIT_WIDTH  - Timer counter bit width
-
-// <0=> 16 bit
-// <1=> 8 bit
-// <2=> 24 bit
-// <3=> 32 bit
-
-#ifndef NRFX_TIMER_DEFAULT_CONFIG_BIT_WIDTH
-#define NRFX_TIMER_DEFAULT_CONFIG_BIT_WIDTH 2 //2に変更
-#endif
-
-// <o> TIMER_DEFAULT_CONFIG_BIT_WIDTH  - Timer counter bit width
-
-// <0=> 16 bit
-// <1=> 8 bit
-// <2=> 24 bit
-// <3=> 32 bit
-
-#ifndef TIMER_DEFAULT_CONFIG_BIT_WIDTH
-#define TIMER_DEFAULT_CONFIG_BIT_WIDTH 2 //2に変更
-#endif
 ```
 
 ## Sample Code
@@ -156,23 +138,17 @@ sdk_config.hを編集する。(長いので抜粋)
 #include "app_error.h"
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
-#define NRF_LOG_MODULE_NAME L104_FABO_VIBRATOR
+#define NRF_LOG_MODULE_NAME FABO_105_VIBRATOR
 #include "nrf_log.h"
 NRF_LOG_MODULE_REGISTER();
 
-const nrf_drv_timer_t TIMER_LED = NRF_DRV_TIMER_INSTANCE(0);
-nrf_log_module_const_data_t* __start_log_const_data;
-void* __stop_log_const_data;
-nrf_log_module_dynamic_data_t* __start_log_dynamic_data;
-
 #define PIN_NUMBER 3
 
-void nrf_log_module_initialize()
-{
-    APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
-    NRF_LOG_DEFAULT_BACKENDS_INIT();
-    *(NRF_SECTION_ITEM_GET(log_const_data, nrf_log_module_const_data_t, NRF_LOG_MODULE_ID_GET_CONST(&NRF_LOG_ITEM_DATA_CONST(NRF_LOG_MODULE_NAME)) & 0x0000ffff)) = NRF_LOG_ITEM_DATA_CONST(NRF_LOG_MODULE_NAME);
-}
+const nrf_drv_timer_t TIMER_LED = NRF_DRV_TIMER_INSTANCE(0);
+nrf_log_module_const_data_t*    __start_log_const_data;
+void*                           __stop_log_const_data;
+nrf_log_module_dynamic_data_t*  __start_log_dynamic_data;
+void*                           __stop_log_dynamic_data;
 
 void timer_led_event_handler(nrf_timer_event_t event_type, void* p_context)
 {
@@ -195,15 +171,16 @@ int main(void)
     uint32_t time_ticks;
     uint32_t err_code = NRF_SUCCESS;
 
-    nrf_log_module_initialize();
+    APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
+    NRF_LOG_DEFAULT_BACKENDS_INIT();
 
     int clock = 16000000 / 2;
 
     LEDS_CONFIGURE(1 << PIN_NUMBER);
 
     nrf_drv_timer_config_t timer_cfg = NRF_DRV_TIMER_DEFAULT_CONFIG;
-    err_code = nrf_drv_timer_init(&TIMER_LED, &timer_cfg, timer_led_event_handler);
-    APP_ERROR_CHECK(err_code);
+    timer_cfg.bit_width = NRF_TIMER_BIT_WIDTH_32;    
+    APP_ERROR_CHECK(nrf_drv_timer_init(&TIMER_LED, &timer_cfg, timer_led_event_handler));
 
     time_ticks = nrf_drv_timer_ms_to_ticks(&TIMER_LED, time_ms);
 
@@ -215,6 +192,7 @@ int main(void)
     while (1)
     {
         __WFI();
+        NRF_LOG_FLUSH();
     }
 }
 ```

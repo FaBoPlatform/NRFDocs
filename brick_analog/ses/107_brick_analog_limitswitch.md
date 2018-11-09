@@ -87,16 +87,24 @@ Projectに以下のファイルを追加する。(../nRF5_SDKの部分は適宜�
 |nrfx_uarte.c|../nRF5_SDK/modules/nrfx/drivers/src|
 
 ## Section
-SEGGER_Flash.icfファイルを編集する。(SEGGER_Flash.icfはProject配下に自動生成されているハズ。以下抜粋)
+SEGGER_Flash.icfファイルを編集する。(SEGGER_Flash.icfはProject配下に自動生成されている。以下抜粋)
 ```c
-place in FLASH                           {  
+ :
+
+define block log_const_data_start with size = 8 { symbol __start_log_const_data };
+define block log_const_data_list { section .log_const_data* };
+define block log_const_data_stop with size = 8 { symbol __stop_log_const_data };
+define block log_const_data with fixed order { block log_const_data_start, block log_const_data_list, block log_const_data_stop };
+
+ :
+
+place in FLASH                           {
                                            block tdata_load,                       // Thread-local-storage load image
-                                           //この下の4Lineを追加する
-										   section .log_const_data_FABO_107_LIMITSWITCH,
-                                           section .log_const_data_app,
                                            section .log_backends,
-                                           section .nrf_balloc
+                                           section .nrf_balloc,
+                                           block log_const_data
                                          };
+ :
 ```
 
 ## IRQHandler
@@ -147,16 +155,11 @@ static void gpio_init(void)
     nrf_gpio_pin_clear(FaBo_Shinobi_LEDPIN);
 }
 
-void nrf_log_module_initialize()
+int main(void)
 {
     APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
     NRF_LOG_DEFAULT_BACKENDS_INIT();
-    *(NRF_SECTION_ITEM_GET(log_const_data, nrf_log_module_const_data_t, NRF_LOG_MODULE_ID_GET_CONST(&NRF_LOG_ITEM_DATA_CONST(NRF_LOG_MODULE_NAME)) & 0x0000ffff)) = NRF_LOG_ITEM_DATA_CONST(NRF_LOG_MODULE_NAME);
-}
 
-int main(void)
-{
-    nrf_log_module_initialize();
     gpio_init();
 
     while (true)

@@ -77,13 +77,46 @@ Projectに以下のファイルを追加する。(../nRF5_SDKの部分は適宜�
 |nrfx_uart.c|../nRF5_SDK/modules/nrfx/drivers/src|
 |nrfx_uarte.c|../nRF5_SDK/modules/nrfx/drivers/src|
 
-## SDK Config
-sdk_config.hのNRF_LOG_DEFERREDをOFF(0)に変更する。
+## Section
+SEGGER_Flash.icfファイルを編集する。(SEGGER_Flash.icfはProject配下に自動生成されている。以下抜粋)
+```c
+ :
+
+define block log_const_data_start with size = 8 { symbol __start_log_const_data };
+define block log_const_data_list { section .log_const_data* };
+define block log_const_data_stop with size = 8 { symbol __stop_log_const_data };
+define block log_const_data with fixed order { block log_const_data_start, block log_const_data_list, block log_const_data_stop };
+
+ :
+
+place in FLASH                           {
+                                           block tdata_load,                       // Thread-local-storage load image
+                                           section .log_backends,
+                                           section .nrf_balloc,
+                                           block log_const_data
+                                         };
+ :
+```
+
+## IRQHandler
+Cortex_M_Startup.sファイルを編集する。(長いので抜粋)
+```c
+ISR_HANDLER ExternalISR0
+ISR_HANDLER ExternalISR1
+ISR_HANDLER UARTE0_UART0_IRQHandler //ExternalISR2
+ISR_HANDLER ExternalISR3
+ISR_HANDLER ExternalISR4
+ISR_HANDLER ExternalISR5
+ISR_HANDLER ExternalISR6
+ISR_HANDLER ExternalISR7
+ISR_HANDLER ExternalISR8
+ISR_HANDLER ExternalISR9
+ISR_HANDLER ExternalISR10
+```
 
 ## Sample Code
 
 ```c
-
 #include <stdbool.h>
 #include <stdint.h>
 #include "nrf.h"
@@ -96,20 +129,13 @@ sdk_config.hのNRF_LOG_DEFERREDをOFF(0)に変更する。
 #include "nrf_log.h"
 NRF_LOG_MODULE_REGISTER();
 
-nrf_log_module_const_data_t* __start_log_const_data;
-void* __stop_log_const_data;
-nrf_log_module_dynamic_data_t* __start_log_dynamic_data;
-
 #define FaBo_Shinobi_ANALOGPIN 3
 #define FaBo_Shinobi_LEDPIN 18
 
-static void nrf_log_module_initialize()
-{
-    APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
-    NRF_LOG_DEFAULT_BACKENDS_INIT();
-    *(NRF_SECTION_ITEM_GET(log_const_data, nrf_log_module_const_data_t, NRF_LOG_MODULE_ID_GET_CONST(&NRF_LOG_ITEM_DATA_CONST(NRF_LOG_MODULE_NAME)) & 0x0000ffff)) = NRF_LOG_ITEM_DATA_CONST(NRF_LOG_MODULE_NAME);
-}
-
+nrf_log_module_const_data_t*    __start_log_const_data;
+nrf_log_module_dynamic_data_t*  __start_log_dynamic_data;
+void*                           __stop_log_const_data;
+void*                           __stop_log_dynamic_data;
 static void gpio_init(void)
 {
     nrf_gpio_cfg_sense_input(FaBo_Shinobi_ANALOGPIN, NRF_GPIO_PIN_PULLDOWN, NRF_GPIO_PIN_SENSE_HIGH);
@@ -119,7 +145,9 @@ static void gpio_init(void)
 
 int main(void)
 {
-    nrf_log_module_initialize();
+    APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
+    NRF_LOG_DEFAULT_BACKENDS_INIT();
+
     gpio_init();
 
     while (true)
@@ -137,8 +165,6 @@ int main(void)
         }    
     }
 }
-
-
 ```
 
 
