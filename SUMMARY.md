@@ -65,6 +65,7 @@
 	* [109 Ambient Light(Keil)](./brick_analog/109_brick_analog_ambientlinght.md)
 	* [110 Tilt(SES)](./brick_analog/ses/110_brick_analog_tilt.md)
 	* [110 Tilt(Keil)](./brick_analog/110_brick_analog_tilt.md)
+	* [112 IR(SES)](./brick_analog/ses/112_brick_analog_ir_led.md)
 	* [112 IR(Keil)](./brick_analog/112_brick_analog_ir_led.md)
 	* [113 IR Sender(Keil)](./brick_analog/113_brick_analog_IR_receiver.md)
 	* [116 Distance(Keil)](./brick_analog/116_brick_analog_distance.md)
