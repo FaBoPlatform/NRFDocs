@@ -72,7 +72,14 @@
 	* [116 Distance(SES)](./brick_analog/ses/116_brick_analog_distance.md)
 	* [116 Distance(Keil)](./brick_analog/116_brick_analog_distance.md)
 * I2C
-	*
+	* [201 3Axis(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/201_brick_i2c_3Aix.md)
+	* [202 9Axis(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/202_brick_i2c_9Aix.md)
+	* [204 Barometer(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/204_brick_i2c_barometer.md)
+	* [205 Proximity(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/205_brick_i2c_proximity.md)
+	* [207 Temperature(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/207_brick_i2c_Temprature.md)
+	* [210 GPIO(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/210_brick_i2c_GPIO.md)
+	* [211 7Seg(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/211_brick_i2c_7segment)
+	* [213 LCDMini(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/213_brick_i2c_LCDMini.md)
 * iBeacon
 	* [iBeaconとは？](./basic/beacon.md)
 	* [iBeaconのフォーマット](./basic/beaconadvparam.md)
