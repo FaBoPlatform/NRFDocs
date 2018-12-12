@@ -74,6 +74,7 @@
 * I2C
 	* [201 3Axis(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/201_brick_i2c_3Aix.md)
 	* [202 9Axis(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/202_brick_i2c_9Aix.md)
+	* [202 9Axis(SES)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/ses/202_brick_i2c_9Aix.md)
 	* [204 Barometer(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/204_brick_i2c_barometer.md)
 	* [205 Proximity(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/205_brick_i2c_proximity.md)
 	* [207 Temperature(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/207_brick_i2c_Temprature.md)
