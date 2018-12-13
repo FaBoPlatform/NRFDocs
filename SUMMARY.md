@@ -82,7 +82,7 @@
 	* [205 Proximity(SES)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/ses/205_brick_i2c_Proximity.md)
 	* [206 UV_Index(SES)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/ses/206_brick_i2c_UV_Index.md)
 	* [207 Temperature(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/207_brick_i2c_Temprature.md)
-	* [207 Temperature(SES)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/ses/207_brick_i2c_Temprature.md)
+	* [207 Temperature(SES)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/ses/207_brick_i2c_Temperature.md)
 	* [210 GPIO(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/210_brick_i2c_GPIO.md)
 	* [211 7Seg(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/211_brick_i2c_7segment)
 	* [213 LCDMini(Keil)](https://github.com/FaBoPlatform/NRFDocs/blob/master/brick_i2c/213_brick_i2c_LCDMini.md)
