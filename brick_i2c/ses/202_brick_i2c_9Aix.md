@@ -356,7 +356,6 @@ mpu9250.c
 ```c
 #define NRF_LOG_MODULE_NAME MPU9250
 #include "app_error.h"
-#include "nrf_drv_twi.h"
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 #include "nrf_delay.h"
