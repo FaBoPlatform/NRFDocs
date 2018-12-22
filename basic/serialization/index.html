@@ -1,0 +1,2909 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="クリップボードへコピー">
+      
+        <meta name="lang:clipboard.copied" content="コピーしました">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="何も見つかりませんでした">
+      
+        <meta name="lang:search.result.one" content="1件見つかりました">
+      
+        <meta name="lang:search.result.other" content="#件見つかりました">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>Serialization - FaBo Nordic Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.11e41852.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#serialization" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="FaBo Nordic Docs" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                FaBo Nordic Docs
+              </span>
+              <span class="md-header-nav__topic">
+                Serialization
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            検索キーワードを入力してください
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="FaBo Nordic Docs" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    FaBo Nordic Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="NRF　docs" class="md-nav__link">
+      NRF　docs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../#? Environment /" title="? Shinobi_Environment" class="md-nav__link">
+      ? Shinobi_Environment
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../SDK_version/" title="SDKのバージョン" class="md-nav__link">
+      SDKのバージョン
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../SUMMARY/" title="SUMMARY" class="md-nav__link">
+      SUMMARY
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../bl42/" title="Bluetooth 4.2" class="md-nav__link">
+      Bluetooth 4.2
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../bleregist/" title="Bluetooth認証" class="md-nav__link">
+      Bluetooth認証
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../board/" title="BOARD" class="md-nav__link">
+      BOARD
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../chip/" title="BLEチップ" class="md-nav__link">
+      BLEチップ
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../ibeadondevice/" title="iBeaconデバイス" class="md-nav__link">
+      iBeaconデバイス
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../nRF5Series/" title="nRF52シリーズ" class="md-nav__link">
+      nRF52シリーズ
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../nrf/" title="Nrf" class="md-nav__link">
+      Nrf
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Environment
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Environment
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/AboutSDK/" title="SDKについて" class="md-nav__link">
+      SDKについて
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Hardware/" title="ハードウェアデザイン" class="md-nav__link">
+      ハードウェアデザイン
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Programming/" title="プログラミングツール" class="md-nav__link">
+      プログラミングツール
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Protocol/" title="NRF５シリーズ　プロトコル" class="md-nav__link">
+      NRF５シリーズ　プロトコル
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-5" type="checkbox" id="nav-12-5">
+    
+    <label class="md-nav__link" for="nav-12-5">
+      Board
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-5">
+        Board
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Board/board/" title="Board" class="md-nav__link">
+      Board
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-6" type="checkbox" id="nav-12-6">
+    
+    <label class="md-nav__link" for="nav-12-6">
+      JTAG
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-6">
+        JTAG
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/JTAG/debugger/" title="Debugger" class="md-nav__link">
+      Debugger
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-7" type="checkbox" id="nav-12-7">
+    
+    <label class="md-nav__link" for="nav-12-7">
+      Mac
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-7">
+        Mac
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Mac/CommandLineTool_install/" title="CommandLineTool Install" class="md-nav__link">
+      CommandLineTool Install
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Mac/EmbedStudio/" title="SEGGER Embed Stduioの開発環境の構築" class="md-nav__link">
+      SEGGER Embed Stduioの開発環境の構築
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Mac/JLINK/" title="J-LINK" class="md-nav__link">
+      J-LINK
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Mac/NRF5_SDK/" title="nRF5シリーズ" class="md-nav__link">
+      nRF5シリーズ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Mac/Sample/" title="Sample" class="md-nav__link">
+      Sample
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Mac/Segger/" title="Seggerでの環境構築" class="md-nav__link">
+      Seggerでの環境構築
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Mac/Segger_board/" title="Segger対応の開発ボード" class="md-nav__link">
+      Segger対応の開発ボード
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Mac/VisualStudio/" title="Visual Studioの開発環境の構築" class="md-nav__link">
+      Visual Studioの開発環境の構築
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Mac/cmsis/" title="CMSIS-CORE Support PackageをImport" class="md-nav__link">
+      CMSIS-CORE Support PackageをImport
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Mac/error/" title="エラーとその対処" class="md-nav__link">
+      エラーとその対処
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-8" type="checkbox" id="nav-12-8">
+    
+    <label class="md-nav__link" for="nav-12-8">
+      Shinobi
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-8">
+        Shinobi
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Shinobi/Shinobi_CustomBoard/" title="Shinobiボード定義" class="md-nav__link">
+      Shinobiボード定義
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-9" type="checkbox" id="nav-12-9">
+    
+    <label class="md-nav__link" for="nav-12-9">
+      Sniffer
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-9">
+        Sniffer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Sniffer/sniffer/" title="パケットスニファの設定" class="md-nav__link">
+      パケットスニファの設定
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Sniffer/sniffer_nrf/" title="パケットスニファの設定" class="md-nav__link">
+      パケットスニファの設定
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-10" type="checkbox" id="nav-12-10">
+    
+    <label class="md-nav__link" for="nav-12-10">
+      Windows
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-10">
+        Windows
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-10-1" type="checkbox" id="nav-12-10-1">
+    
+    <label class="md-nav__link" for="nav-12-10-1">
+      Keil
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-12-10-1">
+        Keil
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Windows/Keil/Step1_Keil_MDK-ARM_install/" title="KEIL MDK-ARM" class="md-nav__link">
+      KEIL MDK-ARM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Windows/Keil/Step2_SDK_Download/" title="nRF5シリーズ" class="md-nav__link">
+      nRF5シリーズ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Windows/Keil/Step3_NRFgoStudio_install/" title="nRFgo Stduio（Windows）" class="md-nav__link">
+      nRFgo Stduio（Windows）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Windows/Keil/Step4_SDK_Preparation/" title="開発の事前準備" class="md-nav__link">
+      開発の事前準備
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Environment/Windows/Keil/Step6_Debuger/" title="Debuger" class="md-nav__link">
+      Debuger
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      PowerMeasure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        PowerMeasure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../PowerMeasure/PowerMeasure/" title="電力測定の方法" class="md-nav__link">
+      電力測定の方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../PowerMeasure/PowerMeasureNotes/" title="PowerMeasureNotes" class="md-nav__link">
+      PowerMeasureNotes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+    
+    <label class="md-nav__link" for="nav-14">
+      ShinobiSeries
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-14">
+        ShinobiSeries
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/10_Shinobi_GridEye/" title="10 Shinobi_GridEye" class="md-nav__link">
+      10 Shinobi_GridEye
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/12_Shinobi_Battery_TPS63000/" title="Shinobi_USB_Battery(TPS63000)" class="md-nav__link">
+      Shinobi_USB_Battery(TPS63000)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/1_Shinobi_NRF/" title="1 Shinobi_NRF" class="md-nav__link">
+      1 Shinobi_NRF
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/2_Shinobi_Battery/" title="Shinobi_Battery" class="md-nav__link">
+      Shinobi_Battery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/3_Shinobi_SolarLipoCharger/" title="3 Shinobi_Solar" class="md-nav__link">
+      3 Shinobi_Solar
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/4_Shinobi_ANA6/" title="4 Shinobi_ANA6" class="md-nav__link">
+      4 Shinobi_ANA6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/5_Shinobi_Motor/" title="5 Shinobi_Motor" class="md-nav__link">
+      5 Shinobi_Motor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/8_Shinobi_USB_Battery_LDO/" title="Shinobi_USB_Battery(リニアレギュレーター)" class="md-nav__link">
+      Shinobi_USB_Battery(リニアレギュレーター)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/99_Shinobi_I2C_Expand/" title="99 Shinobi_I2C Expand" class="md-nav__link">
+      99 Shinobi_I2C Expand
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/9_Shinobi_USB_Battery_LM3671/" title="Shinobi_USB_Battery(LM3671)" class="md-nav__link">
+      Shinobi_USB_Battery(LM3671)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/Li-PoBattery/" title="Lipo Battery" class="md-nav__link">
+      Lipo Battery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/Shinobi_NFC/" title="Solar_NFC" class="md-nav__link">
+      Solar_NFC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/Solarpanel_Medium/" title="Shinobi_Solar_Pannel(Round)" class="md-nav__link">
+      Shinobi_Solar_Pannel(Round)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ShinobiSeries/Solarpanel_Round/" title="Solar_Pannel(Midium)" class="md-nav__link">
+      Solar_Pannel(Midium)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-15" type="checkbox" id="nav-15" checked>
+    
+    <label class="md-nav__link" for="nav-15">
+      Basic
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-15">
+        Basic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../beacon/" title="Beacon" class="md-nav__link">
+      Beacon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../beaconadvdata/" title="Advertising Data" class="md-nav__link">
+      Advertising Data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../beaconadvparam/" title="Advertising Parameter" class="md-nav__link">
+      Advertising Parameter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../beaconsample/" title="Sample" class="md-nav__link">
+      Sample
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../board/" title="Board" class="md-nav__link">
+      Board
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../debug/" title="Debug Logger" class="md-nav__link">
+      Debug Logger
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dev/" title="Dev" class="md-nav__link">
+      Dev
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dev802/" title="開発環境(SoftDevice 8.02/Keil MDK5.16)" class="md-nav__link">
+      開発環境(SoftDevice 8.02/Keil MDK5.16)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dev_nrf52/" title="開発環境(nRF52)" class="md-nav__link">
+      開発環境(nRF52)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dev_sd802/" title="開発環境(SoftDevice 8.02/Keil MDK5.16)" class="md-nav__link">
+      開発環境(SoftDevice 8.02/Keil MDK5.16)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../error/" title="Common application error handler" class="md-nav__link">
+      Common application error handler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lowenergy/" title="省電力メモ" class="md-nav__link">
+      省電力メモ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../memo/" title="メモ" class="md-nav__link">
+      メモ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nrf51memo/" title="メモ" class="md-nav__link">
+      メモ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pstorage/" title="Persistent Storage Interface" class="md-nav__link">
+      Persistent Storage Interface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Serialization
+      </label>
+    
+    <a href="./" title="Serialization" class="md-nav__link md-nav__link--active">
+      Serialization
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="概要" class="md-nav__link">
+    概要
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduino" title="Arduinoとつなぐ" class="md-nav__link">
+    Arduinoとつなぐ
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="接続アプリのコンパイル" class="md-nav__link">
+    接続アプリのコンパイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sniffer_nrf/" title="パケットスニファの設定" class="md-nav__link">
+      パケットスニファの設定
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../soft/" title="SoftDeviceを有効にする" class="md-nav__link">
+      SoftDeviceを有効にする
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../softdevice/" title="SoftDevice" class="md-nav__link">
+      SoftDevice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../timer/" title="Application Timer" class="md-nav__link">
+      Application Timer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../uart/" title="UART" class="md-nav__link">
+      UART
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-16" type="checkbox" id="nav-16">
+    
+    <label class="md-nav__link" for="nav-16">
+      Beacon
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-16">
+        Beacon
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../beacon/001_template/" title="BLE Peripheral templateのコピー" class="md-nav__link">
+      BLE Peripheral templateのコピー
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../beacon/002_led/" title="LEDの点灯" class="md-nav__link">
+      LEDの点灯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../beacon/002_log/" title="LEDの点灯" class="md-nav__link">
+      LEDの点灯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../beacon/003_log/" title="Logの出力" class="md-nav__link">
+      Logの出力
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../beacon/004_error/" title="エラーハンドラ" class="md-nav__link">
+      エラーハンドラ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../beacon/005_softdevice/" title="SoftDeviceの焼き込み" class="md-nav__link">
+      SoftDeviceの焼き込み
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../beacon/006_power/" title="PowerManage" class="md-nav__link">
+      PowerManage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../beacon/007_init_ble/" title="BLEのInit" class="md-nav__link">
+      BLEのInit
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../beacon/008_advdata/" title="AdvDataの設定" class="md-nav__link">
+      AdvDataの設定
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../beacon/009_advstart/" title="Advertisingの開始" class="md-nav__link">
+      Advertisingの開始
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-17" type="checkbox" id="nav-17">
+    
+    <label class="md-nav__link" for="nav-17">
+      Brick analog
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-17">
+        Brick analog
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/" title="FaBo Analog Bricks" class="md-nav__link">
+      FaBo Analog Bricks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/101_brick_analog_led/" title="101 LED Brick" class="md-nav__link">
+      101 LED Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/102_brick_analog_buzzer/" title="102 Buzzer Brick" class="md-nav__link">
+      102 Buzzer Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/103_brick_analog_button/" title="103 Button Brick" class="md-nav__link">
+      103 Button Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/104_brick_analog_angle/" title="104 Angle Brick" class="md-nav__link">
+      104 Angle Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/105_brick_analog_vibrator/" title="105 Vibrator Brick" class="md-nav__link">
+      105 Vibrator Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/106_brick_analog_touch/" title="106 Touch Brick" class="md-nav__link">
+      106 Touch Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/107_brick_analog_limitswitch/" title="107 LimitSwitch Brick" class="md-nav__link">
+      107 LimitSwitch Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/108_brick_analog_temperature/" title="108 Temperature Brick" class="md-nav__link">
+      108 Temperature Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/109_brick_analog_ambientlinght/" title="109 AmbientLinght Brick" class="md-nav__link">
+      109 AmbientLinght Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/110_brick_analog_tilt/" title="110 Tilt Brick" class="md-nav__link">
+      110 Tilt Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/112_brick_analog_ir_led/" title="121 IR_LED Brick" class="md-nav__link">
+      121 IR_LED Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/113_brick_analog_IR_receiver/" title="113 IR_RECEVER Brick" class="md-nav__link">
+      113 IR_RECEVER Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/116_brick_analog_distance/" title="116 Distance Brick" class="md-nav__link">
+      116 Distance Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/117_brick_analog_slideswitch/" title="117 Switch Brick" class="md-nav__link">
+      117 Switch Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/118_brick_analog_hall /" title="118 Hall Brick" class="md-nav__link">
+      118 Hall Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/119_brick_analog_relector/" title="119 Reflector Brick" class="md-nav__link">
+      119 Reflector Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/120_brick_analog_button/" title="120 Button Brick" class="md-nav__link">
+      120 Button Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-17-19" type="checkbox" id="nav-17-19">
+    
+    <label class="md-nav__link" for="nav-17-19">
+      Ses
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-17-19">
+        Ses
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/101_brick_analog_led/" title="101 LED Brick" class="md-nav__link">
+      101 LED Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/102_brick_analog_buzzer/" title="102 Buzzer Brick" class="md-nav__link">
+      102 Buzzer Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/103_brick_analog_button/" title="103 Button Brick" class="md-nav__link">
+      103 Button Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/104_brick_analog_angle/" title="104 Angle Brick" class="md-nav__link">
+      104 Angle Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/105_brick_analog_vibrator/" title="105 Vibrator Brick" class="md-nav__link">
+      105 Vibrator Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/106_brick_analog_touch/" title="106 Touch Brick" class="md-nav__link">
+      106 Touch Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/107_brick_analog_limitswitch/" title="107 LimitSwitch Brick" class="md-nav__link">
+      107 LimitSwitch Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/108_brick_analog_temperature/" title="108 Temperature Brick" class="md-nav__link">
+      108 Temperature Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/109_brick_analog_ambientlinght/" title="109 AmbientLinght Brick" class="md-nav__link">
+      109 AmbientLinght Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/110_brick_analog_tilt/" title="110 Tilt Brick" class="md-nav__link">
+      110 Tilt Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/112_brick_analog_ir_led/" title="121 IR_LED Brick" class="md-nav__link">
+      121 IR_LED Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/113_brick_analog_IR_receiver/" title="113 IR_RECEVER Brick" class="md-nav__link">
+      113 IR_RECEVER Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_analog/ses/116_brick_analog_distance/" title="116 Distance Brick" class="md-nav__link">
+      116 Distance Brick
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-18" type="checkbox" id="nav-18">
+    
+    <label class="md-nav__link" for="nav-18">
+      Brick i2c
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-18">
+        Brick i2c
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_i2c/201_brick_i2c_3Aix/" title="201 3Aixs I2C Brick" class="md-nav__link">
+      201 3Aixs I2C Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_i2c/202_brick_i2c_9Aix/" title="202 9Aixs I2C Brick" class="md-nav__link">
+      202 9Aixs I2C Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_i2c/204_brick_i2c_barometer/" title="204 Barometer Brick" class="md-nav__link">
+      204 Barometer Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_i2c/205_brick_i2c_proximity/" title="205 Proximity Brick" class="md-nav__link">
+      205 Proximity Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_i2c/207_brick_i2c_Temprature/" title="207 temperature Brick" class="md-nav__link">
+      207 temperature Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_i2c/210_brick_i2c_GPIO/" title="210 GPIO I2C Brick" class="md-nav__link">
+      210 GPIO I2C Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_i2c/213_brick_i2c_LCDMini/" title="213 LCD_Mini Brick" class="md-nav__link">
+      213 LCD_Mini Brick
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-19" type="checkbox" id="nav-19">
+    
+    <label class="md-nav__link" for="nav-19">
+      Brick serial
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-19">
+        Brick serial
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_serial/302Buletooth_Serial/" title="302 Buletooth Serial Brick" class="md-nav__link">
+      302 Buletooth Serial Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_serial/304USB_Serial/" title="304 USB Serial Brick" class="md-nav__link">
+      304 USB Serial Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_serial/305Wifi_Serial/" title="305 Wifi Serial Brick" class="md-nav__link">
+      305 Wifi Serial Brick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../brick_serial/NUS/" title="NUS" class="md-nav__link">
+      NUS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-20" type="checkbox" id="nav-20">
+    
+    <label class="md-nav__link" for="nav-20">
+      Chip
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-20">
+        Chip
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chip/chiplist/" title="BLEチップ" class="md-nav__link">
+      BLEチップ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chip/chipspec/" title="BLEチップの感度比較" class="md-nav__link">
+      BLEチップの感度比較
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chip/loralist/" title="LoRaチップ" class="md-nav__link">
+      LoRaチップ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chip/sensor/" title="Sensor SoCチップ" class="md-nav__link">
+      Sensor SoCチップ
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-21" type="checkbox" id="nav-21">
+    
+    <label class="md-nav__link" for="nav-21">
+      Module
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-21">
+        Module
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../module/modulebroadcom/" title="Broadcom" class="md-nav__link">
+      Broadcom
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../module/modulecsr/" title="CSR" class="md-nav__link">
+      CSR
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../module/modulecypress/" title="Cypress" class="md-nav__link">
+      Cypress
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../module/moduledialog/" title="Dialog" class="md-nav__link">
+      Dialog
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../module/moduleetc/" title="その他" class="md-nav__link">
+      その他
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../module/modulenordic/" title="Nordic Semiconductor" class="md-nav__link">
+      Nordic Semiconductor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../module/modulesiliconlab/" title="SiliconLabs" class="md-nav__link">
+      SiliconLabs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../module/moduleti/" title="TI" class="md-nav__link">
+      TI
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22">
+    
+    <label class="md-nav__link" for="nav-22">
+      Shinobi
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        Shinobi
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../shinobi/1_Shinobi_NRF_ANA6/" title="1  Shinobi_NRF_ANA6" class="md-nav__link">
+      1  Shinobi_NRF_ANA6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../shinobi/5_Shinobi_Motor/" title="5 Shinobi Motor" class="md-nav__link">
+      5 Shinobi Motor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../shinobi/recognize/" title="認識させるコツ" class="md-nav__link">
+      認識させるコツ
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="概要" class="md-nav__link">
+    概要
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduino" title="Arduinoとつなぐ" class="md-nav__link">
+    Arduinoとつなぐ
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="接続アプリのコンパイル" class="md-nav__link">
+    接続アプリのコンパイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="serialization">Serialization</h1>
+<h2 id="_1">概要</h2>
+<p>nRF51に直接実装せずに外部MCUなどからシリアル通信で制御する方式をBLE serializationと呼ぶ。</p>
+<ul>
+<li><a href="http://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk51.v10.0.0%2Flib_serialization.html">ドキュメント</a></li>
+</ul>
+<p>ドキュメントで紹介されている方法は開発ボードを二台接続して、ApplicationBoard（制御する側）とConnectivityBoard（制御される側）に分けて実装を行う方法になる。<br />
+実際はApplicationBoard側はnRF51を使用せずにARMを直で使用することが多くなるはず。<br />
+接続はUART, SPI, HCIが利用できる。</p>
+<p><img alt="" src="../img/serial_001.png" /></p>
+<p>ApplicationBoardではSoftdeviceを使用しないが専用ライブラリによりSoftdeviceを使用した時と同じコードでConnectivityBoardを制御することができる。<br />
+ConnectivityBoardには、Softdeviceと接続用のアプリケーションをインストールする。  </p>
+<p><img alt="" src="../img/serial_002.png" /></p>
+<h2 id="arduino">Arduinoとつなぐ</h2>
+<p>ArduinoをApplicationBoardとしてつなぐ場合は専用ライブラリが利用できないので、直にシリアル通信を行う必要がある。<br />
+また、Arduinoはフローコントロールができないなど、シリアル通信の設定も変える必要もある。</p>
+<h3 id="_2">接続アプリのコンパイル</h3>
+<p>接続アプリはコード量が多いのでKeilの無料版でばビルドできないので、今回はGCCを用います。  </p>
+<ol>
+<li>
+<p><a href="https://launchpad.net/gcc-arm-embedded">こちら</a>からArm用のGCCをダウンロードし、任意の場所へ置く。</p>
+</li>
+<li>
+<p>下記のGNU_INSTALL_ROOTにGCCの場所を記載する。</p>
+</li>
+<li>
+<p>[SDK]/components/toolchain/gcc/Makefile.posix  </p>
+</li>
+<li>
+<p>下記のヘッダにシリアル通信の設定があるので、Arduinoに合わせた設定にする。</p>
+</li>
+<li>
+<p>[SDK]/components/serialization/common/ser_config.h</p>
+</li>
+</ol>
+<p>```
+/*<em> UART transmission parameters </em>/
+//#define SER_PHY_UART_FLOW_CTRL          APP_UART_FLOW_CONTROL_ENABLED
+//#define SER_PHY_UART_PARITY             true
+//#define SER_PHY_UART_BAUDRATE           UART_BAUDRATE_BAUDRATE_Baud1M</p>
+<h1 id="define-ser_phy_uart_flow_ctrl-app_uart_flow_control_disabled">define SER_PHY_UART_FLOW_CTRL          APP_UART_FLOW_CONTROL_DISABLED</h1>
+<h1 id="define-ser_phy_uart_parity-false">define SER_PHY_UART_PARITY             false</h1>
+<h1 id="define-ser_phy_uart_baudrate-uart_baudrate_baudrate_baud115200">define SER_PHY_UART_BAUDRATE           UART_BAUDRATE_BAUDRATE_Baud115200</h1>
+<p>```</p>
+<ol>
+<li>
+<p>接続アプリは利用するSoftdevice毎に下記フォルダに用意されているので、移動してmakeを実行するとhexファイルが生成される。</p>
+</li>
+<li>
+<p>[SDK]/examples/ble_central_and_peripheral/ble_connectivity [S130]</p>
+</li>
+<li>[SDK]/examples/ble_peripheral/ble_connectivity [S110]</li>
+<li>
+<p>[SDK]/examples/ble_central/ble_connectivity [S120]</p>
+</li>
+<li>
+<p>開発ボードにSoftdeviceと先ほどのhexファイルを書き込む。</p>
+</li>
+</ol>
+<h3 id="_3">接続</h3>
+<p>表の通りにGPIOを接続する。</p>
+<table>
+<thead>
+<tr>
+<th>開発ボード</th>
+<th>Arduino</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>P0.12</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>P0.13</td>
+<td>P3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="arduino_1">Arduinoプログラム</h3>
+<p>iBeaconを発信するプログラム。</p>
+<p>```</p>
+<h1 id="include">include <SoftwareSerial.h></h1>
+<p>SoftwareSerial serial(2, 3);</p>
+<p>int state = 0;
+int count = 0;</p>
+<p>void setup() {
+  // BLEとの通信用
+  serial.begin(115200);
+  // ログ出力用
+  Serial.begin(9600);
+  Serial.write("*Start!\n");
+  // BLEを有効化
+  Serial.write("sd_ble_enable()\n");
+  sd_ble_enable();
+}</p>
+<p>void loop() {
+  while (serial.available()) {
+    Serial.print(serial.read(), HEX);
+    if (count++ &gt; 6) {
+      Serial.write("\n");
+      count = 0;
+      switch(state++) {
+        case 0:
+          Serial.write("<em>sd_ble_gap_adv_data_set()\n");
+          sd_ble_gap_adv_data_set();
+        break;
+        case 1:
+          Serial.write("</em>sd_ble_gap_adv_start()\n");
+          sd_ble_gap_adv_start();
+        break;
+        case 2:
+          Serial.write("*Finish!\n");
+        break;
+      }
+    } else {
+      Serial.write(",");
+    }
+  }
+}</p>
+<p>// データ送信
+void send_data(byte *data) {
+  int len = data[0] + 2;
+  for (int i=0; i&lt;len; i++) {
+    serial.write(data[i]);
+  }
+}</p>
+<p>// BLEを有効化
+void sd_ble_enable() {
+  byte data[] = {
+    // パケットサイズ
+    0x08, 0x00, 
+    // タイプ（0:コマンド, 1:レスポンス）
+    0x00, 
+    // コマンドタイプ
+    0x60, 
+    // コマンドの内容
+    0x01, 0x00, 0x00, 0x00, 0x00, 0x00
+    };
+  send_data(data);
+}</p>
+<p>// Advertisingのデータを設定
+void sd_ble_gap_adv_data_set() {
+  byte data[] = {
+    0x24, 0x00, 0x00, 0x72, 0x1e, 0x01, 
+    // Header
+    0x02, 0x01, 0x06, 0x1a, 0xff, 0x4c, 0x00, 0x02, 0x15,
+    // UUID
+    0x01, 0x12, 0x23, 0x34, 0x45, 0x56, 0x67, 0x78, 0x89, 0x9a, 0xab, 0xbc, 0xcd, 0xde, 0xef, 0xf0,
+    // Major
+    0x01, 0x02,
+    // Minor
+    0x03, 0x4,
+    0xc3, 0x00, 0x00};
+  send_data(data);
+}</p>
+<p>// Advertising開始
+void sd_ble_gap_adv_start() {
+  byte data[] = {
+    0x0c, 0x00, 0x00, 0x73, 0x01, 
+    // ADV_NONCONN_IND
+    0x03, 
+    0x00, 0x00, 0x00, 
+    // Interval(0.625 ms units)
+    0xa0, 
+    0x00, 0x00, 0x00, 0x00};
+  send_data(data);
+}</p>
+<p>```</p>
+<h3 id="_4">パケットフォーマット</h3>
+<p>例）sd_ble_enableのパケットフォーマット<br />
+他のパケットフォーマットは<a href="http://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk51.v10.0.0%2Flib_serialization.html">こちら</a></p>
+<p><img alt="" src="../img/serial_003.png" /></p>
+<table>
+<thead>
+<tr>
+<th>サイズ</th>
+<th>タイプ</th>
+<th>コマンド</th>
+<th>コマンド</th>
+<th>パラメータ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2Byte</td>
+<td>1byte</td>
+<td>1byte</td>
+<td>1byte</td>
+<td>5byte</td>
+</tr>
+<tr>
+<td>0x08, 0x00</td>
+<td>0x00</td>
+<td>0x60</td>
+<td>0x01</td>
+<td>0x00...</td>
+</tr>
+<tr>
+<td>以降8Byte</td>
+<td>コマンドタイプ</td>
+<td>sd_ble_enableを表す</td>
+<td>BLEを有効化する</td>
+<td>5byte</td>
+</tr>
+</tbody>
+</table>
+<p><code>byte data[] = {
+    // パケットサイズ
+    0x08, 0x00, 
+    // タイプ（0:コマンド, 1:レスポンス）
+    0x00, 
+    // コマンドタイプ
+    0x60, 
+    // コマンドの内容
+    0x01, 0x00, 0x00, 0x00, 0x00, 0x00
+    };</code></p>
+<h2 id="_5">スキャンする</h2>
+<h3 id="_6">準備</h3>
+<p>Advertisingパケットをスキャンするには<a href="http://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk51.v10.0.0%2Fble_serialization_s130_functions_gap.html&amp;anchor=nrf51_scan_start_encoding">sd_ble_gap_scan_start</a>を利用する。<br />
+これはS110のソフトデバイスでは対応していないので、S130を書き込む。</p>
+<h3 id="arduino_2">Arduinoプログラム</h3>
+<p>```</p>
+<h1 id="include_1">include <SoftwareSerial.h></h1>
+<p>SoftwareSerial serial(2, 3);</p>
+<p>int state = 0;
+int count = 0;
+uint8_t buff[255];
+int buff_pos = 0;
+int data_len = 0;
+int data_com = 0;</p>
+<p>void setup() {
+  // BLEとの通信用
+  serial.begin(115200);
+  // ログ出力用
+  Serial.begin(38400);
+  Serial.write("*Start!\n");
+  // BLEを有効化
+  Serial.write("sd_ble_enable()\n");
+  sd_ble_enable();
+}</p>
+<p>// パケットの内容をパース
+void parse(uint8_t data) {
+  buff[buff_pos++] = data;
+  if (buff_pos == 2) {
+    data_len = buff[0] + (buff[1] &lt;&lt; 8);
+    Serial.write("len:");
+    Serial.print(data_len, DEC);
+    Serial.write("\n");
+  }
+  if (buff_pos == 3) {
+    Serial.write("type:");
+    Serial.print(data, HEX);
+    Serial.write("\n");
+  }
+  if (buff_pos == 4) {
+    data_com = data;
+    Serial.write("command:");
+    Serial.print(data, HEX);
+    Serial.write("\n");
+  }
+  if (buff_pos &gt; 4) {
+    Serial.print(data, HEX);
+  } else {
+    return;
+  }
+  if (data_len == buff_pos -2) {
+    buff_pos = 0;
+    data_len = 0;
+    state++;
+    Serial.write("\n");
+  } else {
+    Serial.write(",");
+  }
+}</p>
+<p>void loop() {
+  if (serial.overflow()) {
+    // SoftwareSerialはバッファが64byteしかなくオーバーフローしてしまうので、回避策が必要。
+    Serial.println("\nSoftwareSerial overflow!");
+    delay(100);
+    exit(1);
+  }
+  while (serial.available()) {
+    parse(serial.read());
+    if (state == 1 &amp;&amp; buff_pos == 0) {
+        Serial.println("sd_ble_gap_scan_start()"); 
+        sd_ble_gap_scan_start();
+    }
+  }
+}</p>
+<p>// データ送信
+void send_data(byte *data) {
+  int len = data[0] + 2;
+  for (int i=0; i&lt;len; i++) {
+    serial.write(data[i]);
+  }
+}</p>
+<p>// BLEを有効化
+void sd_ble_enable() {
+  byte data[] = {
+    // パケットサイズ
+    0x08, 0x00, 
+    // タイプ（0:コマンド, 1:レスポンス）
+    0x00, 
+    // コマンドタイプ
+    0x60, 
+    // コマンドの内容
+    0x01, 0x00, 0x00, 0x00, 0x00, 0x00
+    };
+  send_data(data);
+}</p>
+<p>// Scan開始
+void sd_ble_gap_scan_start() {
+  byte data[] = {
+    // パケットサイズ
+    0x0b, 0x00, 
+    // タイプ（0:コマンド, 1:レスポンス）
+    0x00, 
+    // コマンドタイプ
+    0x86, 
+    // コマンドの内容
+    0x01, // present
+    0x00, // Active Scanning
+    0x00, // Whitelist
+    0x40, 0x06, // Interval(0.625 ms units)
+    0x50, 0x00, // Scan window(0.625 ms units)
+    0x00, 0x00 // Timeout(No timeout)
+    };
+  send_data(data);
+}
+ ```</p>
+<h3 id="_7">改良</h3>
+<p><a href="https://github.com/rambo/SimpleFIFO">SimpleFIFO</a>を利用してSoftwareSerialのオーバーフローを回避する。</p>
+<p>```</p>
+<h1 id="include_2">include <SimpleFIFO.h></h1>
+<p>SimpleFIFO<uint8_t,255> sFIFO;</p>
+<p>// ~~略~~</p>
+<p>void loop() {</p>
+<p>// シリアルから読み取ったデータはすぐにQueueに入れる
+  while (serial.available()) {
+    sFIFO.enqueue(serial.read());
+  }</p>
+<p>// シリアルからの読み込みが無いタイミングで処理する
+  if (sFIFO.count() &gt; 0) {
+    parse(sFIFO.dequeue());
+    if (state == 1 &amp;&amp; buff_pos == 0) {
+        Serial.println("sd_ble_gap_scan_start()"); 
+        sd_ble_gap_scan_start();
+    }
+  }</p>
+<p>}</p>
+<p>```</p>
+<h3 id="_8">より見やすく</h3>
+<p>parse関数の内容を変更してBLE_GAP_EVT_ADV_REPORTのイベントをより詳細に表示するように改良。</p>
+<p>```
+// ~~略~~
+  if (buff_pos &gt; 4) {
+    if (data_com == 0x1b) {
+      // BLE_GAP_EVT_ADV_REPORT
+      if (buff_pos &gt; 16) {
+        Serial.print(data, HEX);
+      } else if (buff_pos == 16) {
+        Serial.write("handle:");
+        Serial.print(buff[5], HEX);
+        Serial.print(buff[6], HEX);
+        Serial.write("\n");
+        Serial.write("type:");
+        Serial.print(buff[7], HEX);
+        Serial.write("\n");
+        Serial.write("address:");
+        Serial.print(buff[8], HEX);
+        Serial.print(buff[9], HEX);
+        Serial.print(buff[10], HEX);
+        Serial.print(buff[11], HEX);
+        Serial.print(buff[12], HEX);
+        Serial.print(buff[13], HEX);
+        Serial.write("\n");
+        Serial.write("rssi:");
+        Serial.print(buff[14], HEX);
+        Serial.write("\n");
+        return;
+      } else {
+        return;
+      }
+    } else {
+      Serial.print(data, HEX);
+    }
+  } else {
+    return;
+  }
+// ~~略~~</p>
+<p>```</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../pstorage/" title="Persistent Storage Interface" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前
+                </span>
+                Persistent Storage Interface
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../sniffer_nrf/" title="パケットスニファの設定" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  次
+                </span>
+                パケットスニファの設定
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.9e1f3b71.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
