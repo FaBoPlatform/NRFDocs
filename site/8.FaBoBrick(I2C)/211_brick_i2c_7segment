@@ -1,0 +1,26 @@
+# #211 7Segment LED I2C Brick
+
+<center>![](/img/100_analog/product/117.jpg)
+<!--COLORME-->
+
+## Overview
+７セグメントLEDを使ったBrickです。
+
+I2Cで表示パターンを制御できます。
+
+## Connecting
+I2Cコネクタへ接続します。
+
+## Sample Code
+I2Cは、SCLとSDAの２本だけで通信できます。複数のデバイスをつなぐことができます。台数が増えても信号線は増えません。
+それぞれのデバイスは、マスターとスレーブが存在し、スレーブに7bitのアドレスを割り当てられている。もしくは割り当てることができます。
+今回使用するのはスレーブアドレスあらかじめアドレスが決まっており、アドレスは0x20に割り当てられています。
+```c
+
+```
+
+## 構成Parts
+-7セグメントLED
+•Texas Instruments TLC59208F
+
+## GitHub
